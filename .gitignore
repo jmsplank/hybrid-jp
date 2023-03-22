@@ -1,0 +1,6 @@
+.python-version
+U6T40/*
+tests/data/*
+*.egg-info
+__pycache__
+.DS_Store
