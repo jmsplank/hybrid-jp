@@ -53,6 +53,23 @@ def plot_bxyz(ax: plt.Axes, x: np.ndarray, bxyz: hj.Mag) -> None:
         ax.plot(x, c, label=n)
 
 
+def grad_ndens(
+    x: np.ndarray, ndens: np.ndarray, trim: int = -5
+) -> tuple[np.ndarray, np.ndarray]:
+    xt, g_ndenst = hj.trim_vars(
+        [gridmid.x, np.gradient(ndens, gridmid.x[1] - gridmid.x[0])],
+        slice(None, trim),
+    )
+    return xt, g_ndenst
+
+
+def rolling_avg(x: np.ndarray, y: np.ndarray, width: float) -> np.ndarray:
+    dx: float = x[1] - x[0]
+    w = int(width // dx)
+    out = np.convolve(y, np.ones(w), "same") / w
+    return out
+
+
 if __name__ == "__main__":
     data_dir = Path("U6T40")
     constants = hj.get_deck_constants(data_dir / "input.deck")
@@ -64,10 +81,9 @@ if __name__ == "__main__":
 
     fig, axs = plt.subplots(2, 1, sharex=True)
     plot_ndens(axs[0], x=gridmid.x, ndens=ndens)
-    xt, g_ndenst = hj.trim_vars(
-        [gridmid.x, np.gradient(ndens, gridmid.x[1] - gridmid.x[0])], slice(None, -5)
-    )
-    axs[1].plot(xt, g_ndenst)
+    xt, g_ndenst = grad_ndens(gridmid.x, ndens)
+    g_ndenstr = rolling_avg(xt, g_ndenst, constants["di"])
+    axs[1].plot(xt, g_ndenstr)
 
     plt.legend()
     plt.tight_layout()
