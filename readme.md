@@ -11,6 +11,9 @@ print("\n".join([l.split(" = ")[0] for l in lines]));'
 VAR_GRID
 VAR_GRID_MID
 VAR_NUMBERDENSITY
+VAR_BX
+VAR_BY
+VAR_BZ
 ```
 
 ## Command Line Instructions
