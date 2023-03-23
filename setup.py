@@ -8,7 +8,7 @@ setup(
     version="0.1",
     packages=packages,
     package_dir={"": "src"},
-    install_requires=["numpy", "sdf", "rich", "typer"],
+    install_requires=["numpy", "sdf", "rich", "typer", "sympy"],
     entry_points={
         "console_scripts": [
             "sdf-vars = hybrid_jp:list_vars_app",
