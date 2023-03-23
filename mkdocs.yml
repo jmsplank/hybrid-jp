@@ -45,8 +45,10 @@ markdown_extensions:
 nav:
   - hybrid-jp: index.md
   - Tutorials: tutorials.md
-  - "How-To Guides": how-to-guides.md
-  - Reference:
+  - "How-To Guides":
+      - how-to-guides/CLI.md
+  - "API Reference":
       - reference/index.md
       - deck_parse: reference/deck_parse.md
+      - CLI: reference/cli.md
   - Explanation: explanation.md
