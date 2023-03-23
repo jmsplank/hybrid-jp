@@ -1,5 +1,5 @@
 from .arrays import trim_vars
-from .cli_list_vars import hybrid_jp
+from .cli import hybrid_jp
 from .deck_parse import get_deck_constants, get_deck_constants_sym
 from .dtypes import Grid, Mag
 from .plot_labels import Label, make_label
