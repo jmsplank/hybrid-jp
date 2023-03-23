@@ -47,20 +47,28 @@ def plot_bxyz(ax: plt.Axes, x: np.ndarray, bxyz: hj.Mag) -> None:
     slc = slice(None, -5)
     x = x[slc]
     ax.plot(x, np.linalg.norm([i for i in bxyz], axis=0)[slc])
-    for c in bxyz:
+    names = [f"$b_{i}$" for i in "xyz"]
+    for c, n in zip(bxyz, names):
         c = c[slc]
-        ax.plot(x, c)
+        ax.plot(x, c, label=n)
 
 
 if __name__ == "__main__":
     data_dir = Path("U6T40")
-    data = sh.getdata(str(data_dir / "0199.sdf"), verbose=False)
+    constants = hj.get_deck_constants(data_dir / "input.deck")
+    print(f"Ion inertial length: {constants['di']} m/s")
+    data = sh.getdata(str(data_dir / "0128.sdf"), verbose=False)
     ndens = data_collapse_y(data, "Derived_Number_Density")
     bxyz = hj.get_mag(data)
     gridmid = hj.get_grid(data, mid=True)
-    fig, axs = plt.subplots(2, 1)
-    plot_ndens(axs[0], x=gridmid.x, ndens=ndens)
-    plot_bxyz(axs[1], x=gridmid.x, bxyz=collapse_bxyz(bxyz))
 
+    fig, axs = plt.subplots(2, 1, sharex=True)
+    plot_ndens(axs[0], x=gridmid.x, ndens=ndens)
+    xt, g_ndenst = hj.trim_vars(
+        [gridmid.x, np.gradient(ndens, gridmid.x[1] - gridmid.x[0])], slice(None, -5)
+    )
+    axs[1].plot(xt, g_ndenst)
+
+    plt.legend()
     plt.tight_layout()
     plt.show()
