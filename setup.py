@@ -11,7 +11,7 @@ setup(
     install_requires=["numpy", "sdf", "rich", "typer", "sympy"],
     entry_points={
         "console_scripts": [
-            "sdf-vars = hybrid_jp:list_vars_app",
+            "hybrid-jp = hybrid_jp:hybrid_jp",
         ]
     },
 )

@@ -20,7 +20,7 @@ VAR_BZ
 
 ### Viewing variables contained within an sdf file
 ```bash
-sdf-vars U6T40/0128.cdf
+hybrid-jp sdf-vars read U6T40/0128.sdf
 ```
 outputs:
 ```bash
@@ -54,4 +54,32 @@ Magnetic_Field_Bz                    [1600,  160]
 Wall_time                            [1]
 dist_fn_x_px_Protons                 [1600,  400]
 ```
+
+### Evaluate constants used in input.deck
+```bash
+hybrid-jp deck eval-consts U6T40/input.deck 
+```
+Evaluates the constants within the constants block:
+```txt
+begin: constant
+      qe  =  1.602e-19
+     mu0  =  1.257e-06
+      kb  =  1.381e-23
+      mp  =  1.670e-27
+      B0  =  1.000e-08
+      n0  =  1.000e+07
+     wci  =  9.594e-01
+      va  =  6.903e+04
+      di  =  7.195e+04
+    beta  =  1.000e+00
+      T0  =  2.882e+05
+  inflow  =  6.917e-22
+    thBn  =  4.000e+01
+     ppc  =  1.000e+02
+      E0  =  4.142e-03
+     amp  =  5.000e-01
+   sigma  =  1.799e+04
+end: constant
+```
+
 # Changelog
