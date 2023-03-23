@@ -1,0 +1,52 @@
+site_name: hybrid-jp
+repo_name: hybrid-jp
+repo_url: https://github.com/jmsplank/hybrid-jp/
+
+theme:
+  name: "material"
+  icon:
+    logo: material/waveform
+    repo: fontawesome/brands/github
+  favicon: assets/images/hj.png
+  palette:
+    scheme: slate
+    primary: pink
+    accent: pink
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.expand
+    - toc.follow
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
+  - search:
+      lang: en
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - abbr
+  - admonition
+  - footnotes
+
+nav:
+  - hybrid-jp: index.md
+  - Tutorials: tutorials.md
+  - "How-To Guides": how-to-guides.md
+  - Reference:
+      - reference/index.md
+      - deck_parse: reference/deck_parse.md
+  - Explanation: explanation.md
