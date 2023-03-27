@@ -1,3 +1,4 @@
+"""Plot variables from `.sdf` file."""
 from pathlib import Path
 from typing import cast
 
@@ -30,6 +31,15 @@ def data_collapse_y(data, var: str) -> np.ndarray:
 
 
 def plot_ndens(ax: plt.Axes, x: np.ndarray, ndens: np.ndarray) -> None:
+    """Plot numberdensity into axis `ax`.
+
+    Also sets x and y axis labels.
+
+    Args:
+        ax (plt.Axes): axes to plot onto
+        x (np.ndarray): x axis data
+        ndens (np.ndarray): y axis data
+    """
     x, ndens = hj.trim_vars([x, ndens], slice(None, -5))
     ax.plot(x, ndens)
     ax.set_ylabel(hj.make_label(hj.Label.ND, si=True))
@@ -37,6 +47,14 @@ def plot_ndens(ax: plt.Axes, x: np.ndarray, ndens: np.ndarray) -> None:
 
 
 def collapse_bxyz(bxyz: hj.Mag) -> hj.Mag:
+    """Take mean of each component of bxyz in spatial y axis.
+
+    Args:
+        bxyz (hj.Mag): magnetic field (bx:[x,y], ...)
+
+    Returns:
+        hj.Mag: Magnetic field (bx:[x], ...)
+    """
     out = []
     for b in bxyz:
         out.append(b.mean(axis=1))
@@ -44,6 +62,13 @@ def collapse_bxyz(bxyz: hj.Mag) -> hj.Mag:
 
 
 def plot_bxyz(ax: plt.Axes, x: np.ndarray, bxyz: hj.Mag) -> None:
+    """Plot (1d) magnetic field components bt,bx,by,bz.
+
+    Args:
+        ax (plt.Axes): axis to plot onto
+        x (np.ndarray): x axis values
+        bxyz (hj.Mag): components of magnetic field
+    """
     slc = slice(None, -5)
     x = x[slc]
     ax.plot(x, np.linalg.norm([i for i in bxyz], axis=0)[slc])
@@ -56,6 +81,16 @@ def plot_bxyz(ax: plt.Axes, x: np.ndarray, bxyz: hj.Mag) -> None:
 def grad_ndens(
     x: np.ndarray, ndens: np.ndarray, trim: int = -5
 ) -> tuple[np.ndarray, np.ndarray]:
+    """Compute gradient of numberdiensity.
+
+    Args:
+        x (np.ndarray): x axis values
+        ndens (np.ndarray): numberdensity
+        trim (int, optional): number of values to trim off end of x. Defaults to -5.
+
+    Returns:
+        tuple[np.ndarray, np.ndarray]: (trimmed x, trimmed d/dx(nd))
+    """
     xt, g_ndenst = hj.trim_vars(
         [gridmid.x, np.gradient(ndens, gridmid.x[1] - gridmid.x[0])],
         slice(None, trim),
@@ -64,6 +99,16 @@ def grad_ndens(
 
 
 def rolling_avg(x: np.ndarray, y: np.ndarray, width: float) -> np.ndarray:
+    """Calculate a rolling average of `width` (in `x` units) over `y`.
+
+    Args:
+        x (np.ndarray): x values
+        y (np.ndarray): y values
+        width (float): width of window to avg over (units of `x`)
+
+    Returns:
+        np.ndarray: averaged `y`, length of original `y` is retained
+    """
     dx: float = x[1] - x[0]
     w = int(width // dx)
     out = np.convolve(y, np.ones(w), "same") / w
