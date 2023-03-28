@@ -7,3 +7,5 @@ __pycache__
 site/
 data/
 temp/
+.ipynb_checkpoints
+.mypy_cache
