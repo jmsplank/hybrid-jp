@@ -13,7 +13,6 @@ from phdhelper.helpers import override_mpl
 from phdhelper.helpers.COLOURS import green
 from quickload import extract_vars, load
 from rich import print
-from rupts_t import df_to_rows_array, rupture_algo_binseg
 
 import hybrid_jp as hj
 
@@ -166,7 +165,7 @@ def main(time_step: int):
         data_1d = extract_row(i, ydata)
         arr = dict_rows_to_array(data_1d, len(x))
         # arr = data_1d["d/dx nd"]
-        i_changes = rupture_algo_binseg(arr, nseg=3)
+        i_changes = hj.binseg(arr, nseg=3)
         x_changes = [x[c] for c in i_changes if c != len(x)]
         all_changes.append(x_changes)
     y_me, y_sd = mean_allrows(ydata)

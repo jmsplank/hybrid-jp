@@ -26,22 +26,6 @@ def load_csv(path: Path) -> pd.DataFrame:
     return pd.read_csv(path, header=0)
 
 
-def df_to_rows_array(data: pd.DataFrame, cols: list[str]) -> np.ndarray:
-    """Convert dataframe into 2d np array [x, columns].
-
-    Args:
-        data (pd.DataFrame): data
-        cols (list[str]): Column names to transform into array
-
-    Returns:
-        np.ndarray: 2d array of data
-    """
-    arr = np.empty((len(data), len(cols)))
-    for i, col in enumerate(cols):
-        arr[:, i] = data[col].values
-    return arr
-
-
 def rupture_algo_pelt(arr: np.ndarray, penalty: int = 20) -> list[float]:
     """Use Penalised Detection Point algorithm to detect change points.
 
@@ -57,24 +41,6 @@ def rupture_algo_pelt(arr: np.ndarray, penalty: int = 20) -> list[float]:
     print("Algorithm-ing")
     algo = rpt.Pelt(model="rbf").fit(arr)
     result = algo.predict(pen=penalty)
-    print("Found some state transitions:")
-    print(result)
-    return result
-
-
-def rupture_algo_binseg(arr: np.ndarray, nseg=3) -> list[int]:
-    """Use Binary Segmentation algorithm to detect change points.
-
-    Args:
-        arr (np.ndarray): 2d array of [x,features]
-        nseg (int, optional): number of change points to return. Defaults to 3.
-
-    Returns:
-        list[int]: index of change points
-    """
-    print("Binary Segmentation")
-    algo = rpt.Binseg(model="l2", min_size=2).fit(arr)
-    result = algo.predict(n_bkps=nseg)
     print("Found some state transitions:")
     print(result)
     return result
@@ -132,7 +98,7 @@ def main(
     csv = Path(f"scripts/data/{fnumber:04d}.csv")
     data = load_csv(csv)
     print(data.head())
-    arr = df_to_rows_array(
+    arr = hj.df_to_rows_array(
         data,
         [
             "Derived_Number_Density",
@@ -141,7 +107,7 @@ def main(
             "Magnetic_Field_Bz",
         ],
     )
-    transitions = rupture_algo_binseg(arr, nseg=2)
+    transitions = hj.binseg(arr, nseg=2)
     if save_name is None:
         save_name = f"i{fnumber:04d}_changes.png"
     plot(data, "Grid_Grid_mid", lines=transitions, save_path=save_path / save_name)

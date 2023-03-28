@@ -1,5 +1,6 @@
 """Array operations for hybrid_jp."""
 import numpy as np
+import pandas as pd
 
 
 def trim_var(var: np.ndarray, slc: slice) -> np.ndarray:
@@ -30,3 +31,19 @@ def trim_vars(vars_list: list[np.ndarray], slc: slice) -> list[np.ndarray]:
         [array([0, 1, 2, 3, 4]), array([0, 1, 2, 3, 4])]
     """
     return [trim_var(var, slc) for var in vars_list]
+
+
+def df_to_rows_array(data: pd.DataFrame, cols: list[str]) -> np.ndarray:
+    """Convert dataframe into 2d np array [x, columns].
+
+    Args:
+        data (pd.DataFrame): data
+        cols (list[str]): Column names to transform into array
+
+    Returns:
+        np.ndarray: 2d array of data
+    """
+    arr = np.empty((len(data), len(cols)))
+    for i, col in enumerate(cols):
+        arr[:, i] = data[col].values
+    return arr
