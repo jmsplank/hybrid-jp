@@ -1,3 +1,6 @@
+"""List of constants used in hybrid_jp."""
+
+# SDF file variable names
 VAR_GRID = "Grid_Grid"
 VAR_GRID_MID = "Grid_Grid_mid"
 VAR_NUMBERDENSITY = "Derived_Number_Density"

@@ -27,6 +27,7 @@ theme:
 
 plugins:
   - mkdocstrings:
+      default_handler: python
       handlers:
         python:
           paths: [src, scripts]
@@ -49,8 +50,10 @@ nav:
       - how-to-guides/CLI.md
   - "API Reference":
       - reference/index.md
-      - deck_parse: reference/deck_parse.md
-      - CLI: reference/cli.md
+      - reference/arrays.md
+      - reference/cli.md
+      - reference/plot_labels.md
+      - reference/sdf_files.md
       - Scripts:
           - reference/scripts/quickload.md
           - reference/scripts/rupts_local.md

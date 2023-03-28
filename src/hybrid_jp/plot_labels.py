@@ -1,7 +1,10 @@
+"""Labels to use when plotting variables."""
 from enum import Enum
 
 
 class Label(Enum):
+    """Variable name labels."""
+
     ND = "ND"
     X = "X"
 
@@ -21,6 +24,15 @@ si_units = {
 
 
 def make_label(var: Label, si: bool = True) -> str:
+    """Make a label for a variable.
+
+    Args:
+        var (Label): Variable to make a label for.
+        si (bool, optional): Whether to use SI units. Defaults to True.
+
+    Returns:
+        str: Label for the variable.
+    """
     if si:
         unit = si_units[var]
     else:
