@@ -8,6 +8,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import ruptures as rpt
+from epoch_cheats import get_deck_constants
 from phdhelper.helpers import override_mpl
 from phdhelper.helpers.COLOURS import green
 from quickload import extract_vars, load
@@ -144,7 +145,7 @@ def main(time_step: int):
         time_step (int): Time step to load data from.
     """
     data = load(Path(f"U6T40/{time_step:04d}.sdf"))
-    consts = hj.get_deck_constants(Path("U6T40/input.deck"))
+    consts = get_deck_constants(Path("U6T40/input.deck"))
     data = extract_vars(
         data,
         [

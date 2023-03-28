@@ -5,6 +5,7 @@ from typing import cast
 import matplotlib.pyplot as plt
 import numpy as np
 import sdf_helper as sh
+from epoch_cheats import get_deck_constants
 from phdhelper.helpers import override_mpl
 
 import hybrid_jp as hj
@@ -117,7 +118,7 @@ def rolling_avg(x: np.ndarray, y: np.ndarray, width: float) -> np.ndarray:
 
 if __name__ == "__main__":
     data_dir = Path("U6T40")
-    constants = hj.get_deck_constants(data_dir / "input.deck")
+    constants = get_deck_constants(data_dir / "input.deck")
     print(f"Ion inertial length: {constants['di']} m/s")
     data = sh.getdata(str(data_dir / "0128.sdf"), verbose=False)
     ndens = data_collapse_y(data, "Derived_Number_Density")
