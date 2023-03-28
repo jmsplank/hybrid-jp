@@ -56,6 +56,7 @@ nav:
       - reference/sdf_files.md
       - Scripts:
           - reference/scripts/quickload.md
+          - reference/scripts/rupts_mean.md
           - reference/scripts/rupts_local.md
           - reference/scripts/rupts_t.md
           - reference/scripts/v1.md
