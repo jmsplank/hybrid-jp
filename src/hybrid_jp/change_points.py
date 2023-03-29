@@ -13,9 +13,10 @@ def binseg(arr: np.ndarray, nseg=3) -> list[int]:
     Returns:
         list[int]: index of change points
     """
-    print("Binary Segmentation")
     algo = Binseg(model="l2", min_size=2).fit(arr)
     result = algo.predict(n_bkps=nseg)
-    print("Found some state transitions:")
-    print(result)
+
+    # remove element equal to len of first dimension of arr if exists
+    if result[-1] == arr.shape[0]:
+        result = result[:-1]
     return result
