@@ -10,8 +10,6 @@ from phdhelper.helpers import override_mpl
 
 import hybrid_jp as hj
 
-override_mpl.override("|krgb")
-
 
 def data_collapse_y(data, var: str) -> np.ndarray:
     """Get mean of variable in 2d data along y axis.
@@ -117,6 +115,7 @@ def rolling_avg(x: np.ndarray, y: np.ndarray, width: float) -> np.ndarray:
 
 
 if __name__ == "__main__":
+    override_mpl.override("|krgb")
     data_dir = Path("U6T40")
     constants = get_deck_constants(data_dir / "input.deck")
     print(f"Ion inertial length: {constants['di']} m/s")
