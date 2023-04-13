@@ -191,7 +191,6 @@ def get_grid(data, mid: bool = False) -> Grid:
 
 
 def get_mag(data) -> Mag:
-    # google style docstring
     """Get the magnetic field of an sdf_helper object.
 
     Args:
