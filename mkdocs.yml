@@ -60,4 +60,7 @@ nav:
           - reference/scripts/rupts_local.md
           - reference/scripts/rupts_t.md
           - reference/scripts/v1.md
+          - reference/scripts/shock_front.md
+          - reference/scripts/fit_to_changes.md
+          - reference/scripts/make_regions.md
   - Explanation: explanation.md

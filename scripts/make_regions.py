@@ -135,7 +135,14 @@ def get_PSD_of_component(component: np.ndarray, dt: float):
 
 
 class RegionPSD(NamedTuple):
-    """Holds PSD data for a region."""
+    """Holds PSD data for a region.
+
+    Attributes:
+        f (np.ndarray): Frequency.
+        PSD (np.ndarray): Power spectrum.
+        inertial_slope (float, optional): Inertial range slope. Defaults to None.
+        ion_slope (float, optional): Ion range slope. Defaults to None.
+    """
 
     f: np.ndarray
     PSD: np.ndarray
@@ -144,7 +151,13 @@ class RegionPSD(NamedTuple):
 
 
 class TimestepPSD(NamedTuple):
-    """Holds region PSD data for a single time step."""
+    """Holds region PSD data for a single time step.
+
+    Attributes:
+        US (RegionPSD): Upstream region.
+        STR (RegionPSD): Shock transition region.
+        DS (RegionPSD): Downstream region.
+    """
 
     US: RegionPSD
     STR: RegionPSD
