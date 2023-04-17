@@ -1,0 +1,1992 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>scripts package &#8212; eopch-cheats</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'scripts';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src package" href="src.html" />
+    <link rel="prev" title="hybrid-sim-ilg" href="modules.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">hybrid-sim-ilg</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">scripts package</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="src.html">src package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html">src.hybrid_jp package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/jmsplank/epoch-cheats" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/scripts.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>scripts package</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.deck">scripts.deck module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.block_to_dict"><code class="docutils literal notranslate"><span class="pre">block_to_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.get_deck_constants"><code class="docutils literal notranslate"><span class="pre">get_deck_constants()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.get_deck_constants_sym"><code class="docutils literal notranslate"><span class="pre">get_deck_constants_sym()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.load_deck"><code class="docutils literal notranslate"><span class="pre">load_deck()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.parse_constant_block"><code class="docutils literal notranslate"><span class="pre">parse_constant_block()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.parse_value"><code class="docutils literal notranslate"><span class="pre">parse_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.split_to_blocks"><code class="docutils literal notranslate"><span class="pre">split_to_blocks()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.fit_to_changes">scripts.fit_to_changes module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.end_STR"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.end_STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.get_irow"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.get_irow()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.get_row"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.get_row()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.save"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.shock"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.shock</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.start_STR"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.start_STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.t"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.t</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.to_df"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.to_df()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.append_regress_to_dict"><code class="docutils literal notranslate"><span class="pre">append_regress_to_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.interpolate_to_midpoints"><code class="docutils literal notranslate"><span class="pre">interpolate_to_midpoints()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.linear_regressions"><code class="docutils literal notranslate"><span class="pre">linear_regressions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.mov_avg"><code class="docutils literal notranslate"><span class="pre">mov_avg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.moving_avg"><code class="docutils literal notranslate"><span class="pre">moving_avg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.plot_linear_regressions"><code class="docutils literal notranslate"><span class="pre">plot_linear_regressions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.plot_mov_avg"><code class="docutils literal notranslate"><span class="pre">plot_mov_avg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.plot_regress"><code class="docutils literal notranslate"><span class="pre">plot_regress()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.read_shock_changes_csv"><code class="docutils literal notranslate"><span class="pre">read_shock_changes_csv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.regress"><code class="docutils literal notranslate"><span class="pre">regress()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.remap_to_original_t"><code class="docutils literal notranslate"><span class="pre">remap_to_original_t()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.make_regions">scripts.make_regions module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD"><code class="docutils literal notranslate"><span class="pre">RegionPSD</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD.PSD"><code class="docutils literal notranslate"><span class="pre">RegionPSD.PSD</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD.f"><code class="docutils literal notranslate"><span class="pre">RegionPSD.f</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD.inertial_slope"><code class="docutils literal notranslate"><span class="pre">RegionPSD.inertial_slope</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD.ion_slope"><code class="docutils literal notranslate"><span class="pre">RegionPSD.ion_slope</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.TimestepPSD"><code class="docutils literal notranslate"><span class="pre">TimestepPSD</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.TimestepPSD.DS"><code class="docutils literal notranslate"><span class="pre">TimestepPSD.DS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.TimestepPSD.STR"><code class="docutils literal notranslate"><span class="pre">TimestepPSD.STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.TimestepPSD.US"><code class="docutils literal notranslate"><span class="pre">TimestepPSD.US</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.get_PSD_of_component"><code class="docutils literal notranslate"><span class="pre">get_PSD_of_component()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.get_index"><code class="docutils literal notranslate"><span class="pre">get_index()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.get_nd_for_each_timestep"><code class="docutils literal notranslate"><span class="pre">get_nd_for_each_timestep()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.get_x"><code class="docutils literal notranslate"><span class="pre">get_x()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.load_locations"><code class="docutils literal notranslate"><span class="pre">load_locations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.make_t_arr"><code class="docutils literal notranslate"><span class="pre">make_t_arr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.plota"><code class="docutils literal notranslate"><span class="pre">plota()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.plotb"><code class="docutils literal notranslate"><span class="pre">plotb()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.plotc"><code class="docutils literal notranslate"><span class="pre">plotc()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.timestep"><code class="docutils literal notranslate"><span class="pre">timestep()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.quickload">scripts.quickload module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.quickload.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.rupts_local">scripts.rupts_local module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.dict_rows_to_array"><code class="docutils literal notranslate"><span class="pre">dict_rows_to_array()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.drop_x_from_dict"><code class="docutils literal notranslate"><span class="pre">drop_x_from_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.extract_row"><code class="docutils literal notranslate"><span class="pre">extract_row()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.mean_allrows"><code class="docutils literal notranslate"><span class="pre">mean_allrows()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.rupts_mean">scripts.rupts_mean module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_mean.get_grad_nd"><code class="docutils literal notranslate"><span class="pre">get_grad_nd()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_mean.mean_of_var"><code class="docutils literal notranslate"><span class="pre">mean_of_var()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_mean.plot_1d_with_change_points"><code class="docutils literal notranslate"><span class="pre">plot_1d_with_change_points()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_mean.plot_meshgrid_of_gradnd"><code class="docutils literal notranslate"><span class="pre">plot_meshgrid_of_gradnd()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.rupts_t">scripts.rupts_t module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_t.load_csv"><code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_t.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_t.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_t.rupture_algo_pelt"><code class="docutils literal notranslate"><span class="pre">rupture_algo_pelt()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.shock_front">scripts.shock_front module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.find_shock_index_from_gradnd"><code class="docutils literal notranslate"><span class="pre">find_shock_index_from_gradnd()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.get_number_of_files"><code class="docutils literal notranslate"><span class="pre">get_number_of_files()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.get_shock_and_change_point_indices"><code class="docutils literal notranslate"><span class="pre">get_shock_and_change_point_indices()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.iter_over_all_sdfs"><code class="docutils literal notranslate"><span class="pre">iter_over_all_sdfs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.plot_nd"><code class="docutils literal notranslate"><span class="pre">plot_nd()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.v1">scripts.v1 module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.collapse_bxyz"><code class="docutils literal notranslate"><span class="pre">collapse_bxyz()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.data_collapse_y"><code class="docutils literal notranslate"><span class="pre">data_collapse_y()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.grad_ndens"><code class="docutils literal notranslate"><span class="pre">grad_ndens()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.plot_bxyz"><code class="docutils literal notranslate"><span class="pre">plot_bxyz()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.plot_ndens"><code class="docutils literal notranslate"><span class="pre">plot_ndens()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.rolling_avg"><code class="docutils literal notranslate"><span class="pre">rolling_avg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts">Module contents</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="scripts-package">
+<h1>scripts package<a class="headerlink" href="#scripts-package" title="Permalink to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-scripts.deck">
+<span id="scripts-deck-module"></span><h2>scripts.deck module<a class="headerlink" href="#module-scripts.deck" title="Permalink to this heading">#</a></h2>
+<p>Test functions for interacting with deck files.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.deck.block_to_dict">
+<span class="sig-prename descclassname"><span class="pre">scripts.deck.</span></span><span class="sig-name descname"><span class="pre">block_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/deck.html#block_to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.deck.block_to_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert a block of text into a dictionary of key-value pairs.</p>
+<p>The function takes a list of strings as input, where each string is formatted
+as a key-value pair separated by either “ = “ or “:”. The key and value are
+stripped of leading and trailing white space, and any comments following the
+value are removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of strings, where each string represents a</p></li>
+<li><p><strong>pair.</strong> (<em>key-value</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary of key-value pairs.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, str]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">block</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;key1 = value1 # comment&quot;</span><span class="p">,</span>
+<span class="gp">... </span>         <span class="s2">&quot;key2:value2&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">block_to_dict</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+<span class="go">{&quot;key1&quot;: &quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.deck.get_deck_constants">
+<span class="sig-prename descclassname"><span class="pre">scripts.deck.</span></span><span class="sig-name descname"><span class="pre">get_deck_constants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deck_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/deck.html#get_deck_constants"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.deck.get_deck_constants" title="Permalink to this definition">#</a></dt>
+<dd><p>Parse a simulation input deck file and returns a dictionary of constant names and their associated float values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deck_path</strong> (<em>Path</em>) – Path to the input deck file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary mapping constant names to their corresponding float values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, float]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>IOError</strong> – If the input deck file cannot be found or opened.</p></li>
+<li><p><strong>SyntaxError</strong> – If the input deck contains invalid syntax.</p></li>
+<li><p><strong>ValueError</strong> – If a constant in the input deck contains an undefined constant or cannot be converted to float.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deck_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;input.deck&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">constants</span> <span class="o">=</span> <span class="n">get_deck_constants</span><span class="p">(</span><span class="n">deck_path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">constants</span><span class="p">)</span>
+<span class="go">{&#39;mp&#39;: 1.67e-27, &#39;B0&#39;: 1e-08, &#39;n0&#39;: 10000000.0, &#39;wci&#39;: 1745.2416021588425, &#39;va&#39;: 3062.5403529371713, &#39;di&#39;: 1.7553509177693077, &#39;beta&#39;: 1.0, &#39;T0&#39;: 70211.80897863494, &#39;inflow&#39;: 1.005e+25, &#39;thBn&#39;: 40.0, &#39;ppc&#39;: 100.0, &#39;E0&#39;: 603.9289558066488, &#39;amp&#39;: 0.5, &#39;sigma&#39;: 0.4388372533379046}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.deck.get_deck_constants_sym">
+<span class="sig-prename descclassname"><span class="pre">scripts.deck.</span></span><span class="sig-name descname"><span class="pre">get_deck_constants_sym</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deck_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">sympy.core.symbol.Symbol</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/deck.html#get_deck_constants_sym"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.deck.get_deck_constants_sym" title="Permalink to this definition">#</a></dt>
+<dd><p>Parse a simulation input deck file and returns a dictionary of SymPy Symbols and their associated float values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deck_path</strong> (<em>Path</em>) – Path to the input deck file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary mapping SymPy Symbols to their corresponding float values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[Symbol, float]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>IOError</strong> – If the input deck file cannot be found or opened.</p></li>
+<li><p><strong>ValueError</strong> – If a constant in the input deck contains an undefined constant or cannot be converted to float.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deck_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;input.deck&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">constants</span> <span class="o">=</span> <span class="n">get_deck_constants_sym</span><span class="p">(</span><span class="n">deck_path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">constants</span><span class="p">)</span>
+<span class="go">{mp: 1.67e-27, B0: 1e-08, n0: 10000000.0, wci: 1745.2416021588425, va: 3062.5403529371713, di: 1.7553509177693077, beta: 1.0, T0: 70211.80897863494, inflow: 1.005e+25, thBn: 40.0, ppc: 100.0, E0: 603.9289558066488, amp: 0.5, sigma: 0.4388372533379046}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.deck.load_deck">
+<span class="sig-prename descclassname"><span class="pre">scripts.deck.</span></span><span class="sig-name descname"><span class="pre">load_deck</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/deck.html#load_deck"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.deck.load_deck" title="Permalink to this definition">#</a></dt>
+<dd><p>Load a text file into a list of non-empty, non-commented lines.</p>
+<p>The function takes a Path object representing the path to a text file, reads
+its contents into a list of strings, removes empty lines and lines that begin
+with a hash symbol (#), and returns the resulting list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fpath</strong> (<em>Path</em>) – A Path object representing the path to the file to be loaded.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of non-empty, non-commented lines from the file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Suppose we have a text file called “deck.txt” containing the following
+lines:</p>
+<p># This is a comment
+Line 1
+Line 2</p>
+<p>To load this file, we can use the following code:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">deck_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;deck.txt&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">load_deck</span><span class="p">(</span><span class="n">deck_path</span><span class="p">)</span>
+<span class="go">[&quot;Line 1&quot;, &quot;Line 2&quot;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.deck.parse_constant_block">
+<span class="sig-prename descclassname"><span class="pre">scripts.deck.</span></span><span class="sig-name descname"><span class="pre">parse_constant_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">constant_block</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">sympy.core.symbol.Symbol</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/deck.html#parse_constant_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.deck.parse_constant_block" title="Permalink to this definition">#</a></dt>
+<dd><p>Parse a dictionary of constant expressions and return a dictionary of SymPy symbols and their evaluated float values.</p>
+<p>The function takes a dictionary of constant expressions in the form of strings,
+uses the <cite>parse_value</cite> function to parse each expression into a SymPy object,
+evaluates each expression using a dictionary of predefined constants, and
+returns a dictionary mapping SymPy symbols to their float values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>constant_block</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>str</em><em>]</em>) – A dictionary mapping constant names to
+their expressions as strings.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A dictionary mapping SymPy symbols to their</dt><dd><p>corresponding float values.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[Symbol, float]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If an expression cannot be converted to a float, indicating
+    that an undefined constant is being used.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Suppose we have a constant block in a deck file containing the following
+constants:</p>
+<p>g = 9.81
+pi = 3.14159</p>
+<p>To parse this block and return a dictionary of constants and their values,
+we can use the following code:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">constant_block</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;g&quot;</span><span class="p">:</span> <span class="s2">&quot;9.81&quot;</span><span class="p">,</span> <span class="s2">&quot;pi&quot;</span><span class="p">:</span> <span class="s2">&quot;3.14159&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parse_constant_block</span><span class="p">(</span><span class="n">constant_block</span><span class="p">)</span>
+<span class="go">{g: 9.81, pi: 3.14159}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.deck.parse_value">
+<span class="sig-prename descclassname"><span class="pre">scripts.deck.</span></span><span class="sig-name descname"><span class="pre">parse_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="_modules/scripts/deck.html#parse_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.deck.parse_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Parse a mathematical expression and return the resulting SymPy object.</p>
+<p>The function takes a string containing a mathematical expression, replaces any
+“^” symbols with “**”, parses the expression using SymPy’s <cite>parse_expr</cite>
+function and a local dictionary <cite>_clash</cite>, and returns the resulting SymPy
+object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>expr</strong> (<em>str</em>) – A string containing a mathematical expression.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A SymPy object representing the parsed mathematical expression.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>To parse the expression “3*x**2 + 2*x + 1”, we can use the following code:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parse_value</span><span class="p">(</span><span class="s2">&quot;3*x^2 + 2*x + 1&quot;</span><span class="p">)</span>
+<span class="go">3*x**2 + 2*x + 1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.deck.split_to_blocks">
+<span class="sig-prename descclassname"><span class="pre">scripts.deck.</span></span><span class="sig-name descname"><span class="pre">split_to_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/deck.html#split_to_blocks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.deck.split_to_blocks" title="Permalink to this definition">#</a></dt>
+<dd><p>Split a list of lines into blocks of text.</p>
+<p>Each block is a dictionary of key-value pairs based on the lines between
+“begin:&lt;block_name&gt;” and “end:&lt;block_name&gt;”. The block_name is used as
+the key in the returned dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>lines_list</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – A list of strings, each representing a line of text.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary of blocks, where the keys are the
+block names and the values are dictionaries of key-value pairs based on the
+lines in the block.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, dict[str, str]]</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>Exception</strong> – If no end:&lt;block_name&gt; line is found for a given begin:&lt;block_name&gt;</p></li>
+<li><p><strong>line.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lines_list</span> <span class="o">=</span> <span class="p">[</span>
+<span class="go">    &quot;begin:block1&quot;,</span>
+<span class="go">    &quot;key1:value1&quot;,</span>
+<span class="go">    &quot;key2:value2&quot;,</span>
+<span class="go">    &quot;end:block1&quot;,</span>
+<span class="go">    &quot;begin:block2&quot;,</span>
+<span class="go">    &quot;key3:value3&quot;,</span>
+<span class="go">    &quot;key4:value4&quot;,</span>
+<span class="go">    &quot;end:block2&quot;,</span>
+<span class="go">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">split_to_blocks</span><span class="p">(</span><span class="n">lines_list</span><span class="p">)</span>
+<span class="go">{</span>
+<span class="go">    &quot;block1&quot;: {</span>
+<span class="go">        &quot;key1&quot;: &quot;value1&quot;,</span>
+<span class="go">        &quot;key2&quot;: &quot;value2&quot;,</span>
+<span class="go">    },</span>
+<span class="go">    &quot;block2&quot;: {</span>
+<span class="go">        &quot;key3&quot;: &quot;value3&quot;,</span>
+<span class="go">        &quot;key4&quot;: &quot;value4&quot;,</span>
+<span class="go">    },</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-scripts.fit_to_changes">
+<span id="scripts-fit-to-changes-module"></span><h2>scripts.fit_to_changes module<a class="headerlink" href="#module-scripts.fit_to_changes" title="Permalink to this heading">#</a></h2>
+<p>Perform regressions on the shock changes.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">MovingAverageResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_STR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_STR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#MovingAverageResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">NamedTuple</span></code></p>
+<p>Holds the results of a moving average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>np.ndarray</em>) – time.</p></li>
+<li><p><strong>start_STR</strong> (<em>np.ndarray</em>) – x coordinate of the start of the STR.</p></li>
+<li><p><strong>end_STR</strong> (<em>np.ndarray</em>) – x coordinate of the end of the STR.</p></li>
+<li><p><strong>shock</strong> (<em>np.ndarray</em>) – x coordinate of the shock.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult.end_STR">
+<span class="sig-name descname"><span class="pre">end_STR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult.end_STR" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult.get_irow">
+<span class="sig-name descname"><span class="pre">get_irow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#MovingAverageResult.get_irow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult.get_irow" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the row at index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – index of row.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[t, (start_STR, end_STR), shock]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[float, tuple[float, float], float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult.get_row">
+<span class="sig-name descname"><span class="pre">get_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#MovingAverageResult.get_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult.get_row" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the row at time t.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>t</strong> (<em>float</em>) – time.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[start_STR, end_STR, shock]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[float, float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#MovingAverageResult.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save to csv by converting to dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Path</em>) – path to save to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult.shock">
+<span class="sig-name descname"><span class="pre">shock</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult.shock" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult.start_STR">
+<span class="sig-name descname"><span class="pre">start_STR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult.start_STR" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult.t">
+<span class="sig-name descname"><span class="pre">t</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult.t" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.MovingAverageResult.to_df">
+<span class="sig-name descname"><span class="pre">to_df</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#MovingAverageResult.to_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.MovingAverageResult.to_df" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert to a dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dataframe containing t, start_STR, end_STR, shock.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.append_regress_to_dict">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">append_regress_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intercept</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#append_regress_to_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.append_regress_to_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Append a regression to a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em><em>]</em>) – dictionary to append to.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the regression.</p></li>
+<li><p><strong>slope</strong> (<em>float</em>) – slope of the regression.</p></li>
+<li><p><strong>intercept</strong> (<em>float</em>) – intercept of the regression.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary with the regression appended.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, dict[str, float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.interpolate_to_midpoints">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">interpolate_to_midpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#interpolate_to_midpoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.interpolate_to_midpoints" title="Permalink to this definition">#</a></dt>
+<dd><p>Interpolate to midpoints.</p>
+<p>returns an array of length len(arr) - width + 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – array to interpolate.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – width of moving average.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>interpolated array.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.linear_regressions">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">linear_regressions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#linear_regressions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.linear_regressions" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform linear regressions on the shock changes.</p>
+<p>df should have the following columns:
+- <cite>shock</cite>
+- <cite>change_0</cite>
+- <cite>change_1</cite>
+- <cite>change_2</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – dataframe containing shock changes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary containing regressions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, dict[str, float]]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">shock</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">change_0</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">change_1</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">change_2</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linear_regressions</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">{</span>
+<span class="go">    &#39;shock&#39;: {&#39;slope&#39;: 0.0, &#39;intercept&#39;: 1.0},</span>
+<span class="go">    &#39;change_0&#39;: {&#39;slope&#39;: 0.0, &#39;intercept&#39;: 1.0},</span>
+<span class="go">    &#39;change_1&#39;: {&#39;slope&#39;: 0.0, &#39;intercept&#39;: 1.0},</span>
+<span class="go">    &#39;change_2&#39;: {&#39;slope&#39;: 0.0, &#39;intercept&#39;: 1.0}</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Entry point.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.mov_avg">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">mov_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#mov_avg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.mov_avg" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform a moving average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – data to perform moving average on.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – width of moving average.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>moving average of data. length is len(data) - width + 1.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.moving_avg">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">moving_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult"><span class="pre">MovingAverageResult</span></a></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#moving_avg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.moving_avg" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform a moving average on the shock changes.</p>
+<p>df should have the following columns:
+- <cite>shock</cite>
+- <cite>change_0</cite>
+- <cite>change_1</cite>
+- <cite>change_2</cite></p>
+<ul class="simple">
+<li><p>Moving average performed on each column minus the linear regression of that column.</p></li>
+<li><p>returned array is of length len(df) - width + 1 where width is the width of the moving average.</p></li>
+<li><p>start coordinate of STR is minimum of the change points</p></li>
+<li><p>end coordinate of STR is mean of change_1 and change_2</p></li>
+<li><p>shock coordinate is maximum of shock and change_0</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – dataframe containing shock changes.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>moving average of shock changes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult">MovingAverageResult</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.plot_linear_regressions">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">plot_linear_regressions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#plot_linear_regressions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.plot_linear_regressions" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot the linear regressions.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.plot_mov_avg">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">plot_mov_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">moving_avg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult"><span class="pre">MovingAverageResult</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#plot_mov_avg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.plot_mov_avg" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot the moving average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>moving_avg</strong> (<a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult"><em>MovingAverageResult</em></a>) – moving average to plot.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.plot_regress">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">plot_regress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intercept</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#plot_regress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.plot_regress" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot a regression.</p>
+<ul class="simple">
+<li><p>data shown as a scatterplot with <cite>color</cite>.</p></li>
+<li><p>regression shown as a dashed line with <cite>color</cite>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> (<em>plt.Axes</em>) – axis to plot on.</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – label.</p></li>
+<li><p><strong>t</strong> (<em>np.ndarray</em>) – x values.</p></li>
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – y values.</p></li>
+<li><p><strong>slope</strong> (<em>float</em>) – slope of the regression.</p></li>
+<li><p><strong>intercept</strong> (<em>float</em>) – intercept of the regression.</p></li>
+<li><p><strong>colour</strong> (<em>str</em>) – colour for regression line and data scatterplot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.read_shock_changes_csv">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">read_shock_changes_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#read_shock_changes_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.read_shock_changes_csv" title="Permalink to this definition">#</a></dt>
+<dd><p>Read csv file containing shock changes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Path</em>) – path to csv file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dataframe containing shock changes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.regress">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">regress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#regress"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.regress" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform a linear regression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x values.</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – y values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>slope and intercept.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.fit_to_changes.remap_to_original_t">
+<span class="sig-prename descclassname"><span class="pre">scripts.fit_to_changes.</span></span><span class="sig-name descname"><span class="pre">remap_to_original_t</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">changes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult"><span class="pre">MovingAverageResult</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult"><span class="pre">MovingAverageResult</span></a></span></span><a class="reference internal" href="_modules/scripts/fit_to_changes.html#remap_to_original_t"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.fit_to_changes.remap_to_original_t" title="Permalink to this definition">#</a></dt>
+<dd><p>Remap the changes to the original time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>since bounds of original_t are necessaril outside of changes.t, the values are extrapolated.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>original_t</strong> (<em>np.ndarray</em>) – original time.</p></li>
+<li><p><strong>changes</strong> (<a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult"><em>MovingAverageResult</em></a>) – changes to remap.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>remapped changes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult">MovingAverageResult</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts.make_regions">
+<span id="scripts-make-regions-module"></span><h2>scripts.make_regions module<a class="headerlink" href="#module-scripts.make_regions" title="Permalink to this heading">#</a></h2>
+<p>Script for plotting spectra.</p>
+<p>## Algorithm</p>
+<ol class="arabic simple">
+<li><p>Load the csv containing STR start and end x coordinates for each time step</p></li>
+<li><p>match each time step in data to an sdf file</p></li>
+<li><p>for each time step</p>
+<ol class="arabic simple">
+<li><p>load data file</p></li>
+<li><p>read magnetic field data</p></li>
+<li><p>split timeseries into upstream, str, downstream based on csv file</p></li>
+<li><p>calculate spectrum of each region</p></li>
+<li><p>for each region spectrum</p>
+<ol class="arabic simple">
+<li><p>split into inertial &amp; ion range if possible</p></li>
+<li><p>fit slope (spectral index) to each range</p></li>
+</ol>
+</li>
+<li><p>return k, PSD, inertial slope and ion slope for each region</p></li>
+</ol>
+</li>
+</ol>
+<p>## plot a - overview of regions:</p>
+<ol class="arabic simple">
+<li><p>plot a parameter e.g. numberdensity on pcolormesh</p></li>
+<li><p>overplot str region</p></li>
+</ol>
+<p>## plot b - example of single time step:</p>
+<ol class="arabic simple">
+<li><p>choose a time step, maybe 0128</p></li>
+<li><p>plot upstream, str, and downstream power spectrum (k vs PSD)</p></li>
+<li><p>overplot slopes for each region</p></li>
+</ol>
+<p>## plot c - region spectra for all time:</p>
+<ol class="arabic simple">
+<li><p>average together the spectra for every time step</p>
+<ol class="arabic simple">
+<li><p>account for uneven length regions</p></li>
+<li><p>possibly also account for offest k bins</p></li>
+</ol>
+</li>
+<li><p>plot of avg US, STR, DS power spectra</p></li>
+<li><p>overplot avg slopes for each region</p></li>
+</ol>
+<p>## plot d - spectral index evolution:</p>
+<ol class="arabic simple">
+<li><p>plot spectral index as function of time for each range (MHD, ion) for each region</p></li>
+</ol>
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.make_regions.RegionPSD">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">RegionPSD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PSD</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inertial_slope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ion_slope</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/make_regions.html#RegionPSD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.RegionPSD" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">NamedTuple</span></code></p>
+<p>Holds PSD data for a region.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> (<em>np.ndarray</em>) – Frequency.</p></li>
+<li><p><strong>PSD</strong> (<em>np.ndarray</em>) – Power spectrum.</p></li>
+<li><p><strong>inertial_slope</strong> (<em>float</em><em>, </em><em>optional</em>) – Inertial range slope. Defaults to None.</p></li>
+<li><p><strong>ion_slope</strong> (<em>float</em><em>, </em><em>optional</em>) – Ion range slope. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.make_regions.RegionPSD.PSD">
+<span class="sig-name descname"><span class="pre">PSD</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#scripts.make_regions.RegionPSD.PSD" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.make_regions.RegionPSD.f">
+<span class="sig-name descname"><span class="pre">f</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#scripts.make_regions.RegionPSD.f" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.make_regions.RegionPSD.inertial_slope">
+<span class="sig-name descname"><span class="pre">inertial_slope</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#scripts.make_regions.RegionPSD.inertial_slope" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.make_regions.RegionPSD.ion_slope">
+<span class="sig-name descname"><span class="pre">ion_slope</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#scripts.make_regions.RegionPSD.ion_slope" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.make_regions.TimestepPSD">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">TimestepPSD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">US</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><span class="pre">RegionPSD</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">STR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><span class="pre">RegionPSD</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">DS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><span class="pre">RegionPSD</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/make_regions.html#TimestepPSD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.TimestepPSD" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">NamedTuple</span></code></p>
+<p>Holds region PSD data for a single time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>US</strong> (<a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><em>RegionPSD</em></a>) – Upstream region.</p></li>
+<li><p><strong>STR</strong> (<a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><em>RegionPSD</em></a>) – Shock transition region.</p></li>
+<li><p><strong>DS</strong> (<a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><em>RegionPSD</em></a>) – Downstream region.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.make_regions.TimestepPSD.DS">
+<span class="sig-name descname"><span class="pre">DS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><span class="pre">RegionPSD</span></a></em><a class="headerlink" href="#scripts.make_regions.TimestepPSD.DS" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.make_regions.TimestepPSD.STR">
+<span class="sig-name descname"><span class="pre">STR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><span class="pre">RegionPSD</span></a></em><a class="headerlink" href="#scripts.make_regions.TimestepPSD.STR" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scripts.make_regions.TimestepPSD.US">
+<span class="sig-name descname"><span class="pre">US</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#scripts.make_regions.RegionPSD" title="scripts.make_regions.RegionPSD"><span class="pre">RegionPSD</span></a></em><a class="headerlink" href="#scripts.make_regions.TimestepPSD.US" title="Permalink to this definition">#</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.get_PSD_of_component">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">get_PSD_of_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/make_regions.html#get_PSD_of_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.get_PSD_of_component" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the power spectrum of a component of the magnetic field.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>uses periodogram from scipy.signal with arguments:</dt><dd><ul>
+<li><p>detrend=”constant”</p></li>
+<li><p>window=”hann”</p></li>
+<li><p>return_onesided=True</p></li>
+<li><p>scaling=”density”</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> (<em>np.ndarray</em>) – Component of magnetic field.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Frequency and power spectrum.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.get_index">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">get_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/scripts/make_regions.html#get_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.get_index" title="Permalink to this definition">#</a></dt>
+<dd><p>Get index of value in array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – Array to search.</p></li>
+<li><p><strong>value</strong> (<em>float</em>) – Value to search for.</p></li>
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>optional</em>) – Axis to search along. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index of value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.get_nd_for_each_timestep">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">get_nd_for_each_timestep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdf_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/make_regions.html#get_nd_for_each_timestep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.get_nd_for_each_timestep" title="Permalink to this definition">#</a></dt>
+<dd><p>Loop over sdf files and get &lt;nd(x)&gt;_y for each timestep.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sdf_names</strong> (<em>list</em><em>[</em><em>Path</em><em>]</em>) – List of paths to sdf files.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of &lt;nd(x)&gt;_y for each timestep.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.get_x">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">get_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/make_regions.html#get_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.get_x" title="Permalink to this definition">#</a></dt>
+<dd><p>Open U6T40/0000.sdf and get x or x_mid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mid</strong> (<em>bool</em><em>, </em><em>optional</em>) – Get edges or midopints. Defaults to False.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of x grid edges or midpoints</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.load_data">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_sdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BlockList</span></span></span><a class="reference internal" href="_modules/scripts/make_regions.html#load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.load_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Load data from sdf file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_to_sdf</strong> (<em>Path</em>) – Path to sdf file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Data from sdf file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BlockList</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.load_locations">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">load_locations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_csv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult"><span class="pre">MovingAverageResult</span></a></span></span><a class="reference internal" href="_modules/scripts/make_regions.html#load_locations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.load_locations" title="Permalink to this definition">#</a></dt>
+<dd><p>Load the STR_locations csv into a MovingAverageResult object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_to_csv</strong> (<em>Path</em>) – Path to the csv file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A MovingAverageResult object containing data from csv.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult">MovingAverageResult</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_csv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/make_regions.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Entry point.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.make_t_arr">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">make_t_arr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/make_regions.html#make_t_arr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.make_t_arr" title="Permalink to this definition">#</a></dt>
+<dd><p>Make an array of time values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+<li><p><strong>t_end</strong> (<em>float</em>) – End time.</p></li>
+<li><p><strong>t_start</strong> (<em>float</em><em>, </em><em>optional</em>) – Start time. Defaults to 0.0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of time values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.plota">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">plota</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdf_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#scripts.fit_to_changes.MovingAverageResult" title="scripts.fit_to_changes.MovingAverageResult"><span class="pre">MovingAverageResult</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/make_regions.html#plota"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.plota" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot of STR over the average numberdensity.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.plotb">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">plotb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#scripts.make_regions.TimestepPSD" title="scripts.make_regions.TimestepPSD"><span class="pre">TimestepPSD</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/make_regions.html#plotb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.plotb" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot of PSD for each region of a single timestep.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.plotc">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">plotc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#scripts.make_regions.TimestepPSD" title="scripts.make_regions.TimestepPSD"><span class="pre">scripts.make_regions.TimestepPSD</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/make_regions.html#plotc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.plotc" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot of average PSD in each region over all time steps.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.make_regions.timestep">
+<span class="sig-prename descclassname"><span class="pre">scripts.make_regions.</span></span><span class="sig-name descname"><span class="pre">timestep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_sdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">STR_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#scripts.make_regions.TimestepPSD" title="scripts.make_regions.TimestepPSD"><span class="pre">TimestepPSD</span></a></span></span><a class="reference internal" href="_modules/scripts/make_regions.html#timestep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.make_regions.timestep" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate the power spectrum for a single time step.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path_to_sdf</strong> (<em>Path</em>) – Path to sdf file.</p></li>
+<li><p><strong>STR_x</strong> (<em>tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em>) – Start and end x coordinates of STR region.</p></li>
+<li><p><strong>dt</strong> (<em>float</em>) – Time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>PSD data for each region.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#scripts.make_regions.TimestepPSD" title="scripts.make_regions.TimestepPSD">TimestepPSD</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts.quickload">
+<span id="scripts-quickload-module"></span><h2>scripts.quickload module<a class="headerlink" href="#module-scripts.quickload" title="Permalink to this heading">#</a></h2>
+<p>Functions to extract <cite>.sdf</cite> file into <cite>.csv</cite>.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.quickload.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.quickload.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/quickload.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.quickload.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Entry point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – <cite>.sdf</cite> frame number`</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts.rupts_local">
+<span id="scripts-rupts-local-module"></span><h2>scripts.rupts_local module<a class="headerlink" href="#module-scripts.rupts_local" title="Permalink to this heading">#</a></h2>
+<p>Use the ruptures package to find change points in simulated shock crossing.</p>
+<p>Loads data as <cite>.csv</cite> from scripts/data/xxxx.csv. To generate this from <cite>.sdf</cite> files
+run <cite>scripts/quickload.py</cite> first.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_local.dict_rows_to_array">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_local.</span></span><span class="sig-name descname"><span class="pre">dict_rows_to_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/rupts_local.html#dict_rows_to_array"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_local.dict_rows_to_array" title="Permalink to this definition">#</a></dt>
+<dd><p>Collapse dict of 1d arrays to 2d np array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>np.ndarray</em><em>]</em>) – dict of 1d arrays</p></li>
+<li><p><strong>xlen</strong> (<em>int</em>) – length of each array (must all be same length)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>2d array where y axis is each key in input dict</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_local.drop_x_from_dict">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_local.</span></span><span class="sig-name descname"><span class="pre">drop_x_from_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Grid_Grid_mid'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="_modules/scripts/rupts_local.html#drop_x_from_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_local.drop_x_from_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Remove key from dict that matches <cite>x_name</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>old_dict</strong> (<em>dict</em>) – input dictionary</p></li>
+<li><p><strong>x_name</strong> (<em>str</em><em>, </em><em>optional</em>) – key value representing x data. Defaults to “Grid_Grid_mid”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict missing x values</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_local.extract_row">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_local.</span></span><span class="sig-name descname"><span class="pre">extract_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/rupts_local.html#extract_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_local.extract_row" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the same row of 2d array from every key in dict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int</em>) – the row to get</p></li>
+<li><p><strong>data</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>np.ndarray</em><em>]</em>) – dict of 2d np arrays</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict of 1d np arrays corresponding to index <cite>[:,i]</cite> of input array</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[str, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_local.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_local.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/rupts_local.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_local.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Entry point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time_step</strong> (<em>int</em>) – Time step to load data from.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_local.mean_allrows">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_local.</span></span><span class="sig-name descname"><span class="pre">mean_allrows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/rupts_local.html#mean_allrows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_local.mean_allrows" title="Permalink to this definition">#</a></dt>
+<dd><p>Get mean &amp; std of dict of 2d np arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>np.ndarray</em><em>]</em>) – dict of 2d np arrays</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(dict of means, dict of std’s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[dict[str, np.ndarray], dict[str, np.ndarray]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_local.plot">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_local.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_sd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/rupts_local.html#plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_local.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot the rsesult.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – the x axis (shared)</p></li>
+<li><p><strong>y</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>np.ndarray</em><em>]</em>) – y axis variables</p></li>
+<li><p><strong>y_sd</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>np.ndarray</em><em>]</em>) – sd of each variable</p></li>
+<li><p><strong>lines</strong> (<em>list</em><em>[</em><em>list</em><em>[</em><em>float</em><em>]</em><em>]</em>) – x coordinate of detected change points</p></li>
+<li><p><strong>save_name</strong> (<em>str</em>) – name to save results as into scripts/temp/plots</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts.rupts_mean">
+<span id="scripts-rupts-mean-module"></span><h2>scripts.rupts_mean module<a class="headerlink" href="#module-scripts.rupts_mean" title="Permalink to this heading">#</a></h2>
+<p>Detect change points using binary segmentation on the gradient of the number density.</p>
+<p>Uses all y values in grad_nd as features for the binary segmentation algorithm.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_mean.get_grad_nd">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_mean.</span></span><span class="sig-name descname"><span class="pre">get_grad_nd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BlockList</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/rupts_mean.html#get_grad_nd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_mean.get_grad_nd" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the gradient of the number density along the x axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>sdf.BlockList</em>) – sdf data object to get gradient of.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>gradient of the number density.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_mean.mean_of_var">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_mean.</span></span><span class="sig-name descname"><span class="pre">mean_of_var</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BlockPlainVariable</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/rupts_mean.html#mean_of_var"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_mean.mean_of_var" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the mean of a variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>var</strong> (<em>sdf.BlockPlainVariable</em>) – sdf variable to get mean of.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>mean of the variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_mean.plot_1d_with_change_points">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_mean.</span></span><span class="sig-name descname"><span class="pre">plot_1d_with_change_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nd_1d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_nd_1d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mag_1d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">slice</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">slice(None,</span> <span class="pre">-5,</span> <span class="pre">None)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/rupts_mean.html#plot_1d_with_change_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_mean.plot_1d_with_change_points" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_mean.plot_meshgrid_of_gradnd">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_mean.</span></span><span class="sig-name descname"><span class="pre">plot_meshgrid_of_gradnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gradnd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/rupts_mean.html#plot_meshgrid_of_gradnd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_mean.plot_meshgrid_of_gradnd" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot the meshgrid of the gradient of the number density.</p>
+<p>Requires the grid edges to be passed in since pcolormesh requires the
+edges of the grid to be one larger than the number of grid points in
+each dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gradnd</strong> (<em>np.ndarray</em>) – gradient of the number density.</p></li>
+<li><p><strong>grid</strong> (<a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><em>Grid</em></a>) – Grid namedtuple of x and y grid values.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts.rupts_t">
+<span id="scripts-rupts-t-module"></span><h2>scripts.rupts_t module<a class="headerlink" href="#module-scripts.rupts_t" title="Permalink to this heading">#</a></h2>
+<p>Simple srcipt to test functionality of <cite>ruptures</cite> package on simulation data.</p>
+<p>Loads data as <cite>.csv</cite> from scripts/data/xxxx.csv. To generate this from <cite>.sdf</cite> files
+run <cite>scripts/quickload.py</cite> first.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_t.load_csv">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_t.</span></span><span class="sig-name descname"><span class="pre">load_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/scripts/rupts_t.html#load_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_t.load_csv" title="Permalink to this definition">#</a></dt>
+<dd><p>Load a csv file from <cite>path</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>Path</em>) – path to <cite>.csv</cite> representation of <cite>.sdf</cite> data file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>pandas df of csv data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_t.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_t.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnumber</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">PosixPath('scripts/temp/plots')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/rupts_t.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_t.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Entry point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnumber</strong> (<em>int</em>) – frame number of <cite>.sdf</cite> file</p></li>
+<li><p><strong>save_name</strong> (<em>str</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – name of <cite>.png</cite> file. Defaults to None.</p></li>
+<li><p><strong>save_path</strong> (<em>Path</em><em>, </em><em>optional</em>) – location to save <cite>.png</cite> plot. Defaults to Path(“scripts/temp/plots”).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_t.plot">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_t.</span></span><span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lines</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/rupts_t.html#plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_t.plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – The data to plot</p></li>
+<li><p><strong>x_name</strong> (<em>str</em>) – column name representing x-axis values</p></li>
+<li><p><strong>lines</strong> (<em>list</em><em>[</em><em>int</em><em>] </em><em>| </em><em>None</em><em>, </em><em>optional</em>) – indices of change points. Defaults to None.</p></li>
+<li><p><strong>save_path</strong> (<em>Path</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – path to save the resulting <cite>.png</cite>. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.rupts_t.rupture_algo_pelt">
+<span class="sig-prename descclassname"><span class="pre">scripts.rupts_t.</span></span><span class="sig-name descname"><span class="pre">rupture_algo_pelt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/rupts_t.html#rupture_algo_pelt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.rupts_t.rupture_algo_pelt" title="Permalink to this definition">#</a></dt>
+<dd><p>Use Penalised Detection Point algorithm to detect change points.</p>
+<p><a class="reference external" href="https://centre-borelli.github.io/ruptures-docs/code-reference/detection/pelt-reference/#ruptures.detection.pelt.Pelt.fit">https://centre-borelli.github.io/ruptures-docs/code-reference/detection/pelt-reference/#ruptures.detection.pelt.Pelt.fit</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – 2d array of [x, features]</p></li>
+<li><p><strong>penalty</strong> (<em>int</em><em>, </em><em>optional</em>) – penalty value to determine number of change points. Defaults to 20.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>index of chage points along first axis of array</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts.shock_front">
+<span id="scripts-shock-front-module"></span><h2>scripts.shock_front module<a class="headerlink" href="#module-scripts.shock_front" title="Permalink to this heading">#</a></h2>
+<p>Finds shock front and change points.</p>
+<p>Shock front is found by finding the peak of the gradient of the number density.
+change points are found by binseg.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.shock_front.find_shock_index_from_gradnd">
+<span class="sig-prename descclassname"><span class="pre">scripts.shock_front.</span></span><span class="sig-name descname"><span class="pre">find_shock_index_from_gradnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gradnd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/scripts/shock_front.html#find_shock_index_from_gradnd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.shock_front.find_shock_index_from_gradnd" title="Permalink to this definition">#</a></dt>
+<dd><p>Find the index of the shock from gradient of the number density.</p>
+<ul class="simple">
+<li><p>If gradnd is 2d then find the peak of the mean.</p></li>
+<li><p>Assume the shock is located at the peak of grad nd</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gradnd</strong> (<em>np.ndarray</em>) – gradient of the number density.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>index of the shock.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.shock_front.get_number_of_files">
+<span class="sig-prename descclassname"><span class="pre">scripts.shock_front.</span></span><span class="sig-name descname"><span class="pre">get_number_of_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/scripts/shock_front.html#get_number_of_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.shock_front.get_number_of_files" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the number of sdf files in the U6T40 directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>number of files</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.shock_front.get_shock_and_change_point_indices">
+<span class="sig-prename descclassname"><span class="pre">scripts.shock_front.</span></span><span class="sig-name descname"><span class="pre">get_shock_and_change_point_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_sdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/shock_front.html#get_shock_and_change_point_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.shock_front.get_shock_and_change_point_indices" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the shock index and change point indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path_to_sdf</strong> (<em>Path</em>) – path to sdf file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(bt, shock_index, change_points)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[np.ndarray, int, list[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.shock_front.iter_over_all_sdfs">
+<span class="sig-prename descclassname"><span class="pre">scripts.shock_front.</span></span><span class="sig-name descname"><span class="pre">iter_over_all_sdfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">skip_at_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/shock_front.html#iter_over_all_sdfs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.shock_front.iter_over_all_sdfs" title="Permalink to this definition">#</a></dt>
+<dd><p>Iterate over all the sdfs in the data directory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.shock_front.main">
+<span class="sig-prename descclassname"><span class="pre">scripts.shock_front.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/shock_front.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.shock_front.main" title="Permalink to this definition">#</a></dt>
+<dd><p>Entry point.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.shock_front.plot_nd">
+<span class="sig-prename descclassname"><span class="pre">scripts.shock_front.</span></span><span class="sig-name descname"><span class="pre">plot_nd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/shock_front.html#plot_nd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.shock_front.plot_nd" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot the number density and its gradient.</p>
+</dd></dl>
+
+</section>
+<section id="module-scripts.v1">
+<span id="scripts-v1-module"></span><h2>scripts.v1 module<a class="headerlink" href="#module-scripts.v1" title="Permalink to this heading">#</a></h2>
+<p>Plot variables from <cite>.sdf</cite> file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.v1.collapse_bxyz">
+<span class="sig-prename descclassname"><span class="pre">scripts.v1.</span></span><span class="sig-name descname"><span class="pre">collapse_bxyz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bxyz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></span><a class="reference internal" href="_modules/scripts/v1.html#collapse_bxyz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.v1.collapse_bxyz" title="Permalink to this definition">#</a></dt>
+<dd><p>Take mean of each component of bxyz in spatial y axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bxyz</strong> (<em>hj.Mag</em>) – magnetic field (bx:[x,y], …)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Magnetic field (bx:[x], …)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>hj.Mag</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.v1.data_collapse_y">
+<span class="sig-prename descclassname"><span class="pre">scripts.v1.</span></span><span class="sig-name descname"><span class="pre">data_collapse_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/v1.html#data_collapse_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.v1.data_collapse_y" title="Permalink to this definition">#</a></dt>
+<dd><p>Get mean of variable in 2d data along y axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>sdf.BlockList</em>) – data from sh.get_data()</p></li>
+<li><p><strong>var</strong> (<em>str</em>) – Variable name from sh.list_variables(data)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>1d averaged data along x axis</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.v1.grad_ndens">
+<span class="sig-prename descclassname"><span class="pre">scripts.v1.</span></span><span class="sig-name descname"><span class="pre">grad_ndens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-5</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/scripts/v1.html#grad_ndens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.v1.grad_ndens" title="Permalink to this definition">#</a></dt>
+<dd><p>Compute gradient of numberdiensity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x axis values</p></li>
+<li><p><strong>ndens</strong> (<em>np.ndarray</em>) – numberdensity</p></li>
+<li><p><strong>trim</strong> (<em>int</em><em>, </em><em>optional</em>) – number of values to trim off end of x. Defaults to -5.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(trimmed x, trimmed d/dx(nd))</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.v1.plot_bxyz">
+<span class="sig-prename descclassname"><span class="pre">scripts.v1.</span></span><span class="sig-name descname"><span class="pre">plot_bxyz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bxyz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/v1.html#plot_bxyz"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.v1.plot_bxyz" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot (1d) magnetic field components bt,bx,by,bz.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> (<em>plt.Axes</em>) – axis to plot onto</p></li>
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x axis values</p></li>
+<li><p><strong>bxyz</strong> (<em>hj.Mag</em>) – components of magnetic field</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.v1.plot_ndens">
+<span class="sig-prename descclassname"><span class="pre">scripts.v1.</span></span><span class="sig-name descname"><span class="pre">plot_ndens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ndens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/scripts/v1.html#plot_ndens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.v1.plot_ndens" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot numberdensity into axis <cite>ax</cite>.</p>
+<p>Also sets x and y axis labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> (<em>plt.Axes</em>) – axes to plot onto</p></li>
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x axis data</p></li>
+<li><p><strong>ndens</strong> (<em>np.ndarray</em>) – y axis data</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.v1.rolling_avg">
+<span class="sig-prename descclassname"><span class="pre">scripts.v1.</span></span><span class="sig-name descname"><span class="pre">rolling_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/scripts/v1.html#rolling_avg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.v1.rolling_avg" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculate a rolling average of <cite>width</cite> (in <cite>x</cite> units) over <cite>y</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – x values</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – y values</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – width of window to avg over (units of <cite>x</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>averaged <cite>y</cite>, length of original <cite>y</cite> is retained</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-scripts">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-scripts" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modules.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">hybrid-sim-ilg</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="src.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">src package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.deck">scripts.deck module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.block_to_dict"><code class="docutils literal notranslate"><span class="pre">block_to_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.get_deck_constants"><code class="docutils literal notranslate"><span class="pre">get_deck_constants()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.get_deck_constants_sym"><code class="docutils literal notranslate"><span class="pre">get_deck_constants_sym()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.load_deck"><code class="docutils literal notranslate"><span class="pre">load_deck()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.parse_constant_block"><code class="docutils literal notranslate"><span class="pre">parse_constant_block()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.parse_value"><code class="docutils literal notranslate"><span class="pre">parse_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.deck.split_to_blocks"><code class="docutils literal notranslate"><span class="pre">split_to_blocks()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.fit_to_changes">scripts.fit_to_changes module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.end_STR"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.end_STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.get_irow"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.get_irow()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.get_row"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.get_row()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.save"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.shock"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.shock</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.start_STR"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.start_STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.t"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.t</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.MovingAverageResult.to_df"><code class="docutils literal notranslate"><span class="pre">MovingAverageResult.to_df()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.append_regress_to_dict"><code class="docutils literal notranslate"><span class="pre">append_regress_to_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.interpolate_to_midpoints"><code class="docutils literal notranslate"><span class="pre">interpolate_to_midpoints()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.linear_regressions"><code class="docutils literal notranslate"><span class="pre">linear_regressions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.mov_avg"><code class="docutils literal notranslate"><span class="pre">mov_avg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.moving_avg"><code class="docutils literal notranslate"><span class="pre">moving_avg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.plot_linear_regressions"><code class="docutils literal notranslate"><span class="pre">plot_linear_regressions()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.plot_mov_avg"><code class="docutils literal notranslate"><span class="pre">plot_mov_avg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.plot_regress"><code class="docutils literal notranslate"><span class="pre">plot_regress()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.read_shock_changes_csv"><code class="docutils literal notranslate"><span class="pre">read_shock_changes_csv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.regress"><code class="docutils literal notranslate"><span class="pre">regress()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.fit_to_changes.remap_to_original_t"><code class="docutils literal notranslate"><span class="pre">remap_to_original_t()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.make_regions">scripts.make_regions module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD"><code class="docutils literal notranslate"><span class="pre">RegionPSD</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD.PSD"><code class="docutils literal notranslate"><span class="pre">RegionPSD.PSD</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD.f"><code class="docutils literal notranslate"><span class="pre">RegionPSD.f</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD.inertial_slope"><code class="docutils literal notranslate"><span class="pre">RegionPSD.inertial_slope</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.RegionPSD.ion_slope"><code class="docutils literal notranslate"><span class="pre">RegionPSD.ion_slope</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.TimestepPSD"><code class="docutils literal notranslate"><span class="pre">TimestepPSD</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.TimestepPSD.DS"><code class="docutils literal notranslate"><span class="pre">TimestepPSD.DS</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.TimestepPSD.STR"><code class="docutils literal notranslate"><span class="pre">TimestepPSD.STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.TimestepPSD.US"><code class="docutils literal notranslate"><span class="pre">TimestepPSD.US</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.get_PSD_of_component"><code class="docutils literal notranslate"><span class="pre">get_PSD_of_component()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.get_index"><code class="docutils literal notranslate"><span class="pre">get_index()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.get_nd_for_each_timestep"><code class="docutils literal notranslate"><span class="pre">get_nd_for_each_timestep()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.get_x"><code class="docutils literal notranslate"><span class="pre">get_x()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.load_data"><code class="docutils literal notranslate"><span class="pre">load_data()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.load_locations"><code class="docutils literal notranslate"><span class="pre">load_locations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.make_t_arr"><code class="docutils literal notranslate"><span class="pre">make_t_arr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.plota"><code class="docutils literal notranslate"><span class="pre">plota()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.plotb"><code class="docutils literal notranslate"><span class="pre">plotb()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.plotc"><code class="docutils literal notranslate"><span class="pre">plotc()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.make_regions.timestep"><code class="docutils literal notranslate"><span class="pre">timestep()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.quickload">scripts.quickload module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.quickload.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.rupts_local">scripts.rupts_local module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.dict_rows_to_array"><code class="docutils literal notranslate"><span class="pre">dict_rows_to_array()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.drop_x_from_dict"><code class="docutils literal notranslate"><span class="pre">drop_x_from_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.extract_row"><code class="docutils literal notranslate"><span class="pre">extract_row()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.mean_allrows"><code class="docutils literal notranslate"><span class="pre">mean_allrows()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_local.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.rupts_mean">scripts.rupts_mean module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_mean.get_grad_nd"><code class="docutils literal notranslate"><span class="pre">get_grad_nd()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_mean.mean_of_var"><code class="docutils literal notranslate"><span class="pre">mean_of_var()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_mean.plot_1d_with_change_points"><code class="docutils literal notranslate"><span class="pre">plot_1d_with_change_points()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_mean.plot_meshgrid_of_gradnd"><code class="docutils literal notranslate"><span class="pre">plot_meshgrid_of_gradnd()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.rupts_t">scripts.rupts_t module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_t.load_csv"><code class="docutils literal notranslate"><span class="pre">load_csv()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_t.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_t.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.rupts_t.rupture_algo_pelt"><code class="docutils literal notranslate"><span class="pre">rupture_algo_pelt()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.shock_front">scripts.shock_front module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.find_shock_index_from_gradnd"><code class="docutils literal notranslate"><span class="pre">find_shock_index_from_gradnd()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.get_number_of_files"><code class="docutils literal notranslate"><span class="pre">get_number_of_files()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.get_shock_and_change_point_indices"><code class="docutils literal notranslate"><span class="pre">get_shock_and_change_point_indices()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.iter_over_all_sdfs"><code class="docutils literal notranslate"><span class="pre">iter_over_all_sdfs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.shock_front.plot_nd"><code class="docutils literal notranslate"><span class="pre">plot_nd()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts.v1">scripts.v1 module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.collapse_bxyz"><code class="docutils literal notranslate"><span class="pre">collapse_bxyz()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.data_collapse_y"><code class="docutils literal notranslate"><span class="pre">data_collapse_y()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.grad_ndens"><code class="docutils literal notranslate"><span class="pre">grad_ndens()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.plot_bxyz"><code class="docutils literal notranslate"><span class="pre">plot_bxyz()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.plot_ndens"><code class="docutils literal notranslate"><span class="pre">plot_ndens()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scripts.v1.rolling_avg"><code class="docutils literal notranslate"><span class="pre">rolling_avg()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-scripts">Module contents</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By James Plank
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, James Plank.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -68,14 +68,6 @@ scripts.shock\_front module
    :undoc-members:
    :show-inheritance:
 
-scripts.temp module
--------------------
-
-.. automodule:: scripts.temp
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 scripts.v1 module
 -----------------
 
