@@ -43,8 +43,9 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 html_theme = "sphinx_book_theme"
 html_static_path = ["_static"]
 html_theme_options = {
-    "repository_url": "https://github.com/jmsplank/epoch-cheats",
+    "repository_url": "https://github.com/jmsplank/hybrid-jp",
     "use_repository_button": True,
 }
 html_logo = "_static/logo.jpeg"
+html_favicon = "_static/logo.png"
 html_title = "eopch-cheats"
