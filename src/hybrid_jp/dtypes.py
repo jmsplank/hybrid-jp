@@ -11,7 +11,7 @@ class Grid(NamedTuple):
     Note:
         Can be either edges or midpoints.
 
-    Attributes:
+    Parameters:
         x (np.ndarray): x grid.
         y (np.ndarray): y grid.
     """
@@ -24,7 +24,7 @@ class Grid(NamedTuple):
 class Mag(NamedTuple):
     """Magnetic field components.
 
-    Attributes:
+    Parameters:
         bx (np.ndarray): x component of magnetic field.
         by (np.ndarray): y component of magnetic field.
         bz (np.ndarray): z component of magnetic field.

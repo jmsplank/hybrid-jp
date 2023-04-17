@@ -1,2 +1,0 @@
-# quickload.py
-::: scripts.quickload

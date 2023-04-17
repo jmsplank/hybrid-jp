@@ -1,36 +1,46 @@
 """Script for plotting spectra.
 
-1. Load the csv containing STR start and end x coordinates for each time step
-2. match each time step in data to an sdf file
-3. for each time step
-    1. load data file
-    2. read magnetic field data
-    3. split timeseries into upstream, str, downstream based on csv file
-    4. calculate spectrum of each region
-    5. for each region spectrum
-        1. split into inertial & ion range if possible
-        2. fit slope (spectral index) to each range
-    5. return k, PSD, inertial slope and ion slope for each region
+## Algorithm
 
-plot a - overview of regions:
-1. plot a parameter e.g. numberdensity on pcolormesh
-2. overplot str region
+#. Load the csv containing STR start and end x coordinates for each time step
+#. match each time step in data to an sdf file
+#. for each time step
 
-plot b - example of single time step:
-1. choose a time step, maybe 0128
-2. plot upstream, str, and downstream power spectrum (k vs PSD)
-3. overplot slopes for each region
+   #. load data file
+   #. read magnetic field data
+   #. split timeseries into upstream, str, downstream based on csv file
+   #. calculate spectrum of each region
+   #. for each region spectrum
 
-plot c - region spectra for all time:
-1. average together the spectra for every time step
-    1. account for uneven length regions
-    2. possibly also account for offest k bins
-2. plot of avg US, STR, DS power spectra
-3. overplot avg slopes for each region
+      #. split into inertial & ion range if possible
+      #. fit slope (spectral index) to each range
 
-plot d - spectral index evolution:
-1. plot spectral index as function of time for each range (MHD, ion) for each region
+   #. return k, PSD, inertial slope and ion slope for each region
 
+## plot a - overview of regions:
+
+#. plot a parameter e.g. numberdensity on pcolormesh
+#. overplot str region
+
+## plot b - example of single time step:
+
+#. choose a time step, maybe 0128
+#. plot upstream, str, and downstream power spectrum (k vs PSD)
+#. overplot slopes for each region
+
+## plot c - region spectra for all time:
+
+#. average together the spectra for every time step
+
+   #. account for uneven length regions
+   #. possibly also account for offest k bins
+
+#. plot of avg US, STR, DS power spectra
+#. overplot avg slopes for each region
+
+## plot d - spectral index evolution:
+
+#. plot spectral index as function of time for each range (MHD, ion) for each region
 """
 from functools import lru_cache
 from pathlib import Path
@@ -137,7 +147,7 @@ def get_PSD_of_component(component: np.ndarray, dt: float):
 class RegionPSD(NamedTuple):
     """Holds PSD data for a region.
 
-    Attributes:
+    Parameters:
         f (np.ndarray): Frequency.
         PSD (np.ndarray): Power spectrum.
         inertial_slope (float, optional): Inertial range slope. Defaults to None.
@@ -153,7 +163,7 @@ class RegionPSD(NamedTuple):
 class TimestepPSD(NamedTuple):
     """Holds region PSD data for a single time step.
 
-    Attributes:
+    Parameters:
         US (RegionPSD): Upstream region.
         STR (RegionPSD): Shock transition region.
         DS (RegionPSD): Downstream region.
