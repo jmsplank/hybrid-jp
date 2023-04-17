@@ -60,7 +60,7 @@ def mean_allrows(
 
 
 def drop_x_from_dict(old_dict: dict, x_name: str = "Grid_Grid_mid") -> dict:
-    """Remove key from dict that matches `x_name.
+    """Remove key from dict that matches `x_name`.
 
     Args:
         old_dict (dict): input dictionary

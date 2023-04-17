@@ -195,7 +195,7 @@ def interpolate_to_midpoints(arr: np.ndarray, width: int) -> np.ndarray:
 class MovingAverageResult(NamedTuple):
     """Holds the results of a moving average.
 
-    Attributes:
+    Parameters:
         t (np.ndarray): time.
         start_STR (np.ndarray): x coordinate of the start of the STR.
         end_STR (np.ndarray): x coordinate of the end of the STR.
