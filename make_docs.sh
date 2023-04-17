@@ -3,4 +3,4 @@ cd docsrc
 make clean
 make html
 cd ../docs
-cp -r ../docsrc/build/html .
+cp -r ../docsrc/build/html/ .
