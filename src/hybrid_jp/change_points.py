@@ -20,3 +20,21 @@ def binseg(arr: np.ndarray, nseg=3) -> list[int]:
     if result[-1] == arr.shape[0]:
         result = result[:-1]
     return result
+
+
+def find_shock_index_from_gradnd(gradnd: np.ndarray) -> int:
+    """Find the index of the shock from gradient of the number density.
+
+    - If gradnd is 2d then find the peak of the mean.
+    - Assume the shock is located at the peak of grad nd
+
+    Args:
+        gradnd (np.ndarray): gradient of the number density.
+
+    Returns:
+        int: index of the shock.
+    """
+    if gradnd.ndim == 2:
+        gradnd = gradnd.mean(axis=1)
+
+    return int(np.argmax(gradnd))
