@@ -19,6 +19,11 @@ class Grid(NamedTuple):
     x: np.ndarray
     y: np.ndarray
 
+    @property
+    def shape(self):
+        """Shape of the grid (nx, ny)"""
+        return self.x.shape
+
 
 # Magnetic field components bx, by, bz
 class Mag(NamedTuple):
