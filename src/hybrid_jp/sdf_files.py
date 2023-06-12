@@ -1,4 +1,5 @@
 """Functions that interact with sdf_helper objects."""
+from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
@@ -33,6 +34,26 @@ def load(path_to_sdf: Path | str) -> BlockList:
 
     data = sh.getdata(str(path_to_sdf), verbose=False)
     return data
+
+
+@dataclass
+class SDF:
+    grid: Grid
+    mid_grid: Grid
+    mag: Mag
+    numberdensity: np.ndarray
+    temperature: np.ndarray
+
+
+def load_sdf_verified(path_to_sdf: Path) -> SDF:
+    data = load(path_to_sdf=path_to_sdf)
+    return SDF(
+        grid=get_grid(data, mid=False),
+        mid_grid=get_grid(data, mid=True),
+        mag=get_mag(data),
+        numberdensity=data.Derived_Number_Density.data,
+        temperature=data.Derived_Temperature.data,
+    )
 
 
 def extract_vars(data, vars_list: list[str]) -> dict[str, np.ndarray]:
