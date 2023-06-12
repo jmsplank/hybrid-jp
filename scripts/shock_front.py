@@ -80,7 +80,8 @@ def get_shock_and_change_point_indices(
     shock_index = find_shock_index_from_gradnd(np.gradient(nd))
     change_points = hj.binseg(nd_all_y)
 
-    mag = np.stack(list(hj.sdf_files.get_mag(data)), 0)
+    mag = np.stack(list(hj.sdf_files.get_mag(data)), 0)  # (3, 1600, 160)
+    # Norm of bx,by,bz => (1600, 160) mean over y => (1600,)
     bt = np.linalg.norm(mag, axis=0).mean(axis=1)
 
     return bt, shock_index, change_points
@@ -132,7 +133,11 @@ def main():
 
     btarray = np.array(bts)
     print(btarray.shape)
-    # plot pcolormesh of the number density
+
+    #########################################
+    # plot pcolormesh of the number density #
+    #########################################
+
     xx, tt = np.meshgrid(grid.x, t[skip - 1 :] + dt / 2)
     plt.pcolormesh(xx, tt, btarray)
 
@@ -153,6 +158,10 @@ def main():
 
     plt.tight_layout()
     plt.show()
+
+    ######################################
+    # Save the data as shock_changes.csv #
+    ######################################
 
     print("writing to csv")
     data = {}
