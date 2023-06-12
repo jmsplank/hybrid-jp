@@ -10,3 +10,4 @@ temp/
 .ipynb_checkpoints
 .mypy_cache
 docsrc/build
+.pytest_cache

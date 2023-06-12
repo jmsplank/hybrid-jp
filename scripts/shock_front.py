@@ -12,11 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from epoch_cheats import evaluate_deck
-from matplotlib.colors import LogNorm
 from phdhelper.helpers import override_mpl
-from phdhelper.helpers.COLOURS import blue, green, red
-from rich import print as rprint
-from sdf import BlockList
 from tqdm import tqdm
 
 import hybrid_jp as hj
@@ -129,7 +125,10 @@ def main():
                 desc="Calculating shock and change point index",
             )
         )
-        bts, shocks_i, c_points_i = map(list, zip(*results))
+        bts, shocks_i, c_points_i = [list(i) for i in zip(*results)]
+        bts = cast(list[np.ndarray], bts)
+        shocks_i = cast(list[int], shocks_i)
+        c_points_i = cast(list[list[int]], c_points_i)
 
     btarray = np.array(bts)
     print(btarray.shape)
