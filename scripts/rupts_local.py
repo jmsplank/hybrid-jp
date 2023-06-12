@@ -134,7 +134,7 @@ def plot(
 
     plt.tight_layout()
     plt.subplots_adjust(hspace=0)
-    plt.savefig(Path("scripts/temp/plots") / (f"{bins:03d}" + save_name), dpi=300)
+    plt.savefig(Path("scripts/temp/rupts_local") / (f"{bins:03d}" + save_name), dpi=300)
 
 
 def main(time_step: int):
