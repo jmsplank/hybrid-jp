@@ -19,7 +19,7 @@ def binseg(arr: np.ndarray, nseg=3) -> list[int]:
     # remove element equal to len of first dimension of arr if exists
     if result[-1] == arr.shape[0]:
         result = result[:-1]
-    return result
+    return result  # type: ignore
 
 
 def find_shock_index_from_gradnd(gradnd: np.ndarray) -> int:

@@ -11,3 +11,6 @@ temp/
 .mypy_cache
 docsrc/build
 .pytest_cache
+.keys
+.old_scripts
+.vscode

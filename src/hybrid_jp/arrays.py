@@ -47,3 +47,31 @@ def df_to_rows_array(data: pd.DataFrame, cols: list[str]) -> np.ndarray:
     for i, col in enumerate(cols):
         arr[:, i] = data[col].values
     return arr
+
+
+def interpolate_to_midpoints(arr: np.ndarray, width: int) -> np.ndarray:
+    """Interpolate to midpoints.
+
+    returns an array of length len(arr) - width + 1.
+
+    Args:
+        arr (np.ndarray): array to interpolate.
+        width (int): width of moving average.
+
+    Returns:
+        np.ndarray: interpolated array.
+    """
+    return np.linspace(arr[0], arr[-1], len(arr) - width + 1)
+
+
+def mov_avg(data: np.ndarray, width: int) -> np.ndarray:
+    """Perform a moving average.
+
+    Args:
+        data (np.ndarray): data to perform moving average on.
+        width (int): width of moving average.
+
+    Returns:
+        np.ndarray: moving average of data. length is len(data) - width + 1.
+    """
+    return np.convolve(data, np.ones(width), "valid") / width
