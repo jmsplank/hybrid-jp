@@ -58,6 +58,7 @@ plt.show()
 
 # %%
 def normalise(arr: np.ndarray) -> np.ndarray:
+    """Normalise the array between 0 and 1."""
     return (arr - arr.min(axis=0)) / (arr.max(axis=0) - arr.min(axis=0))
 
 

@@ -38,6 +38,8 @@ def load(path_to_sdf: Path | str) -> BlockList:
 
 @dataclass
 class SDF:
+    """Representation of .sdf file."""
+
     grid: Grid
     mid_grid: Grid
     mag: Mag
@@ -48,6 +50,7 @@ class SDF:
 
 
 def load_sdf_verified(path_to_sdf: Path) -> SDF:
+    """Load an sdf into SDF class."""
     data = load(path_to_sdf=path_to_sdf)
     return SDF(
         grid=get_grid(data, mid=False),
