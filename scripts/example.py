@@ -65,22 +65,22 @@ force = 1285
 
 # %% Find a custom STR
 
-# fig, ax = plt.subplots()
-# # ax.plot(sdf.mid_grid.x, np.linalg.norm(sdf.mag.bx, axis=1))
-# ax.plot(np.arange(sdf.mid_grid.x.size), np.linalg.norm(sdf.mag.bx, axis=1))
-# for i in segmentation:
-#     ax.axvline(i, color=colours.sim.red(), label=f"{i}")
+fig, ax = plt.subplots()
+# ax.plot(sdf.mid_grid.x, np.linalg.norm(sdf.mag.bx, axis=1))
+ax.plot(np.arange(sdf.mid_grid.x.size), np.linalg.norm(sdf.mag.bx, axis=1))
+for i in segmentation:
+    ax.axvline(i, color=colours.sim.red(), label=f"{i}")
 
-# ax.xaxis.set_major_locator(mticker.MultipleLocator(50))
-# ax.xaxis.set_minor_locator(mticker.MultipleLocator(10))
+ax.xaxis.set_major_locator(mticker.MultipleLocator(50))
+ax.xaxis.set_minor_locator(mticker.MultipleLocator(10))
 # ax.grid(True, which="both", axis="x")
-# for t in ax.get_xticklabels():
-#     t.set_rotation(90)
+for t in ax.get_xticklabels():
+    t.set_rotation(90)
 
-# ax.axvline(force, color=colours.sim.blue(), label=f"Forced {force}")
+ax.axvline(force, color=colours.sim.blue(), label=f"Forced {force}")
 
-# ax.legend()
-# plt.show()
+ax.legend()
+plt.show()
 
 # %%
 segmentation = [segmentation[0], force]
