@@ -1,11 +1,23 @@
 """Base data types for the hybrid_jp."""
-from typing import NamedTuple, Type
+from dataclasses import dataclass
+from typing import Protocol
 
 import numpy as np
+import numpy.typing as npt
 
 
-# Simulation grid x,y
-class Grid(NamedTuple):
+@dataclass
+class BaseContainer(Protocol):
+    """Base container for parameters."""
+
+    @property
+    def all(self) -> dict[str, npt.NDArray[np.float64]]:
+        """Return all parameters as a dict."""
+        ...
+
+
+@dataclass
+class Grid(BaseContainer):
     """Simulation grid.
 
     Note:
@@ -20,13 +32,42 @@ class Grid(NamedTuple):
     y: np.ndarray
 
     @property
-    def shape(self):
-        """Shape of the grid (nx, ny)"""
-        return self.x.shape
+    def shape(self) -> tuple[int, int]:
+        """Shape of the grid (nx, ny)."""
+        return self.x.shape[0], self.y.shape[0]
+
+    def __mul__(self, value: float | int) -> "Grid":
+        """Multiply."""
+        return Grid(x=self.x * value, y=self.y * value)
+
+    def __rmul__(self, value: float | int) -> "Grid":
+        """Multiply."""
+        return self.__mul__(value)
+
+    def __imul__(self, value: float | int) -> "Grid":
+        """Multiply."""
+        return self.__mul__(value)
+
+    def __iter__(self):
+        """Iterate over x and y."""
+        yield self.x
+        yield self.y
+
+    def slice_x(self, start: int, stop: int) -> "Grid":
+        """Slice in the x direction.
+
+        Args:
+            start (int): Start index.
+            stop (int): Stop index.
+
+        Returns:
+            Grid: Sliced grid Gird(x=x[start:stop], y=y).
+        """
+        return Grid(x=self.x[start:stop].copy(), y=self.y.copy())
 
 
-# Magnetic field components bx, by, bz
-class Mag(NamedTuple):
+@dataclass
+class Mag:
     """Magnetic field components.
 
     Parameters:
@@ -65,4 +106,20 @@ class Mag(NamedTuple):
             bx=np.mean(self.bx, axis=1),
             by=np.mean(self.by, axis=1),
             bz=np.mean(self.bz, axis=1),
+        )
+
+    def slice_x(self, start: int, stop: int) -> "Mag":
+        """Slice the data along x.
+
+        Args:
+            start (int): Start index.
+            stop (int): Stop index.
+
+        Returns:
+            Mag: Sliced magnetic field.
+        """
+        return Mag(
+            bx=self.bx[start:stop, :],
+            by=self.by[start:stop, :],
+            bz=self.bz[start:stop, :],
         )
