@@ -7,7 +7,7 @@ import pandas as pd
 import sdf_helper as sh
 from sdf import BlockList
 
-from .dtypes import Grid, Mag
+from .dtypes import Current, Elec, Grid, Mag
 
 
 def load(path_to_sdf: Path | str) -> BlockList:
@@ -41,6 +41,8 @@ class SDF:
     grid: Grid
     mid_grid: Grid
     mag: Mag
+    elec: Elec
+    current: Current
     numberdensity: np.ndarray
     temperature: np.ndarray
 
@@ -51,6 +53,8 @@ def load_sdf_verified(path_to_sdf: Path) -> SDF:
         grid=get_grid(data, mid=False),
         mid_grid=get_grid(data, mid=True),
         mag=get_mag(data),
+        elec=get_elec(data),
+        current=get_current(data),
         numberdensity=data.Derived_Number_Density.data,
         temperature=data.Derived_Temperature.data,
     )
@@ -128,7 +132,10 @@ def save_csv(path: Path, data: pd.DataFrame) -> None:
 
 
 def list_variables(
-    data, show_name: bool = True, show_type: bool = False, show_size: bool = True
+    data: BlockList,
+    show_name: bool = True,
+    show_type: bool = False,
+    show_size: bool = True,
 ) -> list[list[str]]:
     """List variables in an sdf_helper object.
 
@@ -171,7 +178,10 @@ def list_variables(
 
 
 def print_variables(
-    data, show_name: bool = True, show_type: bool = False, show_size: bool = True
+    data: BlockList,
+    show_name: bool = True,
+    show_type: bool = False,
+    show_size: bool = True,
 ) -> None:
     """Print variables in an sdf_helper object.
 
@@ -186,7 +196,7 @@ def print_variables(
         print(" ".join(v))
 
 
-def get_grid(data, mid: bool = False) -> Grid:
+def get_grid(data: BlockList, mid: bool = False) -> Grid:
     """Get the grid of an sdf_helper object.
 
     Args:
@@ -210,7 +220,7 @@ def get_grid(data, mid: bool = False) -> Grid:
     return Grid(x=attr[0], y=attr[1])
 
 
-def get_mag(data) -> Mag:
+def get_mag(data: BlockList) -> Mag:
     """Get the magnetic field of an sdf_helper object.
 
     Args:
@@ -229,4 +239,48 @@ def get_mag(data) -> Mag:
         bx=data.Magnetic_Field_Bx.data,
         by=data.Magnetic_Field_By.data,
         bz=data.Magnetic_Field_Bz.data,
+    )
+
+
+def get_elec(data: BlockList) -> Elec:
+    """Get the electric field of an sdf_helper object.
+
+    Args:
+        data (sdf_helper): sdf data object to get electric field of.
+
+    Returns:
+        Elec: Elec namedtuple of x, y, and z electric field values.
+
+    Example:
+        >>> get_elec(data)
+        Elec(x=array([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00, ...,]],
+            y=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]],
+            z=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]]))
+    """
+    return Elec(
+        ex=data.Electric_Field_Ex.data,
+        ey=data.Electric_Field_Ey.data,
+        ez=data.Electric_Field_Ez.data,
+    )
+
+
+def get_current(data: BlockList) -> Current:
+    """Get the electric field of an sdf_helper object.
+
+    Args:
+        data (sdf_helper): sdf data object to get electric field of.
+
+    Returns:
+        Elec: Elec namedtuple of x, y, and z electric field values.
+
+    Example:
+        >>> get_elec(data)
+        Elec(x=array([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00, ...,]],
+            y=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]],
+            z=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]]))
+    """
+    return Current(
+        jx=data.Current_Jx.data,
+        jy=data.Current_Jy.data,
+        jz=data.Current_Jz.data,
     )
