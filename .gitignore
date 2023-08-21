@@ -1,23 +1,26 @@
+# Created outside of project
 .python-version
-
-U6T40/*
-tests/data/*
-*.egg-info
-__pycache__
 .DS_Store
 
+# Created by vs code automated things
+__pycache__
+*.egg-info
 .ipynb_checkpoints
 .mypy_cache
 .pytest_cache
-.old_scripts
 
+# JP created files
 .keys
+U6T40/*
+tests/data/*
+.old_scripts
+scripts/*.html
+*.mp4
 
+# VsCode config
 .vscode
 
+# pytest files
 .coverage
 htmlcov
-*.html
 docsrc/build
-
-*.mp4
