@@ -10,7 +10,7 @@ Welcome to hybrid-jp's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   modules
+   hybrid_jp
 
 
 Indices and tables

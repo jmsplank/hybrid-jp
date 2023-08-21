@@ -5,7 +5,7 @@ packages = find_packages("src")
 
 setup(
     name="hybrid_jp",
-    version="0.2.2",
+    version="0.2.3",
     packages=packages,
     package_dir={"": "src"},
     install_requires=[
@@ -17,6 +17,7 @@ setup(
         "ruptures",
         "tqdm",
         "pandas",
+        "joblib",
     ],
     entry_points={
         "console_scripts": [

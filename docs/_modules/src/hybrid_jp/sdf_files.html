@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>src.hybrid_jp.sdf_files &#8212; eopch-cheats</title>
+    <title>src.hybrid_jp.sdf_files &#8212; hybrid-jp</title>
   
   
   
@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -32,8 +32,8 @@
     <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/doctools.js"></script>
@@ -127,12 +127,8 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html">hybrid-sim-ilg</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../scripts.html">scripts package</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../../src.html">src package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../src.hybrid_jp.html">src.hybrid_jp package</a></li>
-</ul>
-</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../hybrid_jp.html">hybrid_jp</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../src.hybrid_jp.html">src.hybrid_jp package</a></li>
 </ul>
 </li>
 </ul>
@@ -178,7 +174,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/jmsplank/epoch-cheats" target="_blank"
+<a href="https://github.com/jmsplank/hybrid-jp" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -252,15 +248,15 @@ document.write(`
                   
   <h1>Source code for src.hybrid_jp.sdf_files</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Functions that interact with sdf_helper objects.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">cast</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">sdf_helper</span> <span class="k">as</span> <span class="nn">sh</span>
 <span class="kn">from</span> <span class="nn">sdf</span> <span class="kn">import</span> <span class="n">BlockList</span>
 
-<span class="kn">from</span> <span class="nn">.dtypes</span> <span class="kn">import</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">Mag</span>
+<span class="kn">from</span> <span class="nn">.dtypes</span> <span class="kn">import</span> <span class="n">Current</span><span class="p">,</span> <span class="n">Elec</span><span class="p">,</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">Mag</span>
 
 
 <div class="viewcode-block" id="load"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.load">[docs]</a><span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">path_to_sdf</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BlockList</span><span class="p">:</span>
@@ -287,6 +283,33 @@ document.write(`
 
     <span class="n">data</span> <span class="o">=</span> <span class="n">sh</span><span class="o">.</span><span class="n">getdata</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path_to_sdf</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="SDF"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">SDF</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Representation of .sdf file.&quot;&quot;&quot;</span>
+
+    <span class="n">grid</span><span class="p">:</span> <span class="n">Grid</span>
+    <span class="n">mid_grid</span><span class="p">:</span> <span class="n">Grid</span>
+    <span class="n">mag</span><span class="p">:</span> <span class="n">Mag</span>
+    <span class="n">elec</span><span class="p">:</span> <span class="n">Elec</span>
+    <span class="n">current</span><span class="p">:</span> <span class="n">Current</span>
+    <span class="n">numberdensity</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+    <span class="n">temperature</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span></div>
+
+
+<div class="viewcode-block" id="load_sdf_verified"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.load_sdf_verified">[docs]</a><span class="k">def</span> <span class="nf">load_sdf_verified</span><span class="p">(</span><span class="n">path_to_sdf</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SDF</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load an sdf into SDF class.&quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">path_to_sdf</span><span class="o">=</span><span class="n">path_to_sdf</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SDF</span><span class="p">(</span>
+        <span class="n">grid</span><span class="o">=</span><span class="n">get_grid</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mid</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+        <span class="n">mid_grid</span><span class="o">=</span><span class="n">get_grid</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mid</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="n">mag</span><span class="o">=</span><span class="n">get_mag</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+        <span class="n">elec</span><span class="o">=</span><span class="n">get_elec</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+        <span class="n">current</span><span class="o">=</span><span class="n">get_current</span><span class="p">(</span><span class="n">data</span><span class="p">),</span>
+        <span class="n">numberdensity</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Derived_Number_Density</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Derived_Temperature</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+    <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="extract_vars"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.extract_vars">[docs]</a><span class="k">def</span> <span class="nf">extract_vars</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">vars_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
@@ -361,7 +384,10 @@ document.write(`
 
 
 <div class="viewcode-block" id="list_variables"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.list_variables">[docs]</a><span class="k">def</span> <span class="nf">list_variables</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">show_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">show_type</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">show_size</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">BlockList</span><span class="p">,</span>
+    <span class="n">show_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_type</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_size</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;List variables in an sdf_helper object.</span>
 
@@ -404,7 +430,10 @@ document.write(`
 
 
 <div class="viewcode-block" id="print_variables"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.print_variables">[docs]</a><span class="k">def</span> <span class="nf">print_variables</span><span class="p">(</span>
-    <span class="n">data</span><span class="p">,</span> <span class="n">show_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">show_type</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">show_size</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">data</span><span class="p">:</span> <span class="n">BlockList</span><span class="p">,</span>
+    <span class="n">show_name</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">show_type</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">show_size</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Print variables in an sdf_helper object.</span>
 
@@ -419,7 +448,7 @@ document.write(`
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">v</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="get_grid"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_grid">[docs]</a><span class="k">def</span> <span class="nf">get_grid</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Grid</span><span class="p">:</span>
+<div class="viewcode-block" id="get_grid"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_grid">[docs]</a><span class="k">def</span> <span class="nf">get_grid</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">BlockList</span><span class="p">,</span> <span class="n">mid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Grid</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the grid of an sdf_helper object.</span>
 
 <span class="sd">    Args:</span>
@@ -443,7 +472,7 @@ document.write(`
     <span class="k">return</span> <span class="n">Grid</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">attr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">attr</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span></div>
 
 
-<div class="viewcode-block" id="get_mag"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_mag">[docs]</a><span class="k">def</span> <span class="nf">get_mag</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mag</span><span class="p">:</span>
+<div class="viewcode-block" id="get_mag"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_mag">[docs]</a><span class="k">def</span> <span class="nf">get_mag</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">BlockList</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Mag</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the magnetic field of an sdf_helper object.</span>
 
 <span class="sd">    Args:</span>
@@ -463,6 +492,50 @@ document.write(`
         <span class="n">by</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Magnetic_Field_By</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
         <span class="n">bz</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Magnetic_Field_Bz</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
     <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_elec"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_elec">[docs]</a><span class="k">def</span> <span class="nf">get_elec</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">BlockList</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Elec</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the electric field of an sdf_helper object.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (sdf_helper): sdf data object to get electric field of.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Elec: Elec namedtuple of x, y, and z electric field values.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; get_elec(data)</span>
+<span class="sd">        Elec(x=array([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00, ...,]],</span>
+<span class="sd">            y=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]],</span>
+<span class="sd">            z=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]]))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Elec</span><span class="p">(</span>
+        <span class="n">ex</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Electric_Field_Ex</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">ey</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Electric_Field_Ey</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">ez</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Electric_Field_Ez</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_current"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_current">[docs]</a><span class="k">def</span> <span class="nf">get_current</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">BlockList</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Current</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the electric field of an sdf_helper object.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data (sdf_helper): sdf data object to get electric field of.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Elec: Elec namedtuple of x, y, and z electric field values.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; get_elec(data)</span>
+<span class="sd">        Elec(x=array([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00, ...,]],</span>
+<span class="sd">            y=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]],</span>
+<span class="sd">            z=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]]))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Current</span><span class="p">(</span>
+        <span class="n">jx</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Current_Jx</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">jy</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Current_Jy</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+        <span class="n">jz</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Current_Jz</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+    <span class="p">)</span></div>
 </pre></div>
 
                 </article>
@@ -471,9 +544,15 @@ document.write(`
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -483,7 +562,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -513,7 +592,7 @@ By James Plank
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -522,8 +601,8 @@ By James Plank
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

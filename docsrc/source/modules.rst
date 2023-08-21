@@ -1,8 +1,7 @@
-hybrid-sim-ilg
-==============
+hybrid_jp
+=========
 
 .. toctree::
    :maxdepth: 4
 
-   scripts
    src

@@ -48,4 +48,4 @@ html_theme_options = {
 }
 html_logo = "_static/logo.jpeg"
 html_favicon = "_static/logo.png"
-html_title = "eopch-cheats"
+html_title = "hybrid-jp"

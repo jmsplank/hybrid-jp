@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>src package &#8212; eopch-cheats</title>
+    <title>src package &#8212; hybrid-jp</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
@@ -44,8 +44,6 @@
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="src.hybrid_jp package" href="src.hybrid_jp.html" />
-    <link rel="prev" title="scripts package" href="scripts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -129,13 +127,9 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">hybrid-sim-ilg</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="scripts.html">scripts package</a></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">src package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html">src.hybrid_jp package</a></li>
-</ul>
-</li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="hybrid_jp.html">hybrid_jp</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html">src.hybrid_jp package</a></li>
 </ul>
 </li>
 </ul>
@@ -181,7 +175,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/jmsplank/epoch-cheats" target="_blank"
+<a href="https://github.com/jmsplank/hybrid-jp" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -322,49 +316,115 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html#module-src.hybrid_jp.arrays">src.hybrid_jp.arrays module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.arrays.df_to_rows_array"><code class="docutils literal notranslate"><span class="pre">df_to_rows_array()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.arrays.interpolate_to_midpoints"><code class="docutils literal notranslate"><span class="pre">interpolate_to_midpoints()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.arrays.mov_avg"><code class="docutils literal notranslate"><span class="pre">mov_avg()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.arrays.trim_var"><code class="docutils literal notranslate"><span class="pre">trim_var()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.arrays.trim_vars"><code class="docutils literal notranslate"><span class="pre">trim_vars()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html#module-src.hybrid_jp.change_points">src.hybrid_jp.change_points module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.change_points.binseg"><code class="docutils literal notranslate"><span class="pre">binseg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.change_points.find_shock_index_from_gradnd"><code class="docutils literal notranslate"><span class="pre">find_shock_index_from_gradnd()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html#module-src.hybrid_jp.dtypes">src.hybrid_jp.dtypes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.BaseContainer"><code class="docutils literal notranslate"><span class="pre">BaseContainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.BaseContainer.all"><code class="docutils literal notranslate"><span class="pre">BaseContainer.all</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.BaseContainer.is_2d"><code class="docutils literal notranslate"><span class="pre">BaseContainer.is_2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.BaseContainer.mean_over_axis"><code class="docutils literal notranslate"><span class="pre">BaseContainer.mean_over_axis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.BaseContainer.mean_over_y"><code class="docutils literal notranslate"><span class="pre">BaseContainer.mean_over_y()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.BaseContainer.slice_x"><code class="docutils literal notranslate"><span class="pre">BaseContainer.slice_x()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Current"><code class="docutils literal notranslate"><span class="pre">Current</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Current.all"><code class="docutils literal notranslate"><span class="pre">Current.all</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Current.jx"><code class="docutils literal notranslate"><span class="pre">Current.jx</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Current.jy"><code class="docutils literal notranslate"><span class="pre">Current.jy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Current.jz"><code class="docutils literal notranslate"><span class="pre">Current.jz</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Elec"><code class="docutils literal notranslate"><span class="pre">Elec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Elec.all"><code class="docutils literal notranslate"><span class="pre">Elec.all</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Elec.ex"><code class="docutils literal notranslate"><span class="pre">Elec.ex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Elec.ey"><code class="docutils literal notranslate"><span class="pre">Elec.ey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Elec.ez"><code class="docutils literal notranslate"><span class="pre">Elec.ez</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Grid"><code class="docutils literal notranslate"><span class="pre">Grid</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Grid.all"><code class="docutils literal notranslate"><span class="pre">Grid.all</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Grid.shape"><code class="docutils literal notranslate"><span class="pre">Grid.shape</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Grid.x"><code class="docutils literal notranslate"><span class="pre">Grid.x</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Grid.y"><code class="docutils literal notranslate"><span class="pre">Grid.y</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag"><code class="docutils literal notranslate"><span class="pre">Mag</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag.all"><code class="docutils literal notranslate"><span class="pre">Mag.all</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag.bx"><code class="docutils literal notranslate"><span class="pre">Mag.bx</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag.by"><code class="docutils literal notranslate"><span class="pre">Mag.by</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag.bz"><code class="docutils literal notranslate"><span class="pre">Mag.bz</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag.is_2d"><code class="docutils literal notranslate"><span class="pre">Mag.is_2d()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.dtypes.Mag.mean_over_y"><code class="docutils literal notranslate"><span class="pre">Mag.mean_over_y()</span></code></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html#module-src.hybrid_jp.plot_labels">src.hybrid_jp.plot_labels module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.plot_labels.Label"><code class="docutils literal notranslate"><span class="pre">Label</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.plot_labels.Label.ND"><code class="docutils literal notranslate"><span class="pre">Label.ND</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.plot_labels.Label.X"><code class="docutils literal notranslate"><span class="pre">Label.X</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.plot_labels.make_label"><code class="docutils literal notranslate"><span class="pre">make_label()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html#module-src.hybrid_jp.sdf_files">src.hybrid_jp.sdf_files module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF"><code class="docutils literal notranslate"><span class="pre">SDF</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF.current"><code class="docutils literal notranslate"><span class="pre">SDF.current</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF.elec"><code class="docutils literal notranslate"><span class="pre">SDF.elec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF.grid"><code class="docutils literal notranslate"><span class="pre">SDF.grid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF.mag"><code class="docutils literal notranslate"><span class="pre">SDF.mag</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF.mid_grid"><code class="docutils literal notranslate"><span class="pre">SDF.mid_grid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF.numberdensity"><code class="docutils literal notranslate"><span class="pre">SDF.numberdensity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.SDF.temperature"><code class="docutils literal notranslate"><span class="pre">SDF.temperature</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.data_to_df"><code class="docutils literal notranslate"><span class="pre">data_to_df()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.extract_vars"><code class="docutils literal notranslate"><span class="pre">extract_vars()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_current"><code class="docutils literal notranslate"><span class="pre">get_current()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_elec"><code class="docutils literal notranslate"><span class="pre">get_elec()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_grid"><code class="docutils literal notranslate"><span class="pre">get_grid()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_mag"><code class="docutils literal notranslate"><span class="pre">get_mag()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.list_variables"><code class="docutils literal notranslate"><span class="pre">list_variables()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.load_sdf_verified"><code class="docutils literal notranslate"><span class="pre">load_sdf_verified()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.print_variables"><code class="docutils literal notranslate"><span class="pre">print_variables()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.reduce_to_1d"><code class="docutils literal notranslate"><span class="pre">reduce_to_1d()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.sdf_files.save_csv"><code class="docutils literal notranslate"><span class="pre">save_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html#module-src.hybrid_jp.shock">src.hybrid_jp.shock module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.ChangePoints"><code class="docutils literal notranslate"><span class="pre">ChangePoints</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.ChangePoints.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePoints.change_points</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.ChangePoints.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePoints.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.ChangePointsXResult"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.ChangePointsXResult.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.change_points</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.ChangePointsXResult.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.MovingAvgResult"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.MovingAvgResult.end_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.end_STR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.MovingAvgResult.shock"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.shock</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.MovingAvgResult.start_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.start_STR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.MovingAvgResult.t"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.t</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.Shock"><code class="docutils literal notranslate"><span class="pre">Shock</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.Shock.boundary_buffer"><code class="docutils literal notranslate"><span class="pre">Shock.boundary_buffer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.Shock.deck"><code class="docutils literal notranslate"><span class="pre">Shock.deck</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.Shock.grid"><code class="docutils literal notranslate"><span class="pre">Shock.grid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.Shock.mid_grid"><code class="docutils literal notranslate"><span class="pre">Shock.mid_grid</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.Shock.sdfs"><code class="docutils literal notranslate"><span class="pre">Shock.sdfs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.Shock.skip"><code class="docutils literal notranslate"><span class="pre">Shock.skip</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.Shock.t"><code class="docutils literal notranslate"><span class="pre">Shock.t</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.extrapolate_to_larger_arr"><code class="docutils literal notranslate"><span class="pre">extrapolate_to_larger_arr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.get_change_points_x"><code class="docutils literal notranslate"><span class="pre">get_change_points_x()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.memory_clear"><code class="docutils literal notranslate"><span class="pre">memory_clear()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.moving_avg"><code class="docutils literal notranslate"><span class="pre">moving_avg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.hybrid_jp.html#src.hybrid_jp.shock.shock_and_changes"><code class="docutils literal notranslate"><span class="pre">shock_and_changes()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src.hybrid_jp.html#module-src.hybrid_jp">Module contents</a></li>
@@ -385,27 +445,15 @@ document.write(`
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="scripts.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">scripts package</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="src.hybrid_jp.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">src.hybrid_jp package</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -430,7 +478,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -460,7 +508,7 @@ By James Plank
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -469,8 +517,8 @@ By James Plank
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

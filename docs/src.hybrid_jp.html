@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>src.hybrid_jp package &#8212; eopch-cheats</title>
+    <title>src.hybrid_jp package &#8212; hybrid-jp</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -33,8 +33,8 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
@@ -44,7 +44,7 @@
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="src package" href="src.html" />
+    <link rel="prev" title="hybrid_jp" href="hybrid_jp.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -129,12 +129,8 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">hybrid-sim-ilg</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="scripts.html">scripts package</a></li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="src.html">src package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">src.hybrid_jp package</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="hybrid_jp.html">hybrid_jp</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">src.hybrid_jp package</a></li>
 </ul>
 </li>
 </ul>
@@ -180,7 +176,7 @@
 <div class="article-header-buttons">
 
 
-<a href="https://github.com/jmsplank/epoch-cheats" target="_blank"
+<a href="https://github.com/jmsplank/hybrid-jp" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
    data-bs-placement="bottom" data-bs-toggle="tooltip"
@@ -301,49 +297,115 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.arrays">src.hybrid_jp.arrays module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.df_to_rows_array"><code class="docutils literal notranslate"><span class="pre">df_to_rows_array()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.interpolate_to_midpoints"><code class="docutils literal notranslate"><span class="pre">interpolate_to_midpoints()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.mov_avg"><code class="docutils literal notranslate"><span class="pre">mov_avg()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.trim_var"><code class="docutils literal notranslate"><span class="pre">trim_var()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.trim_vars"><code class="docutils literal notranslate"><span class="pre">trim_vars()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.change_points">src.hybrid_jp.change_points module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.change_points.binseg"><code class="docutils literal notranslate"><span class="pre">binseg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.change_points.find_shock_index_from_gradnd"><code class="docutils literal notranslate"><span class="pre">find_shock_index_from_gradnd()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.dtypes">src.hybrid_jp.dtypes module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer"><code class="docutils literal notranslate"><span class="pre">BaseContainer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.all"><code class="docutils literal notranslate"><span class="pre">BaseContainer.all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.is_2d"><code class="docutils literal notranslate"><span class="pre">BaseContainer.is_2d()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.mean_over_axis"><code class="docutils literal notranslate"><span class="pre">BaseContainer.mean_over_axis()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.mean_over_y"><code class="docutils literal notranslate"><span class="pre">BaseContainer.mean_over_y()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.slice_x"><code class="docutils literal notranslate"><span class="pre">BaseContainer.slice_x()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current"><code class="docutils literal notranslate"><span class="pre">Current</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current.all"><code class="docutils literal notranslate"><span class="pre">Current.all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current.jx"><code class="docutils literal notranslate"><span class="pre">Current.jx</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current.jy"><code class="docutils literal notranslate"><span class="pre">Current.jy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current.jz"><code class="docutils literal notranslate"><span class="pre">Current.jz</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec"><code class="docutils literal notranslate"><span class="pre">Elec</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec.all"><code class="docutils literal notranslate"><span class="pre">Elec.all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec.ex"><code class="docutils literal notranslate"><span class="pre">Elec.ex</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec.ey"><code class="docutils literal notranslate"><span class="pre">Elec.ey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec.ez"><code class="docutils literal notranslate"><span class="pre">Elec.ez</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid"><code class="docutils literal notranslate"><span class="pre">Grid</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid.all"><code class="docutils literal notranslate"><span class="pre">Grid.all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid.shape"><code class="docutils literal notranslate"><span class="pre">Grid.shape</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid.x"><code class="docutils literal notranslate"><span class="pre">Grid.x</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid.y"><code class="docutils literal notranslate"><span class="pre">Grid.y</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag"><code class="docutils literal notranslate"><span class="pre">Mag</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.all"><code class="docutils literal notranslate"><span class="pre">Mag.all</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.bx"><code class="docutils literal notranslate"><span class="pre">Mag.bx</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.by"><code class="docutils literal notranslate"><span class="pre">Mag.by</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.bz"><code class="docutils literal notranslate"><span class="pre">Mag.bz</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.is_2d"><code class="docutils literal notranslate"><span class="pre">Mag.is_2d()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.mean_over_y"><code class="docutils literal notranslate"><span class="pre">Mag.mean_over_y()</span></code></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.plot_labels">src.hybrid_jp.plot_labels module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.plot_labels.Label"><code class="docutils literal notranslate"><span class="pre">Label</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.plot_labels.Label.ND"><code class="docutils literal notranslate"><span class="pre">Label.ND</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.plot_labels.Label.X"><code class="docutils literal notranslate"><span class="pre">Label.X</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.plot_labels.make_label"><code class="docutils literal notranslate"><span class="pre">make_label()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.sdf_files">src.hybrid_jp.sdf_files module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF"><code class="docutils literal notranslate"><span class="pre">SDF</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.current"><code class="docutils literal notranslate"><span class="pre">SDF.current</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.elec"><code class="docutils literal notranslate"><span class="pre">SDF.elec</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.grid"><code class="docutils literal notranslate"><span class="pre">SDF.grid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.mag"><code class="docutils literal notranslate"><span class="pre">SDF.mag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.mid_grid"><code class="docutils literal notranslate"><span class="pre">SDF.mid_grid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.numberdensity"><code class="docutils literal notranslate"><span class="pre">SDF.numberdensity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.temperature"><code class="docutils literal notranslate"><span class="pre">SDF.temperature</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.data_to_df"><code class="docutils literal notranslate"><span class="pre">data_to_df()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.extract_vars"><code class="docutils literal notranslate"><span class="pre">extract_vars()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_current"><code class="docutils literal notranslate"><span class="pre">get_current()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_elec"><code class="docutils literal notranslate"><span class="pre">get_elec()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_grid"><code class="docutils literal notranslate"><span class="pre">get_grid()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_mag"><code class="docutils literal notranslate"><span class="pre">get_mag()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.list_variables"><code class="docutils literal notranslate"><span class="pre">list_variables()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.load_sdf_verified"><code class="docutils literal notranslate"><span class="pre">load_sdf_verified()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.print_variables"><code class="docutils literal notranslate"><span class="pre">print_variables()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.reduce_to_1d"><code class="docutils literal notranslate"><span class="pre">reduce_to_1d()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.save_csv"><code class="docutils literal notranslate"><span class="pre">save_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.shock">src.hybrid_jp.shock module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePoints"><code class="docutils literal notranslate"><span class="pre">ChangePoints</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePoints.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePoints.change_points</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePoints.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePoints.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePointsXResult"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePointsXResult.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.change_points</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePointsXResult.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult.end_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.end_STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult.shock"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.shock</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult.start_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.start_STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult.t"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock"><code class="docutils literal notranslate"><span class="pre">Shock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.boundary_buffer"><code class="docutils literal notranslate"><span class="pre">Shock.boundary_buffer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.deck"><code class="docutils literal notranslate"><span class="pre">Shock.deck</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.grid"><code class="docutils literal notranslate"><span class="pre">Shock.grid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.mid_grid"><code class="docutils literal notranslate"><span class="pre">Shock.mid_grid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.sdfs"><code class="docutils literal notranslate"><span class="pre">Shock.sdfs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.skip"><code class="docutils literal notranslate"><span class="pre">Shock.skip</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.t"><code class="docutils literal notranslate"><span class="pre">Shock.t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.extrapolate_to_larger_arr"><code class="docutils literal notranslate"><span class="pre">extrapolate_to_larger_arr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.get_change_points_x"><code class="docutils literal notranslate"><span class="pre">get_change_points_x()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.memory_clear"><code class="docutils literal notranslate"><span class="pre">memory_clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.moving_avg"><code class="docutils literal notranslate"><span class="pre">moving_avg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.shock_and_changes"><code class="docutils literal notranslate"><span class="pre">shock_and_changes()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp">Module contents</a></li>
@@ -379,6 +441,47 @@ document.write(`
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>2d array of data</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.arrays.interpolate_to_midpoints">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.arrays.</span></span><span class="sig-name descname"><span class="pre">interpolate_to_midpoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/arrays.html#interpolate_to_midpoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.arrays.interpolate_to_midpoints" title="Permalink to this definition">#</a></dt>
+<dd><p>Interpolate to midpoints.</p>
+<p>returns an array of length len(arr) - width + 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arr</strong> (<em>np.ndarray</em>) – array to interpolate.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – width of moving average.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>interpolated array.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.arrays.mov_avg">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.arrays.</span></span><span class="sig-name descname"><span class="pre">mov_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/arrays.html#mov_avg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.arrays.mov_avg" title="Permalink to this definition">#</a></dt>
+<dd><p>Perform a moving average.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>np.ndarray</em>) – data to perform moving average on.</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – width of moving average.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>moving average of data. length is len(data) - width + 1.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.ndarray</p>
@@ -455,14 +558,174 @@ document.write(`
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.change_points.find_shock_index_from_gradnd">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.change_points.</span></span><span class="sig-name descname"><span class="pre">find_shock_index_from_gradnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gradnd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/change_points.html#find_shock_index_from_gradnd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.change_points.find_shock_index_from_gradnd" title="Permalink to this definition">#</a></dt>
+<dd><p>Find the index of the shock from gradient of the number density.</p>
+<ul class="simple">
+<li><p>If gradnd is 2d then find the peak of the mean.</p></li>
+<li><p>Assume the shock is located at the peak of grad nd</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gradnd</strong> (<em>np.ndarray</em>) – gradient of the number density.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>index of the shock.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-src.hybrid_jp.dtypes">
 <span id="src-hybrid-jp-dtypes-module"></span><h2>src.hybrid_jp.dtypes module<a class="headerlink" href="#module-src.hybrid_jp.dtypes" title="Permalink to this heading">#</a></h2>
 <p>Base data types for the hybrid_jp.</p>
 <dl class="py class">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.BaseContainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.dtypes.</span></span><span class="sig-name descname"><span class="pre">BaseContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#BaseContainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.BaseContainer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code></p>
+<p>Base container for parameters.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.BaseContainer.all">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.BaseContainer.all" title="Permalink to this definition">#</a></dt>
+<dd><p>Return all parameters as a dict.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.BaseContainer.is_2d">
+<span class="sig-name descname"><span class="pre">is_2d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#BaseContainer.is_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.BaseContainer.is_2d" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if all components are 2D arrays.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if all components are 2D arrays.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.BaseContainer.mean_over_axis">
+<span class="sig-name descname"><span class="pre">mean_over_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BaseChild</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#BaseContainer.mean_over_axis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.BaseContainer.mean_over_axis" title="Permalink to this definition">#</a></dt>
+<dd><p>Take the mean over the specified axis in a 2d array.</p>
+<p>axis=0: mean over x
+axis=1: mean over y</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>axis</strong> (<em>int</em>) – Axis to take the mean over.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – All components must be 2D arrays.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.BaseContainer.mean_over_y">
+<span class="sig-name descname"><span class="pre">mean_over_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BaseChild</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#BaseContainer.mean_over_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.BaseContainer.mean_over_y" title="Permalink to this definition">#</a></dt>
+<dd><p>Take the mean over the y axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Magnetic field components with the mean taken over the y axis.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag">Mag</a></p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – All components must be 2D arrays.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.BaseContainer.slice_x">
+<span class="sig-name descname"><span class="pre">slice_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">BaseChild</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#BaseContainer.slice_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.BaseContainer.slice_x" title="Permalink to this definition">#</a></dt>
+<dd><p>Slice in the x direction.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Current">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.dtypes.</span></span><span class="sig-name descname"><span class="pre">Current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#Current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.Current" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#src.hybrid_jp.dtypes.BaseContainer" title="src.hybrid_jp.dtypes.BaseContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseContainer</span></code></a></p>
+<p>Current components.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Current.all">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Current.all" title="Permalink to this definition">#</a></dt>
+<dd><p>All currents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>‘jx’|’jy’|’jz’, (x, y)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, npt.NDArray[np.float64]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Current.jx">
+<span class="sig-name descname"><span class="pre">jx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Current.jx" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Current.jy">
+<span class="sig-name descname"><span class="pre">jy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Current.jy" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Current.jz">
+<span class="sig-name descname"><span class="pre">jz</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Current.jz" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Elec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.dtypes.</span></span><span class="sig-name descname"><span class="pre">Elec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ex</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ey</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ez</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#Elec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.Elec" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#src.hybrid_jp.dtypes.BaseContainer" title="src.hybrid_jp.dtypes.BaseContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseContainer</span></code></a></p>
+<p>Electric field components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ex</strong> (<em>np.ndarray</em>) – x component of electric field.</p></li>
+<li><p><strong>ey</strong> (<em>np.ndarray</em>) – y component of electric field.</p></li>
+<li><p><strong>ez</strong> (<em>np.ndarray</em>) – z component of electric field.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Elec.all">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Elec.all" title="Permalink to this definition">#</a></dt>
+<dd><p>All parameters as a dict.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Elec.ex">
+<span class="sig-name descname"><span class="pre">ex</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Elec.ex" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Elec.ey">
+<span class="sig-name descname"><span class="pre">ey</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Elec.ey" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Elec.ez">
+<span class="sig-name descname"><span class="pre">ez</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Elec.ez" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Grid">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.dtypes.</span></span><span class="sig-name descname"><span class="pre">Grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#Grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.Grid" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">NamedTuple</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#src.hybrid_jp.dtypes.BaseContainer" title="src.hybrid_jp.dtypes.BaseContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseContainer</span></code></a></p>
 <p>Simulation grid.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -476,24 +739,34 @@ document.write(`
 </ul>
 </dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Grid.all">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Grid.all" title="Permalink to this definition">#</a></dt>
+<dd><p>All parameters as a dict.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Grid.shape">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Grid.shape" title="Permalink to this definition">#</a></dt>
+<dd><p>Shape of the grid (nx, ny).</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Grid.x">
 <span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Grid.x" title="Permalink to this definition">#</a></dt>
-<dd><p>Alias for field number 0</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Grid.y">
 <span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Grid.y" title="Permalink to this definition">#</a></dt>
-<dd><p>Alias for field number 1</p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Mag">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.dtypes.</span></span><span class="sig-name descname"><span class="pre">Mag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#Mag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.Mag" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">NamedTuple</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#src.hybrid_jp.dtypes.BaseContainer" title="src.hybrid_jp.dtypes.BaseContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseContainer</span></code></a></p>
 <p>Magnetic field components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -504,105 +777,75 @@ document.write(`
 </ul>
 </dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Mag.all">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Mag.all" title="Permalink to this definition">#</a></dt>
+<dd><p>All parameters as a dict.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Mag.bx">
 <span class="sig-name descname"><span class="pre">bx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Mag.bx" title="Permalink to this definition">#</a></dt>
-<dd><p>Alias for field number 0</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Mag.by">
 <span class="sig-name descname"><span class="pre">by</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Mag.by" title="Permalink to this definition">#</a></dt>
-<dd><p>Alias for field number 1</p>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Mag.bz">
 <span class="sig-name descname"><span class="pre">bz</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.dtypes.Mag.bz" title="Permalink to this definition">#</a></dt>
-<dd><p>Alias for field number 2</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Mag.is_2d">
-<span class="sig-name descname"><span class="pre">is_2d</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#Mag.is_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.Mag.is_2d" title="Permalink to this definition">#</a></dt>
-<dd><p>Check if all components are 2D arrays.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>True if all components are 2D arrays.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>bool</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.hybrid_jp.dtypes.Mag.mean_over_y">
-<span class="sig-name descname"><span class="pre">mean_over_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/dtypes.html#Mag.mean_over_y"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.dtypes.Mag.mean_over_y" title="Permalink to this definition">#</a></dt>
-<dd><p>Take the mean over the y axis.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mag</strong> (<a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><em>Mag</em></a>) – Magnetic field components.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Magnetic field components with the mean taken over the y axis.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag">Mag</a></p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – All components must be 2D arrays.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-src.hybrid_jp.plot_labels">
-<span id="src-hybrid-jp-plot-labels-module"></span><h2>src.hybrid_jp.plot_labels module<a class="headerlink" href="#module-src.hybrid_jp.plot_labels" title="Permalink to this heading">#</a></h2>
-<p>Labels to use when plotting variables.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="src.hybrid_jp.plot_labels.Label">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.plot_labels.</span></span><span class="sig-name descname"><span class="pre">Label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/plot_labels.html#Label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.plot_labels.Label" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>Variable name labels.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.hybrid_jp.plot_labels.Label.ND">
-<span class="sig-name descname"><span class="pre">ND</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ND'</span></em><a class="headerlink" href="#src.hybrid_jp.plot_labels.Label.ND" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.hybrid_jp.plot_labels.Label.X">
-<span class="sig-name descname"><span class="pre">X</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'X'</span></em><a class="headerlink" href="#src.hybrid_jp.plot_labels.Label.X" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.hybrid_jp.plot_labels.make_label">
-<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.plot_labels.</span></span><span class="sig-name descname"><span class="pre">make_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.plot_labels.Label" title="src.hybrid_jp.plot_labels.Label"><span class="pre">Label</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">si</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/plot_labels.html#make_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.plot_labels.make_label" title="Permalink to this definition">#</a></dt>
-<dd><p>Make a label for a variable.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>var</strong> (<a class="reference internal" href="#src.hybrid_jp.plot_labels.Label" title="src.hybrid_jp.plot_labels.Label"><em>Label</em></a>) – Variable to make a label for.</p></li>
-<li><p><strong>si</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to use SI units. Defaults to True.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Label for the variable.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
 </dd></dl>
 
 </section>
 <section id="module-src.hybrid_jp.sdf_files">
 <span id="src-hybrid-jp-sdf-files-module"></span><h2>src.hybrid_jp.sdf_files module<a class="headerlink" href="#module-src.hybrid_jp.sdf_files" title="Permalink to this heading">#</a></h2>
 <p>Functions that interact with sdf_helper objects.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">SDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">elec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Elec" title="src.hybrid_jp.dtypes.Elec"><span class="pre">Elec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Current" title="src.hybrid_jp.dtypes.Current"><span class="pre">Current</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">numberdensity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#SDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Representation of .sdf file.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.current">
+<span class="sig-name descname"><span class="pre">current</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.hybrid_jp.dtypes.Current" title="src.hybrid_jp.dtypes.Current"><span class="pre">Current</span></a></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.current" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.elec">
+<span class="sig-name descname"><span class="pre">elec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.hybrid_jp.dtypes.Elec" title="src.hybrid_jp.dtypes.Elec"><span class="pre">Elec</span></a></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.elec" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.grid">
+<span class="sig-name descname"><span class="pre">grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.grid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.mag">
+<span class="sig-name descname"><span class="pre">mag</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.mag" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.mid_grid">
+<span class="sig-name descname"><span class="pre">mid_grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.mid_grid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.numberdensity">
+<span class="sig-name descname"><span class="pre">numberdensity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.numberdensity" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.temperature">
+<span class="sig-name descname"><span class="pre">temperature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.temperature" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.data_to_df">
 <span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">data_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#data_to_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.data_to_df" title="Permalink to this definition">#</a></dt>
@@ -641,8 +884,56 @@ document.write(`
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.get_current">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">get_current</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BlockList</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.dtypes.Current" title="src.hybrid_jp.dtypes.Current"><span class="pre">Current</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#get_current"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.get_current" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the electric field of an sdf_helper object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>sdf_helper</em>) – sdf data object to get electric field of.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elec namedtuple of x, y, and z electric field values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#src.hybrid_jp.dtypes.Elec" title="src.hybrid_jp.dtypes.Elec">Elec</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_elec</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">Elec(x=array([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00, ...,]],</span>
+<span class="go">    y=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]],</span>
+<span class="go">    z=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.get_elec">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">get_elec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BlockList</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.dtypes.Elec" title="src.hybrid_jp.dtypes.Elec"><span class="pre">Elec</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#get_elec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.get_elec" title="Permalink to this definition">#</a></dt>
+<dd><p>Get the electric field of an sdf_helper object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>sdf_helper</em>) – sdf data object to get electric field of.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Elec namedtuple of x, y, and z electric field values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#src.hybrid_jp.dtypes.Elec" title="src.hybrid_jp.dtypes.Elec">Elec</a></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_elec</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">Elec(x=array([[ 0.00000000e+00,  0.00000000e+00,  0.00000000e+00, ...,]],</span>
+<span class="go">    y=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]],</span>
+<span class="go">    z=array([[ 0.00000000e+00,  1.00000000e-16,  2.00000000e-16, ...,]]))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.get_grid">
-<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">get_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#get_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.get_grid" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">get_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BlockList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#get_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.get_grid" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the grid of an sdf_helper object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -670,7 +961,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.get_mag">
-<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">get_mag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#get_mag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.get_mag" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">get_mag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BlockList</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#get_mag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.get_mag" title="Permalink to this definition">#</a></dt>
 <dd><p>Get the magnetic field of an sdf_helper object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -694,7 +985,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.list_variables">
-<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">list_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#list_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.list_variables" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">list_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BlockList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#list_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.list_variables" title="Permalink to this definition">#</a></dt>
 <dd><p>List variables in an sdf_helper object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -755,8 +1046,14 @@ document.write(`
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.load_sdf_verified">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">load_sdf_verified</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_sdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.sdf_files.SDF" title="src.hybrid_jp.sdf_files.SDF"><span class="pre">SDF</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#load_sdf_verified"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.load_sdf_verified" title="Permalink to this definition">#</a></dt>
+<dd><p>Load an sdf into SDF class.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.print_variables">
-<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">print_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#print_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.print_variables" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">print_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BlockList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#print_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.print_variables" title="Permalink to this definition">#</a></dt>
 <dd><p>Print variables in an sdf_helper object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -808,6 +1105,157 @@ document.write(`
 </dd></dl>
 
 </section>
+<section id="module-src.hybrid_jp.shock">
+<span id="src-hybrid-jp-shock-module"></span><h2>src.hybrid_jp.shock module<a class="headerlink" href="#module-src.hybrid_jp.shock" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.ChangePoints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">ChangePoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'list[int]'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'list[list[int]]'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#ChangePoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.ChangePoints" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.ChangePoints.change_points">
+<span class="sig-name descname"><span class="pre">change_points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.shock.ChangePoints.change_points" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.ChangePoints.shock_index">
+<span class="sig-name descname"><span class="pre">shock_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.shock.ChangePoints.shock_index" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.ChangePointsXResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">ChangePointsXResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'int'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'list[int]'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#ChangePointsXResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.ChangePointsXResult" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.ChangePointsXResult.change_points">
+<span class="sig-name descname"><span class="pre">change_points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.shock.ChangePointsXResult.change_points" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.ChangePointsXResult.shock_index">
+<span class="sig-name descname"><span class="pre">shock_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.hybrid_jp.shock.ChangePointsXResult.shock_index" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.MovingAvgResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">MovingAvgResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'np.ndarray'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'np.ndarray'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_STR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'np.ndarray'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_STR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'np.ndarray'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#MovingAvgResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.MovingAvgResult" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.MovingAvgResult.end_STR">
+<span class="sig-name descname"><span class="pre">end_STR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.shock.MovingAvgResult.end_STR" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.MovingAvgResult.shock">
+<span class="sig-name descname"><span class="pre">shock</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.shock.MovingAvgResult.shock" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.MovingAvgResult.start_STR">
+<span class="sig-name descname"><span class="pre">start_STR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.shock.MovingAvgResult.start_STR" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.MovingAvgResult.t">
+<span class="sig-name descname"><span class="pre">t</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.shock.MovingAvgResult.t" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.Shock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">Shock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdfs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'list[Path]'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'int'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary_buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'int'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Grid'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Grid'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deck</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Deck'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#Shock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.Shock" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.Shock.boundary_buffer">
+<span class="sig-name descname"><span class="pre">boundary_buffer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.hybrid_jp.shock.Shock.boundary_buffer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.Shock.deck">
+<span class="sig-name descname"><span class="pre">deck</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Deck</span></em><a class="headerlink" href="#src.hybrid_jp.shock.Shock.deck" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.Shock.grid">
+<span class="sig-name descname"><span class="pre">grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></em><a class="headerlink" href="#src.hybrid_jp.shock.Shock.grid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.Shock.mid_grid">
+<span class="sig-name descname"><span class="pre">mid_grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></em><a class="headerlink" href="#src.hybrid_jp.shock.Shock.mid_grid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.Shock.sdfs">
+<span class="sig-name descname"><span class="pre">sdfs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#src.hybrid_jp.shock.Shock.sdfs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.Shock.skip">
+<span class="sig-name descname"><span class="pre">skip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.hybrid_jp.shock.Shock.skip" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.Shock.t">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">t</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.shock.Shock.t" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.extrapolate_to_larger_arr">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">extrapolate_to_larger_arr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">changes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.shock.MovingAvgResult" title="src.hybrid_jp.shock.MovingAvgResult"><span class="pre">MovingAvgResult</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.shock.MovingAvgResult" title="src.hybrid_jp.shock.MovingAvgResult"><span class="pre">MovingAvgResult</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#extrapolate_to_larger_arr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.extrapolate_to_larger_arr" title="Permalink to this definition">#</a></dt>
+<dd><p>Remap the changes to the original time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>since bounds of original_t are necessarily outside of changes.t, the values are extrapolated.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>original_t</strong> (<em>np.ndarray</em>) – original time.</p></li>
+<li><p><strong>changes</strong> (<em>MovingAverageResult</em>) – changes to remap.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>remapped changes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MovingAverageResult</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.get_change_points_x">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">get_change_points_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_sdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">slice</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.shock.ChangePointsXResult" title="src.hybrid_jp.shock.ChangePointsXResult"><span class="pre">ChangePointsXResult</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#get_change_points_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.get_change_points_x" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.load">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_at_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.shock.Shock" title="src.hybrid_jp.shock.Shock"><span class="pre">Shock</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.load" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.memory_clear">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">memory_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#memory_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.memory_clear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.moving_avg">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">moving_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.shock.Shock" title="src.hybrid_jp.shock.Shock"><span class="pre">Shock</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">changes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.shock.ChangePoints" title="src.hybrid_jp.shock.ChangePoints"><span class="pre">ChangePoints</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#src.hybrid_jp.shock.MovingAvgResult" title="src.hybrid_jp.shock.MovingAvgResult"><span class="pre">MovingAvgResult</span></a></span></span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#moving_avg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.moving_avg" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.shock.shock_and_changes">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">shock_and_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.shock.Shock" title="src.hybrid_jp.shock.Shock"><span class="pre">Shock</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">slice</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/shock.html#shock_and_changes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.shock.shock_and_changes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
 <section id="module-src.hybrid_jp">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.hybrid_jp" title="Permalink to this heading">#</a></h2>
 <p>Base module for hybrid_jp.</p>
@@ -821,18 +1269,24 @@ document.write(`
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="src.html"
+       href="hybrid_jp.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">src package</p>
+        <p class="prev-next-title">hybrid_jp</p>
       </div>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -850,49 +1304,115 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.arrays">src.hybrid_jp.arrays module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.df_to_rows_array"><code class="docutils literal notranslate"><span class="pre">df_to_rows_array()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.interpolate_to_midpoints"><code class="docutils literal notranslate"><span class="pre">interpolate_to_midpoints()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.mov_avg"><code class="docutils literal notranslate"><span class="pre">mov_avg()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.trim_var"><code class="docutils literal notranslate"><span class="pre">trim_var()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.arrays.trim_vars"><code class="docutils literal notranslate"><span class="pre">trim_vars()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.change_points">src.hybrid_jp.change_points module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.change_points.binseg"><code class="docutils literal notranslate"><span class="pre">binseg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.change_points.find_shock_index_from_gradnd"><code class="docutils literal notranslate"><span class="pre">find_shock_index_from_gradnd()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.dtypes">src.hybrid_jp.dtypes module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer"><code class="docutils literal notranslate"><span class="pre">BaseContainer</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.all"><code class="docutils literal notranslate"><span class="pre">BaseContainer.all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.is_2d"><code class="docutils literal notranslate"><span class="pre">BaseContainer.is_2d()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.mean_over_axis"><code class="docutils literal notranslate"><span class="pre">BaseContainer.mean_over_axis()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.mean_over_y"><code class="docutils literal notranslate"><span class="pre">BaseContainer.mean_over_y()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.BaseContainer.slice_x"><code class="docutils literal notranslate"><span class="pre">BaseContainer.slice_x()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current"><code class="docutils literal notranslate"><span class="pre">Current</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current.all"><code class="docutils literal notranslate"><span class="pre">Current.all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current.jx"><code class="docutils literal notranslate"><span class="pre">Current.jx</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current.jy"><code class="docutils literal notranslate"><span class="pre">Current.jy</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Current.jz"><code class="docutils literal notranslate"><span class="pre">Current.jz</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec"><code class="docutils literal notranslate"><span class="pre">Elec</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec.all"><code class="docutils literal notranslate"><span class="pre">Elec.all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec.ex"><code class="docutils literal notranslate"><span class="pre">Elec.ex</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec.ey"><code class="docutils literal notranslate"><span class="pre">Elec.ey</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Elec.ez"><code class="docutils literal notranslate"><span class="pre">Elec.ez</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid"><code class="docutils literal notranslate"><span class="pre">Grid</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid.all"><code class="docutils literal notranslate"><span class="pre">Grid.all</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid.shape"><code class="docutils literal notranslate"><span class="pre">Grid.shape</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid.x"><code class="docutils literal notranslate"><span class="pre">Grid.x</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Grid.y"><code class="docutils literal notranslate"><span class="pre">Grid.y</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag"><code class="docutils literal notranslate"><span class="pre">Mag</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.all"><code class="docutils literal notranslate"><span class="pre">Mag.all</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.bx"><code class="docutils literal notranslate"><span class="pre">Mag.bx</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.by"><code class="docutils literal notranslate"><span class="pre">Mag.by</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.bz"><code class="docutils literal notranslate"><span class="pre">Mag.bz</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.is_2d"><code class="docutils literal notranslate"><span class="pre">Mag.is_2d()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.dtypes.Mag.mean_over_y"><code class="docutils literal notranslate"><span class="pre">Mag.mean_over_y()</span></code></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.plot_labels">src.hybrid_jp.plot_labels module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.plot_labels.Label"><code class="docutils literal notranslate"><span class="pre">Label</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.plot_labels.Label.ND"><code class="docutils literal notranslate"><span class="pre">Label.ND</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.plot_labels.Label.X"><code class="docutils literal notranslate"><span class="pre">Label.X</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.plot_labels.make_label"><code class="docutils literal notranslate"><span class="pre">make_label()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.sdf_files">src.hybrid_jp.sdf_files module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF"><code class="docutils literal notranslate"><span class="pre">SDF</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.current"><code class="docutils literal notranslate"><span class="pre">SDF.current</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.elec"><code class="docutils literal notranslate"><span class="pre">SDF.elec</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.grid"><code class="docutils literal notranslate"><span class="pre">SDF.grid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.mag"><code class="docutils literal notranslate"><span class="pre">SDF.mag</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.mid_grid"><code class="docutils literal notranslate"><span class="pre">SDF.mid_grid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.numberdensity"><code class="docutils literal notranslate"><span class="pre">SDF.numberdensity</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.temperature"><code class="docutils literal notranslate"><span class="pre">SDF.temperature</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.data_to_df"><code class="docutils literal notranslate"><span class="pre">data_to_df()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.extract_vars"><code class="docutils literal notranslate"><span class="pre">extract_vars()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_current"><code class="docutils literal notranslate"><span class="pre">get_current()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_elec"><code class="docutils literal notranslate"><span class="pre">get_elec()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_grid"><code class="docutils literal notranslate"><span class="pre">get_grid()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_mag"><code class="docutils literal notranslate"><span class="pre">get_mag()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.list_variables"><code class="docutils literal notranslate"><span class="pre">list_variables()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.load_sdf_verified"><code class="docutils literal notranslate"><span class="pre">load_sdf_verified()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.print_variables"><code class="docutils literal notranslate"><span class="pre">print_variables()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.reduce_to_1d"><code class="docutils literal notranslate"><span class="pre">reduce_to_1d()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.save_csv"><code class="docutils literal notranslate"><span class="pre">save_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp.shock">src.hybrid_jp.shock module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePoints"><code class="docutils literal notranslate"><span class="pre">ChangePoints</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePoints.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePoints.change_points</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePoints.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePoints.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePointsXResult"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePointsXResult.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.change_points</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.ChangePointsXResult.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult.end_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.end_STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult.shock"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.shock</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult.start_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.start_STR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.MovingAvgResult.t"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock"><code class="docutils literal notranslate"><span class="pre">Shock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.boundary_buffer"><code class="docutils literal notranslate"><span class="pre">Shock.boundary_buffer</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.deck"><code class="docutils literal notranslate"><span class="pre">Shock.deck</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.grid"><code class="docutils literal notranslate"><span class="pre">Shock.grid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.mid_grid"><code class="docutils literal notranslate"><span class="pre">Shock.mid_grid</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.sdfs"><code class="docutils literal notranslate"><span class="pre">Shock.sdfs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.skip"><code class="docutils literal notranslate"><span class="pre">Shock.skip</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.Shock.t"><code class="docutils literal notranslate"><span class="pre">Shock.t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.extrapolate_to_larger_arr"><code class="docutils literal notranslate"><span class="pre">extrapolate_to_larger_arr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.get_change_points_x"><code class="docutils literal notranslate"><span class="pre">get_change_points_x()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.memory_clear"><code class="docutils literal notranslate"><span class="pre">memory_clear()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.moving_avg"><code class="docutils literal notranslate"><span class="pre">moving_avg()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.shock.shock_and_changes"><code class="docutils literal notranslate"><span class="pre">shock_and_changes()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-src.hybrid_jp">Module contents</a></li>
@@ -904,7 +1424,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -934,7 +1454,7 @@ By James Plank
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -943,8 +1463,8 @@ By James Plank
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

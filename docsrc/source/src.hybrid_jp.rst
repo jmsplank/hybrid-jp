@@ -28,18 +28,18 @@ src.hybrid\_jp.dtypes module
    :undoc-members:
    :show-inheritance:
 
-src.hybrid\_jp.plot\_labels module
-----------------------------------
-
-.. automodule:: src.hybrid_jp.plot_labels
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 src.hybrid\_jp.sdf\_files module
 --------------------------------
 
 .. automodule:: src.hybrid_jp.sdf_files
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+src.hybrid\_jp.shock module
+---------------------------
+
+.. automodule:: src.hybrid_jp.shock
    :members:
    :undoc-members:
    :show-inheritance:

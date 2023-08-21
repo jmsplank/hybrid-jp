@@ -27,3 +27,15 @@
 1. Install with brew
 
     ```brew install ffmpeg```
+
+### (optional) Dev dependencies
+
+1. Sphinx Documentation
+
+    ```shell
+    pip install sphinx sphinx-book-theme
+    ```
+
+2. Run the `make_docs.sh` command
+
+    `./make_docs.sh`
