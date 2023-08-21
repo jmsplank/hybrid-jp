@@ -16,3 +16,5 @@ docsrc/build
 .vscode
 .coverage
 htmlcov
+*.html
+*.mp4
