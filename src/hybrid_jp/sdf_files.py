@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import sdf_helper as sh
 from sdf import BlockList
+from typing import Iterator
 
 from .dtypes import Current, Elec, Grid, Mag
 
@@ -47,6 +48,7 @@ class SDF:
     current: Current
     numberdensity: np.ndarray
     temperature: np.ndarray
+    tstamp: float | None = None  # Optional bc comes from .deck not .sdf
 
 
 def load_sdf_verified(path_to_sdf: Path) -> SDF:
@@ -287,3 +289,28 @@ def get_current(data: BlockList) -> Current:
         jy=data.Current_Jy.data,
         jz=data.Current_Jz.data,
     )
+
+
+def filefinder(dir: Path, start: int, stop: int) -> Iterator[Path]:
+    """Returns next sdf file in dir.
+
+    Note:
+        SDFs are named as 0000.sdf, 0001.sdf, etc. i.e. 0 padded 4 digit integers.
+
+    Args:
+        dir (Path): directory to search
+        start (int): start file number
+        stop (int): stop file number
+
+    Yields:
+        Iterator[Path]: next sdf file in dir
+
+    Example:
+        >>> dir = Path("data")
+        >>> for file in filefinder(dir, 0, 10):
+        ...     print(file)
+        dir/0000.sdf
+        dir/0001.sdf
+        ...
+    """
+    yield from (dir / f"{i:04d}.sdf" for i in range(start, stop + 1))

@@ -18,6 +18,7 @@ setup(
         "tqdm",
         "pandas",
         "joblib",
+        "statsmodels",
     ],
     entry_points={
         "console_scripts": [
