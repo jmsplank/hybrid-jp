@@ -17,7 +17,9 @@ from pathlib import Path
 from multiprocessing import Pool, set_start_method
 from hybrid_jp.sdf_files import SDF, load_sdf_verified, filefinder
 from tqdm import tqdm
-from matplotlib.ticker import MultipleLocator, LogLocator, LogFormatterSciNotation
+from matplotlib.ticker import MultipleLocator
+from matplotlib.gridspec import GridSpec
+import matplotlib
 
 # %%
 # CONSTS
@@ -114,7 +116,7 @@ plt.show()
 # %%
 # Split the data into chunks
 
-chunk_x_ideal = 45  # di
+chunk_x_ideal = 30  # di
 chunk_i = int(chunk_x_ideal / dx)
 chunk_x = chunk_i * dx
 n_chunks = int(dist_x.shape[0] // chunk_i)
@@ -242,7 +244,6 @@ def get_chunk_at_t(
 
     start = chunk_start[t_n] + valid_chunks[:chunk_n, t_n].sum() * chunk_w
     end = start + chunk_w
-    print(f"[{start}:{end}] {chunk_n} -> {valid_chunks[: chunk_n + 1, t_n].sum()}")
     return arr[t_n, start:end, :]
 
 
@@ -271,6 +272,7 @@ ax.set_yscale("log")
 ax.set_aspect("equal")
 ax.set_xlabel("$k_x$ $d_i^{-1}$")
 ax.set_ylabel("$k_y$ $d_i^{-1}$")
+ax.set_title("Power for one chunk at one time")
 
 ax.grid(False)
 
@@ -311,6 +313,7 @@ ax.set_xscale("log")
 ax.set_yscale("log")
 ax.set_xlabel("$k$ $d_i^{-1}$")
 ax.set_ylabel("$P(k)$")
+ax.set_title("Integration over $k_x$ and $k_y$")
 
 
 fig.tight_layout()
@@ -343,6 +346,7 @@ ax.set_xscale("log")
 ax.set_yscale("log")
 ax.set_xlabel("$k$ $d_i^{-1}$")
 ax.set_ylabel("$P(k)$")
+ax.set_title("Mean over all times for one chunk")
 
 fig.tight_layout()
 plt.show()
@@ -383,7 +387,6 @@ def power_in_chunk(
     chunk_all_times = np.empty((n_r_bins, valid_times.size))
     for i in range(valid_times.size):
         chunk_data = f_chunk_data(chunk_n=chunk, t_n=valid_times[i])
-        print(f"t={valid_times[i]} c={chunk} -> {chunk_data.shape=}")
         _, _, Pxy = f_power(chunk_data)
         chunk_all_times[:, i] = f_mean_in_bin(arr=Pxy)
 
@@ -404,18 +407,93 @@ for chunk in tqdm(chunks):
     out.append(f_chunk_power(chunk))
 
 # %%
-from matplotlib import cm as mpl_cm
 
-fig, ax = plt.subplots()
+fig = plt.figure()
+gs = GridSpec(2, 2, width_ratios=[98, 2])
+ax = fig.add_subplot(gs[:, 0])
+cbar_post = fig.add_subplot(gs[0, 1])
+cbar_pre = fig.add_subplot(gs[1, 1])
 
 shock_chunk = np.argmin(np.abs(x_crop)) // chunk_i
 vmax = max(shock_chunk, len(out) - shock_chunk)
+l_after = len(out) - shock_chunk
 
+for i in range(len(out)):
+    style = {}
+    # if i < shock_chunk:
+    #     style["color"] = colours.blue.cmap(n=shock_chunk * 2)(i + (shock_chunk // 2))
+    # else:
+    #     style["color"] = colours.red.cmap(n=l_after * 2)(
+    #         (i - shock_chunk) + l_after // 2
+    #     )
+    if i < shock_chunk:
+        style["color"] = colours.blue.cmap(n=shock_chunk)(i)
+    else:
+        style["color"] = colours.red.cmap(n=l_after)(i - shock_chunk)
+    ax.plot(r_bin_edges[:-1], out[i], ls="-", **style)
 
-for i, chunk in enumerate(chunks):
-    cmap = mpl_cm.get_cmap(mpl.Cmaps.sequential)(i / len(out))
+sm_pre = matplotlib.cm.ScalarMappable(cmap=colours.blue.cmap())
+sm_post = matplotlib.cm.ScalarMappable(cmap=colours.red.cmap())
 
-    ax.plot(r_bin_edges[:-1], out[i], color=cmap, ls="-")
+fig.colorbar(sm_pre, cax=cbar_pre, label="Before shock")
+fig.colorbar(sm_post, cax=cbar_post, label="After shock")
+cbar_post.set_yticks([1], labels=["end"])
+cbar_pre.set_yticks([0, 1], labels=["start", "shock"])
+
 
 ax.set_xscale("log")
 ax.set_yscale("log")
+
+ax.set_xlabel("$k$ $d_i^{-1}$")
+ax.set_ylabel("$P(k)$")
+ax.set_title(f"Windows of {chunk_x:.2f} $d_i$ ({chunk_i} points)")
+
+fig.tight_layout()
+fig.subplots_adjust(hspace=0, wspace=0)
+plt.show()
+
+# %%
+# Slopes
+
+from scipy.optimize import curve_fit
+from hybrid_jp.arrays import interpolate_to_midpoints
+
+
+def line(x, m, c):
+    return m * x + c
+
+
+def compute_slope(
+    arr_P: npt.NDArray[np.float64],
+    arr_x: npt.NDArray[np.float64],
+    start_di: float = 0.1,
+    end_di: float = 1.0,
+) -> tuple[float, float]:
+    y = arr_P[(arr_x >= start_di) & (arr_x <= end_di)]
+    x = arr_x[(arr_x >= start_di) & (arr_x <= end_di)]
+
+    popt, pcov = curve_fit(line, np.log10(x), np.log10(y))
+    return popt[0], np.sqrt(np.diag(pcov))[0]
+
+
+slopes = []
+slopes_err = []
+
+x = interpolate_to_midpoints(r_bin_edges, 2)
+
+for i in range(len(out)):
+    fit = compute_slope(out[i], x)
+    slopes.append(fit[0])
+    slopes_err.append(fit[1])
+
+slopes = np.asarray(slopes)
+slopes_err = np.asarray(slopes_err)
+dists = np.linspace(dist_x[0], dist_x[-1], len(out))
+
+fig, ax = plt.subplots()
+
+ax.errorbar(dists, slopes, yerr=slopes_err, fmt="o")
+ax.axhline(0, color=colours.dark.c800, ls="--")
+ax.axvline(0, color=colours.dark.c800, ls="--")
+fig.tight_layout()
+plt.show()
