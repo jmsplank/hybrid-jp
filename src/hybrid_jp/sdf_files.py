@@ -1,12 +1,12 @@
 """Functions that interact with sdf_helper objects."""
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Iterator
 
 import numpy as np
 import pandas as pd
 import sdf_helper as sh
 from sdf import BlockList
-from typing import Iterator
 
 from .dtypes import Current, Elec, Grid, Mag
 
@@ -51,8 +51,14 @@ class SDF:
     tstamp: float | None = None  # Optional bc comes from .deck not .sdf
 
 
-def load_sdf_verified(path_to_sdf: Path) -> SDF:
-    """Load an sdf into SDF class."""
+def load_sdf_verified(path_to_sdf: Path, dt: float | None = None) -> SDF:
+    """Load an sdf into SDF class.
+
+    Note:
+        SDF.tstamp will be None if dt is None.
+        Otherwise it will be the timestamp of the sdf file, created by multiplying
+        dt with the filename.
+    """
     data = load(path_to_sdf=path_to_sdf)
     return SDF(
         grid=get_grid(data, mid=False),
@@ -62,6 +68,7 @@ def load_sdf_verified(path_to_sdf: Path) -> SDF:
         current=get_current(data),
         numberdensity=data.Derived_Number_Density.data,
         temperature=data.Derived_Temperature.data,
+        tstamp=int(path_to_sdf.stem) * dt if dt else None,
     )
 
 
@@ -172,9 +179,9 @@ def list_variables(
             if show_name:
                 params.append(key)
             if show_type:
-                params.append(type(val))
+                params.append(str(type(val)))
             if show_size:
-                params.append(np.array2string(np.array(val.dims), separator=", "))
+                params.append(np.array2string(np.array(val.dims), separator=","))
             out.append(params)
 
         except Exception:
@@ -191,14 +198,32 @@ def print_variables(
     """Print variables in an sdf_helper object.
 
     Args:
-        data (sdf_helper): sdf_helper object to list variables of.
+        data (BlockList): SDF file from sdf_helper.
         show_name (bool, optional): Show variable names. Defaults to True.
         show_type (bool, optional): Show variable types. Defaults to False.
         show_size (bool, optional): Show variable sizes. Defaults to True.
+
+    Example:
+        >>> import hybrid_jp
+        >>> sdf = hybrid_jp.sdf_files.load("U6T40/0003.sdf")
+        >>> hybrid_jp.sdf_files.print_variables(sdf)
+        CPUs_Current_rank                   [0,0]
+        CPUs_Original_rank                  [1,8]
+        Current_Jx                          [1600, 160]
+        Current_Jy                          [1600, 160]
+        Current_Jz                          [1600, 160]
+        Derived_Average_Particle_Energy     [1600, 160]
+        ...
     """
     vars = list_variables(data, show_name, show_type, show_size)
+    n_cols = len(vars[0])
+    max_lens = []
+    for i in range(n_cols):
+        max_lens.append(max([len(v[i]) for v in vars]))
+
     for v in vars:
-        print(" ".join(v))
+        strs = [v[i] + " " * (max_lens[i] - len(v[i])) for i in range(n_cols)]
+        print("\t".join(strs))
 
 
 def get_grid(data: BlockList, mid: bool = False) -> Grid:
