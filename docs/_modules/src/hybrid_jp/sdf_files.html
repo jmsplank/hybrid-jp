@@ -127,8 +127,11 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../hybrid_jp.html">hybrid_jp</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../src.hybrid_jp.html">src.hybrid_jp package</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../modules.html">hybrid_jp</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../src.html">src package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../src.hybrid_jp.html">src.hybrid_jp package</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -255,6 +258,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">sdf_helper</span> <span class="k">as</span> <span class="nn">sh</span>
 <span class="kn">from</span> <span class="nn">sdf</span> <span class="kn">import</span> <span class="n">BlockList</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterator</span>
 
 <span class="kn">from</span> <span class="nn">.dtypes</span> <span class="kn">import</span> <span class="n">Current</span><span class="p">,</span> <span class="n">Elec</span><span class="p">,</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">Mag</span>
 
@@ -295,7 +299,8 @@ document.write(`
     <span class="n">elec</span><span class="p">:</span> <span class="n">Elec</span>
     <span class="n">current</span><span class="p">:</span> <span class="n">Current</span>
     <span class="n">numberdensity</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
-    <span class="n">temperature</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span></div>
+    <span class="n">temperature</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+    <span class="n">tstamp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Optional bc comes from .deck not .sdf</span></div>
 
 
 <div class="viewcode-block" id="load_sdf_verified"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.load_sdf_verified">[docs]</a><span class="k">def</span> <span class="nf">load_sdf_verified</span><span class="p">(</span><span class="n">path_to_sdf</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SDF</span><span class="p">:</span>
@@ -419,9 +424,9 @@ document.write(`
             <span class="k">if</span> <span class="n">show_name</span><span class="p">:</span>
                 <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">show_type</span><span class="p">:</span>
-                <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">))</span>
+                <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">val</span><span class="p">)))</span>
             <span class="k">if</span> <span class="n">show_size</span><span class="p">:</span>
-                <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">dims</span><span class="p">),</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;, &quot;</span><span class="p">))</span>
+                <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">dims</span><span class="p">),</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">))</span>
             <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
 
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
@@ -438,14 +443,32 @@ document.write(`
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Print variables in an sdf_helper object.</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        data (sdf_helper): sdf_helper object to list variables of.</span>
+<span class="sd">        data (BlockList): SDF file from sdf_helper.</span>
 <span class="sd">        show_name (bool, optional): Show variable names. Defaults to True.</span>
 <span class="sd">        show_type (bool, optional): Show variable types. Defaults to False.</span>
 <span class="sd">        show_size (bool, optional): Show variable sizes. Defaults to True.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; import hybrid_jp</span>
+<span class="sd">        &gt;&gt;&gt; sdf = hybrid_jp.sdf_files.load(&quot;U6T40/0003.sdf&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; hybrid_jp.sdf_files.print_variables(sdf)</span>
+<span class="sd">        CPUs_Current_rank                   [0,0]</span>
+<span class="sd">        CPUs_Original_rank                  [1,8]</span>
+<span class="sd">        Current_Jx                          [1600, 160]</span>
+<span class="sd">        Current_Jy                          [1600, 160]</span>
+<span class="sd">        Current_Jz                          [1600, 160]</span>
+<span class="sd">        Derived_Average_Particle_Energy     [1600, 160]</span>
+<span class="sd">        ...</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">vars</span> <span class="o">=</span> <span class="n">list_variables</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">show_name</span><span class="p">,</span> <span class="n">show_type</span><span class="p">,</span> <span class="n">show_size</span><span class="p">)</span>
+    <span class="n">n_cols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">vars</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">max_lens</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cols</span><span class="p">):</span>
+        <span class="n">max_lens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">]))</span>
+
     <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">vars</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">v</span><span class="p">))</span></div>
+        <span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">max_lens</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cols</span><span class="p">)]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">strs</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="get_grid"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.get_grid">[docs]</a><span class="k">def</span> <span class="nf">get_grid</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">BlockList</span><span class="p">,</span> <span class="n">mid</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Grid</span><span class="p">:</span>
@@ -536,6 +559,31 @@ document.write(`
         <span class="n">jy</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Current_Jy</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
         <span class="n">jz</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">Current_Jz</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
     <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="filefinder"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.sdf_files.filefinder">[docs]</a><span class="k">def</span> <span class="nf">filefinder</span><span class="p">(</span><span class="nb">dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">stop</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">Path</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns next sdf file in dir.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        SDFs are named as 0000.sdf, 0001.sdf, etc. i.e. 0 padded 4 digit integers.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dir (Path): directory to search</span>
+<span class="sd">        start (int): start file number</span>
+<span class="sd">        stop (int): stop file number</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        Iterator[Path]: next sdf file in dir</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; dir = Path(&quot;data&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; for file in filefinder(dir, 0, 10):</span>
+<span class="sd">        ...     print(file)</span>
+<span class="sd">        dir/0000.sdf</span>
+<span class="sd">        dir/0001.sdf</span>
+<span class="sd">        ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">yield from</span> <span class="p">(</span><span class="nb">dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2">.sdf&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span></div>
 </pre></div>
 
                 </article>

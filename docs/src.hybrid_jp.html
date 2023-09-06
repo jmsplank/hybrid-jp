@@ -44,7 +44,7 @@
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="hybrid_jp" href="hybrid_jp.html" />
+    <link rel="prev" title="src package" href="src.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -129,8 +129,11 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="hybrid_jp.html">hybrid_jp</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">src.hybrid_jp package</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">hybrid_jp</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="src.html">src package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">src.hybrid_jp package</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -356,10 +359,12 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.mid_grid"><code class="docutils literal notranslate"><span class="pre">SDF.mid_grid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.numberdensity"><code class="docutils literal notranslate"><span class="pre">SDF.numberdensity</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.temperature"><code class="docutils literal notranslate"><span class="pre">SDF.temperature</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.tstamp"><code class="docutils literal notranslate"><span class="pre">SDF.tstamp</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.data_to_df"><code class="docutils literal notranslate"><span class="pre">data_to_df()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.extract_vars"><code class="docutils literal notranslate"><span class="pre">extract_vars()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.filefinder"><code class="docutils literal notranslate"><span class="pre">filefinder()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_current"><code class="docutils literal notranslate"><span class="pre">get_current()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_elec"><code class="docutils literal notranslate"><span class="pre">get_elec()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_grid"><code class="docutils literal notranslate"><span class="pre">get_grid()</span></code></a></li>
@@ -806,7 +811,7 @@ axis=1: mean over y</p>
 <p>Functions that interact with sdf_helper objects.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">SDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">elec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Elec" title="src.hybrid_jp.dtypes.Elec"><span class="pre">Elec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Current" title="src.hybrid_jp.dtypes.Current"><span class="pre">Current</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">numberdensity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#SDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">SDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Grid" title="src.hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">mag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Mag" title="src.hybrid_jp.dtypes.Mag"><span class="pre">Mag</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">elec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Elec" title="src.hybrid_jp.dtypes.Elec"><span class="pre">Elec</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.hybrid_jp.dtypes.Current" title="src.hybrid_jp.dtypes.Current"><span class="pre">Current</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">numberdensity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstamp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#SDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Representation of .sdf file.</p>
 <dl class="py attribute">
@@ -842,6 +847,11 @@ axis=1: mean over y</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.temperature">
 <span class="sig-name descname"><span class="pre">temperature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.temperature" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.SDF.tstamp">
+<span class="sig-name descname"><span class="pre">tstamp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#src.hybrid_jp.sdf_files.SDF.tstamp" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -881,6 +891,37 @@ axis=1: mean over y</p>
 <dd class="field-odd"><p>dict[str, np.ndarray]</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.hybrid_jp.sdf_files.filefinder">
+<span class="sig-prename descclassname"><span class="pre">src.hybrid_jp.sdf_files.</span></span><span class="sig-name descname"><span class="pre">filefinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">Path</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/src/hybrid_jp/sdf_files.html#filefinder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.hybrid_jp.sdf_files.filefinder" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns next sdf file in dir.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SDFs are named as 0000.sdf, 0001.sdf, etc. i.e. 0 padded 4 digit integers.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir</strong> (<em>Path</em>) – directory to search</p></li>
+<li><p><strong>start</strong> (<em>int</em>) – start file number</p></li>
+<li><p><strong>stop</strong> (<em>int</em>) – stop file number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>Iterator[Path]</em> – next sdf file in dir</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">filefinder</span><span class="p">(</span><span class="nb">dir</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="go">dir/0000.sdf</span>
+<span class="go">dir/0001.sdf</span>
+<span class="go">...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -1058,13 +1099,26 @@ axis=1: mean over y</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>sdf_helper</em>) – sdf_helper object to list variables of.</p></li>
+<li><p><strong>data</strong> (<em>BlockList</em>) – SDF file from sdf_helper.</p></li>
 <li><p><strong>show_name</strong> (<em>bool</em><em>, </em><em>optional</em>) – Show variable names. Defaults to True.</p></li>
 <li><p><strong>show_type</strong> (<em>bool</em><em>, </em><em>optional</em>) – Show variable types. Defaults to False.</p></li>
 <li><p><strong>show_size</strong> (<em>bool</em><em>, </em><em>optional</em>) – Show variable sizes. Defaults to True.</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">hybrid_jp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sdf</span> <span class="o">=</span> <span class="n">hybrid_jp</span><span class="o">.</span><span class="n">sdf_files</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;U6T40/0003.sdf&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hybrid_jp</span><span class="o">.</span><span class="n">sdf_files</span><span class="o">.</span><span class="n">print_variables</span><span class="p">(</span><span class="n">sdf</span><span class="p">)</span>
+<span class="go">CPUs_Current_rank                   [0,0]</span>
+<span class="go">CPUs_Original_rank                  [1,8]</span>
+<span class="go">Current_Jx                          [1600, 160]</span>
+<span class="go">Current_Jy                          [1600, 160]</span>
+<span class="go">Current_Jz                          [1600, 160]</span>
+<span class="go">Derived_Average_Particle_Energy     [1600, 160]</span>
+<span class="go">...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -1275,12 +1329,12 @@ axis=1: mean over y</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="hybrid_jp.html"
+       href="src.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">hybrid_jp</p>
+        <p class="prev-next-title">src package</p>
       </div>
     </a>
 </div></div>
@@ -1363,10 +1417,12 @@ axis=1: mean over y</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.mid_grid"><code class="docutils literal notranslate"><span class="pre">SDF.mid_grid</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.numberdensity"><code class="docutils literal notranslate"><span class="pre">SDF.numberdensity</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.temperature"><code class="docutils literal notranslate"><span class="pre">SDF.temperature</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.SDF.tstamp"><code class="docutils literal notranslate"><span class="pre">SDF.tstamp</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.data_to_df"><code class="docutils literal notranslate"><span class="pre">data_to_df()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.extract_vars"><code class="docutils literal notranslate"><span class="pre">extract_vars()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.filefinder"><code class="docutils literal notranslate"><span class="pre">filefinder()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_current"><code class="docutils literal notranslate"><span class="pre">get_current()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_elec"><code class="docutils literal notranslate"><span class="pre">get_elec()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#src.hybrid_jp.sdf_files.get_grid"><code class="docutils literal notranslate"><span class="pre">get_grid()</span></code></a></li>
