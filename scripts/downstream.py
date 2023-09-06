@@ -5,21 +5,23 @@ Use the max(nd)/e method to find the shock location. Then look at the downstream
 # %%
 # Imports
 from functools import partial
-import numpy.typing as npt
-import numpy as np
+from multiprocessing import Pool, set_start_method
+from pathlib import Path
+from typing import Callable
+
+import matplotlib
 import matplotlib.pyplot as plt
+import numpy as np
+import numpy.typing as npt
+from epoch_cheats import evaluate_deck, validate_deck
 from matplotlib.colors import LogNorm
+from matplotlib.gridspec import GridSpec
+from matplotlib.ticker import MultipleLocator
 from phdhelper import mpl
 from phdhelper.colours import sim as colours
-from typing import Callable
-from epoch_cheats import validate_deck, evaluate_deck
-from pathlib import Path
-from multiprocessing import Pool, set_start_method
-from hybrid_jp.sdf_files import SDF, load_sdf_verified, filefinder
 from tqdm import tqdm
-from matplotlib.ticker import MultipleLocator
-from matplotlib.gridspec import GridSpec
-import matplotlib
+
+from hybrid_jp.sdf_files import SDF, filefinder, load_sdf_verified
 
 # %%
 # CONSTS
@@ -84,7 +86,7 @@ dx = grid.x[1] - grid.x[0]
 dist_x = np.arange(-widths[0], widths[1]) * dx
 
 # %%
-axs: list[plt.Axes]
+# axs: list[plt.Axes]
 fig, _axs = plt.subplots(
     2,
     2,
@@ -456,6 +458,7 @@ plt.show()
 # Slopes
 
 from scipy.optimize import curve_fit
+
 from hybrid_jp.arrays import interpolate_to_midpoints
 
 
