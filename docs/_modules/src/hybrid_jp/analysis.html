@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>src.hybrid_jp.change_points &#8212; hybrid-jp</title>
+    <title>src.hybrid_jp.analysis &#8212; hybrid-jp</title>
   
   
   
@@ -39,7 +39,7 @@
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/src/hybrid_jp/change_points';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/src/hybrid_jp/analysis';</script>
     <link rel="icon" href="../../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -252,47 +252,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <h1>Source code for src.hybrid_jp.change_points</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Chagne point detection using ruptures library.&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">ruptures</span> <span class="kn">import</span> <span class="n">Binseg</span>
+  <h1>Source code for src.hybrid_jp.analysis</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span> <span class="nn">epoch_cheats</span> <span class="kn">import</span> <span class="n">evaluate_deck</span><span class="p">,</span> <span class="n">validate_deck</span>
+
+<span class="kn">from</span> <span class="nn">.loading</span> <span class="kn">import</span> <span class="n">load_async</span> <span class="k">as</span> <span class="n">load_sdfs_para</span>
+<span class="kn">from</span> <span class="nn">.shock_centering</span> <span class="kn">import</span> <span class="n">CenteredShock</span>
 
 
-<div class="viewcode-block" id="binseg"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.change_points.binseg">[docs]</a><span class="k">def</span> <span class="nf">binseg</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">nseg</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Use Binary Segmentation algorithm to detect change points.</span>
+<div class="viewcode-block" id="load_deck"><a class="viewcode-back" href="../../../src.hybrid_jp.analysis.html#src.hybrid_jp.analysis.load_deck">[docs]</a><span class="k">def</span> <span class="nf">load_deck</span><span class="p">(</span><span class="n">data_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">deck_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;input.deck&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+        <span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
 
-<span class="sd">    Args:</span>
-<span class="sd">        arr (np.ndarray): 2d array of [x,features]</span>
-<span class="sd">        nseg (int, optional): number of change points to return. Defaults to 3.</span>
+    <span class="n">deck_path</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="n">deck_name</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">deck_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deck file </span><span class="si">{</span><span class="n">deck_path</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
 
-<span class="sd">    Returns:</span>
-<span class="sd">        list[int]: index of change points</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">algo</span> <span class="o">=</span> <span class="n">Binseg</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">algo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n_bkps</span><span class="o">=</span><span class="n">nseg</span><span class="p">)</span>
-
-    <span class="c1"># remove element equal to len of first dimension of arr if exists</span>
-    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">result</span>  <span class="c1"># type: ignore</span></div>
-
-
-<div class="viewcode-block" id="find_shock_index_from_gradnd"><a class="viewcode-back" href="../../../src.hybrid_jp.html#src.hybrid_jp.change_points.find_shock_index_from_gradnd">[docs]</a><span class="k">def</span> <span class="nf">find_shock_index_from_gradnd</span><span class="p">(</span><span class="n">gradnd</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the index of the shock from gradient of the number density.</span>
-
-<span class="sd">    - If gradnd is 2d then find the peak of the mean.</span>
-<span class="sd">    - Assume the shock is located at the peak of grad nd</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        gradnd (np.ndarray): gradient of the number density.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        int: index of the shock.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">gradnd</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">gradnd</span> <span class="o">=</span> <span class="n">gradnd</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">gradnd</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="n">validate_deck</span><span class="p">(</span><span class="n">evaluate_deck</span><span class="p">(</span><span class="n">deck_path</span><span class="p">))</span></div>
 </pre></div>
 
                 </article>

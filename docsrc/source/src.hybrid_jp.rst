@@ -1,6 +1,14 @@
 src.hybrid\_jp package
 ======================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   src.hybrid_jp.analysis
+
 Submodules
 ----------
 
