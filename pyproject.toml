@@ -3,9 +3,6 @@ target-version = ["py311"]
 line-length = 88
 fast = true
 
-[tool.isort]
-profile = "black"
-line-length = 88
 
 [tool.flake8]
 max-line-length = 88
