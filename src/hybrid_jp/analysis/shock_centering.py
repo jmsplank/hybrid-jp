@@ -35,16 +35,16 @@ class CenteredShock:
         self.deck = deck
 
         self.time = self._get_time()
-        self.grid_km = self.sdfs[0].mid_grid * (1 / 1000)
+        self.grid = self.sdfs[0].mid_grid
         self._nd_median_y_cm = np.asarray(
             [np.median(sdf.numberdensity, axis=1) for sdf in sdfs]
         ).T / (100**3)
 
         self.shock_i = self.shock_index_from_nd()
-        self.shock_x = self.grid_km.x[self.shock_i]
+        self.shock_x = self.grid.x[self.shock_i]
 
-        self.dx = self.grid_km.x[1] - self.grid_km.x[0]
-        self.dy = self.grid_km.y[1] - self.grid_km.y[0]
+        self.dx = self.grid.x[1] - self.grid.x[0]
+        self.dy = self.grid.y[1] - self.grid.y[0]
 
         self.dist_either_side = self._get_dist_either_side()
         self.max_widths = self.dist_either_side.max(axis=0)
@@ -122,7 +122,7 @@ class CenteredShock:
         """
         # Get the distance from the shock in cells from the left and right boundaries
         dist_either_side = np.asarray(
-            [[s, abs(s - self.grid_km.x.size)] for s in self.shock_i]
+            [[s, abs(s - self.grid.x.size)] for s in self.shock_i]
         )
 
         return dist_either_side
@@ -131,13 +131,13 @@ class CenteredShock:
         """Reshape qty so that shock is aligned.
 
         Note:
-            - qty must have shape (grid_km.x.size, time.size) i.e. the first dimension
+            - qty must have shape (grid.x.size, time.size) i.e. the first dimension
               is the width of the grid in x and the second is the number of timesteps.
 
         Args:
             qty (npt.NDArray[np.float64]): The quantity to be reshaped.
         """
-        required_shape = np.asarray([self.grid_km.x.size, self.time.size])
+        required_shape = np.asarray([self.grid.x.size, self.time.size])
         if not np.array_equal(qty.shape, required_shape):
             raise ValueError(
                 f"qty has shape {qty.shape} but required"
@@ -148,7 +148,7 @@ class CenteredShock:
 
         for i in range(self.time.size):
             insert_i = self.max_widths[0] - self.dist_either_side[i][0]
-            arr[insert_i : insert_i + self.grid_km.x.size, i] = qty[:, i]
+            arr[insert_i : insert_i + self.grid.x.size, i] = qty[:, i]
 
         return arr
 
@@ -179,9 +179,7 @@ class CenteredShock:
             raise NChunksNotSetError()
 
         # Reshape an array full of ones
-        arr = self.reshape_qty_to_shock_arr(
-            np.ones((self.grid_km.x.size, self.time.size))
-        )
+        arr = self.reshape_qty_to_shock_arr(np.ones((self.grid.x.size, self.time.size)))
         arr[np.isnan(arr)] = 0  # Set areas of no data to False instead of NaN
         arr.astype(bool)  # arr is 1 where there would be data and 0 elsewhere.
 
@@ -239,7 +237,7 @@ class CenteredShock:
             >>> def get_median_bx(sdf: SDF) -> npt.NDArray[np.float64]:
             ...     return np.median(sdf.mag.bx, axis=1)
             >>> qty, start_stop = cs.get_qty_in_frame(get_median_bx, 0, 0)
-            >>> plt.plot(x=cs.grid_km.x[slice(*start_stop)], y=qty)
+            >>> plt.plot(x=cs.grid.x[slice(*start_stop)], y=qty)
         """
         if self.n_chunks is None:
             raise NChunksNotSetError()

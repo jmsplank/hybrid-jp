@@ -6,6 +6,8 @@ import numpy as np
 import numpy.typing as npt
 
 BaseChild = TypeVar("BaseChild", bound="BaseContainer")
+arrfloat = npt.NDArray[np.float64]
+arrint = npt.NDArray[np.int_]
 
 
 @dataclass
@@ -13,7 +15,7 @@ class BaseContainer(Protocol):
     """Base container for parameters."""
 
     @property
-    def all(self) -> dict[str, npt.NDArray[np.float64]]:
+    def all(self) -> dict[str, arrfloat]:
         """Return all parameters as a dict."""
         ...
 
@@ -29,7 +31,7 @@ class BaseContainer(Protocol):
         """Multiply."""
         return self.__mul__(value)
 
-    def __iter__(self) -> Iterator[npt.NDArray[np.float64]]:
+    def __iter__(self) -> Iterator[arrfloat]:
         """Iterate over all values."""
         for v in self.all.values():
             yield v
@@ -95,7 +97,7 @@ class Grid(BaseContainer):
     y: np.ndarray
 
     @property
-    def all(self) -> dict[str, npt.NDArray[np.float64]]:
+    def all(self) -> dict[str, arrfloat]:
         """All parameters as a dict."""
         return dict(x=self.x, y=self.y)
 
@@ -120,7 +122,7 @@ class Mag(BaseContainer):
     bz: np.ndarray
 
     @property
-    def all(self) -> dict[str, npt.NDArray[np.float64]]:
+    def all(self) -> dict[str, arrfloat]:
         """All parameters as a dict."""
         return dict(bx=self.bx, by=self.by, bz=self.bz)
 
@@ -140,7 +142,7 @@ class Elec(BaseContainer):
     ez: np.ndarray
 
     @property
-    def all(self) -> dict[str, npt.NDArray[np.float64]]:
+    def all(self) -> dict[str, arrfloat]:
         """All parameters as a dict."""
         return dict(ex=self.ex, ey=self.ey, ez=self.ez)
 
@@ -149,15 +151,15 @@ class Elec(BaseContainer):
 class Current(BaseContainer):
     """Current components."""
 
-    jx: npt.NDArray[np.float64]
-    jy: npt.NDArray[np.float64]
-    jz: npt.NDArray[np.float64]
+    jx: arrfloat
+    jy: arrfloat
+    jz: arrfloat
 
     @property
-    def all(self) -> dict[str, npt.NDArray[np.float64]]:
+    def all(self) -> dict[str, arrfloat]:
         """All currents.
 
         Returns:
-            dict[str, npt.NDArray[np.float64]]: 'jx'|'jy'|'jz', (x, y)
+            dict[str, arrf]: 'jx'|'jy'|'jz', (x, y)
         """
         return dict(jx=self.jx, jy=self.jy, jz=self.jz)

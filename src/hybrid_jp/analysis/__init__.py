@@ -2,6 +2,7 @@ from pathlib import Path
 
 from epoch_cheats import evaluate_deck, validate_deck
 
+from .ffts import frame_power
 from .loading import load_async as load_sdfs_para
 from .shock_centering import CenteredShock
 
