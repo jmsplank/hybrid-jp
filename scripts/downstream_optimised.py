@@ -1,323 +1,375 @@
-"Proj"
-# %%
-from multiprocessing import set_start_method
+# %% Imports
+import time
+from audioop import avgpp
+from functools import partial
+from multiprocessing import Pool, set_start_method
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Literal
 
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-import numpy.typing as npt
+from matplotlib.collections import LineCollection
+from matplotlib.colors import LogNorm, Normalize
+from numpy import typing as npt
 from phdhelper import mpl
 from phdhelper.colours import sim as colours
+from scipy import optimize
+from tqdm import tqdm
 
-from hybrid_jp.analysis import CenteredShock, load_deck, load_sdfs_para
-from hybrid_jp.sdf_files import SDF
+import hybrid_jp as hj
+import hybrid_jp.analysis as hja
 
-# %%
-mpl.format()
-set_start_method("fork")
-
-# %%
-data_dir = Path().resolve().parent / "U6T40"
+# %% Load in data
 START, END = 20, 200
-deck = load_deck(data_dir=data_dir)
-SDFs, files = load_sdfs_para(
-    data_dir,
-    threads=7,
+set_start_method("fork")
+mpl.format()
+data_folder = Path().resolve().parent / "U6T40"
+deck = hja.load_deck(data_dir=data_folder)
+SDFs, fpaths = hja.load_sdfs_para(
+    sdf_dir=data_folder,
     dt=deck.output.dt_snapshot,
+    threads=7,
     start=START,
     stop=END,
 )
+cs = hja.CenteredShock(SDFs, deck)
 
-cs = CenteredShock(SDFs, deck)
-
-# %%
-qty = np.empty((cs.grid_km.x.size, cs.time.size))
-for i in range(cs.time.size):
-    bx = cs.sdfs[i].mag.bx.mean(axis=1)
-    by = cs.sdfs[i].mag.by.mean(axis=1)
-    bz = cs.sdfs[i].mag.bz.mean(axis=1)
-    btot = np.linalg.norm(np.stack([bx, by, bz], axis=0), axis=0)
-    qty[:, i] = btot
+# %% Split into chunks
+N_CHUNKS = 10
+cs.n_chunks = N_CHUNKS
+shock_chunk = cs.downstream_start_chunk
 
 
-def insert_qty_2_shock_arr(cs: CenteredShock, qty: npt.NDArray[np.float64]):
-    required_shape = np.asarray([cs.grid_km.x.size, cs.time.size])
-    if not np.array_equal(qty.shape, required_shape):
-        raise ValueError(
-            f"qty has shape {qty.shape} but required shape is {tuple(required_shape)}"
-        )
-    full_i = cs.dist_either_side.max(axis=0)
-    arr = np.empty((cs.full_width, cs.time.size))
-    arr[:] = np.nan
+def get_bx(sdf: hj.sdf_files.SDF) -> npt.NDArray[np.float64]:
+    return sdf.mag.bx
 
-    for i in range(cs.time.size):
-        insert_i = full_i[0] - cs.dist_either_side[i][0]
-        arr[insert_i : insert_i + cs.grid_km.x.size, i] = qty[:, i]
 
-    return arr
+t = int(np.argmax(cs.valid_chunks[shock_chunk, :]))
+qty, slc = cs.get_qty_in_frame(get_bx, shock_chunk, t)
+plt.pcolormesh(
+    cs.grid_km.x[slice(*slc)] - cs.grid_km.x[cs.get_x_offset_for_frame(shock_chunk, t)],
+    cs.grid_km.y,
+    qty.T,
+)
+plt.tight_layout()
+plt.show()
 
 
 # %%
-def split_into_chunks(
-    cs: CenteredShock,
-    n_chunks: int,
-) -> tuple[int, npt.NDArray[np.int_]]:
-    """Split arr into n_chunks.
+def hann_2d(nx: int, ny: int) -> npt.NDArray[np.float64]:
+    """Create a 2d hanning window.
 
-    Split arr of shape (N,M) into n_chunks along N axis with a chunk boundary at index
-    0 <= align_at_index <= N. The chunks may not cover the whole array, i.e. there may
-    be a gap at the start and/or end of arr in order to fit N total chunks.
+    https://stackoverflow.com/a/65948798
 
-    Note:
-        good options for n_chunks = [10, 23]
+    Example:
+        >>> h2d = hann_2d(66, 160)
+        >>> X, Y = np.meshgrid(np.arange(66), np.arange(160))
+        >>> fig = plt.figure()
+        >>> ax = plt.axes(projection="3d")
+        >>> ax.contour3D(X, Y, h2d.T, 50)
+        >>> plt.show()
     """
-    chunk_grow = n_chunks + 1
-    chunk_i: int = np.floor(cs.full_width / chunk_grow).astype(int)
-    shock_dist = cs.dist_either_side.max(axis=0)
-    ratio = shock_dist / shock_dist[1]
-    fraction = ratio * (chunk_grow / ratio.sum())
-    # rem = np.floor((fraction % 1) * chunk_i).astype(int)
-    fraction = np.floor(fraction).astype(int)
-    missing: npt.NDArray[np.int_] = shock_dist - fraction * chunk_i
-    return chunk_i, missing
+    hann_1d = [np.hanning(i) for i in (nx, ny)]
+    return np.sqrt(np.outer(*hann_1d))
 
 
-def get_valid_chunks(
-    cs: CenteredShock,
-    n_chunks: int,
-    chunk_i: int | None = None,
-    missing: npt.NDArray[np.int_] | None = None,
-) -> npt.NDArray[np.float64]:
-    if chunk_i is None or missing is None:
-        chunk_i, missing = split_into_chunks(cs, n_chunks)
-
-    # Array of booleans where data is present
-    arr = insert_qty_2_shock_arr(
-        cs, np.ones((cs.grid_km.x.size, cs.time.size), dtype=bool)
-    )
-    arr[np.isnan(arr)] = 0  # Set areas of no data to False instead of NaN
-    arr.astype(bool)
-
-    # Bool array same size as number of chunks and number of timesteps
-    valid_chunks = np.zeros((n_chunks, cs.time.size), dtype=bool)
-    for i in range(cs.time.size):
-        valid = np.empty(n_chunks, dtype=bool)
-        for j in range(n_chunks):
-            cstart = chunk_i * j + missing[0]
-            cend = cstart + chunk_i
-
-            if cend > arr.shape[0]:
-                raise Exception(
-                    f"end index for chunk {j} at timestep {i} is {cend} which is larger"
-                    " than the maximum size of {arr.shape[0]}"
-                )
-
-            valid[j] = arr[cstart:cend, i].all()
-        valid_chunks[:, i] = valid
-
-    return valid_chunks
+arrf = npt.NDArray[np.float64]
 
 
-def plot_chunks(n_chunks: int):
-    chunk_i, missing = split_into_chunks(cs, n_chunks)
-    valid_chunks = get_valid_chunks(cs, n_chunks, chunk_i, missing)
-    eg = insert_qty_2_shock_arr(
-        cs, np.stack([sdf.numberdensity.mean(axis=1) for sdf in cs.sdfs], axis=1)
-    )
-    disp = np.zeros_like(eg, dtype=bool)
-    disp[missing[0] : cs.full_width - missing[1], :] = np.repeat(
-        valid_chunks, chunk_i, axis=0
-    )
+def power_xy(
+    arr: arrf,
+    dx: float,
+    dy: float,
+) -> tuple[arrf, arrf, arrf]:
+    """Get power spectrum of an array f(x, y).
 
-    fig, ax = plt.subplots()
-    ax.pcolormesh(disp.T)
-    ax.pcolormesh(
-        eg.T,
-        cmap=colours.dark.cmap(),
-        alpha=0.3,
-    )
-    ax.axvline(cs.dist_either_side.max(axis=0)[0], color="k", ls="--")
-    ax.set_title(f"{n_chunks} chunks")
-    ax.grid(False)
-    fig.tight_layout()
-    fig.show()
+    Args:
+        arr (npt.NDArray[np.float64]): Array of shape (nx, ny)
+        dx (float): Spacing between x points
+        dy (float): Spacing between y points
 
+    Returns:
+        Pxy (npt.NDArray[np.float64]): Power spectrum of arr
+        fx (npt.NDArray[np.float64]): x frequencies
+        fy (npt.NDArray[np.float64]): y frequencies
+    """
+    fx = np.fft.fftfreq(arr.shape[0], dx)
+    fy = np.fft.fftfreq(arr.shape[1], dy)
 
-plot_chunks(23)
-# %%
-# Find chunked data in base arr
+    # Center the data and apply Hanning window
+    arr = (arr - arr.mean()) * hann_2d(*arr.shape)
+    kxky = np.fft.fft2(arr)
+    Pxy = np.abs(kxky) ** 2 / (dx * dy)
 
-n_chunks = 23
-chunk_i, missing = split_into_chunks(cs, n_chunks)
-valid_chunks = get_valid_chunks(cs, n_chunks, chunk_i, missing)
+    # Mask out the negative frequencies
+    # expand_dims is needed to broadcast the masks over the correct dimensions in 2d
+    # The x mask needs to cover all y so add an extra dimension at axis 1 (y)
+    fx_mask = fx > 0
+    fx_mask2 = np.expand_dims(fx_mask, axis=1)  # shape (nx, 1)
+    # The y mask needs to cover all x so add an extra dimension at axis 0 (x)
+    fy_mask = fy > 0
+    fy_mask2 = np.expand_dims(fy_mask, axis=0)  # shape (1, ny)
 
+    fx = fx[fx_mask]
+    fy = fy[fy_mask]
+    Pxy = Pxy[fx_mask2 & fy_mask2].reshape(fx.size, fy.size)
 
-def get_valid_chunk_data_for_tstamp(
-    cs: CenteredShock, arr, chunk_i, missing, valid_chunks
-):
-    data_start = cs.dist_either_side.max(axis=0)[0] - cs.dist_either_side[:, 0]
-    first_chunk = np.argmax(valid_chunks, axis=0) * chunk_i + missing[0]
-    start_offset = first_chunk - data_start
-    t_chunks = valid_chunks.sum(axis=0)
-
-    out = np.empty_like(arr)
-    out[:] = np.nan
-    for i in range(cs.time.size):
-        so = start_offset[i]
-        nc = t_chunks[i]
-        if so + nc * chunk_i > arr.shape[0]:
-            raise Exception(
-                f"end index for chunk {i} at timestep {i} is {so + nc * chunk_i} which"
-                "is larger than the maximum size of {arr.shape[0]}"
-            )
-        out[so : so + nc * chunk_i, i] = arr[so : so + nc * chunk_i, i]
-    return out
+    return Pxy, fx, fy
 
 
-bx = np.stack([sdf.numberdensity.mean(axis=1) for sdf in cs.sdfs], axis=1)
-out = get_valid_chunk_data_for_tstamp(cs, bx, chunk_i, missing, valid_chunks)
-plt.pcolormesh(bx.T, alpha=0.6, cmap=colours.dark.cmap())
-plt.pcolormesh(out.T, alpha=0.8, cmap=colours.green.cmap())
-plt.show()
+qty_func = Callable[[hj.sdf_files.SDF], npt.NDArray[np.float64]]
 
 
-# %%
-def get_valid_chunks_v2(cs: CenteredShock, qty: npt.NDArray[np.float64]):
-    cs.n_chunks = 23
-    data_start = cs.max_widths[0] - cs.dist_either_side[:, 0]
-    first_chunk = np.argmax(cs.valid_chunks, axis=0) * cs.chunk_i + cs.missing[0]
-    start_offset = first_chunk - data_start
-    total_chunks = cs.valid_chunks.sum(axis=0)
+def subdivide_repeat(
+    subdivisons: int,
+    arrxy: arrf,
+    x: arrf,
+    y: arrf,
+) -> tuple[arrf, arrf, arrf]:
+    """Subdivide an array and repeat the values.
 
-    out = np.empty_like(qty)
-    out[:] = np.nan
-    for i in range(cs.time.size):
-        so = start_offset[i]
-        nc = total_chunks[i]
-        if so + nc * cs.chunk_i > cs.full_width:
-            raise Exception(
-                f"End index at timestep {i} is {so + nc * cs.chunk_i} which is larger"
-                f" than the maximum size of {cs.full_width}"
-            )
-        out[so : so + nc * cs.chunk_i, i] = qty[so : so + nc * cs.chunk_i, i]
-    return out
+    Args:
+        subdivisons (int): Number of subdivisions in each dimension.
+        arrxy (arrf): Array to subdivide.
+        x (arrf): x values.
+        y (arrf): y values.
 
-
-nd = np.stack([np.median(sdf.numberdensity, axis=1) for sdf in cs.sdfs], axis=1)
-out = get_valid_chunks_v2(cs, nd)
-plt.pcolormesh(out.T)
-plt.show()
+    Returns:
+        arrxy (arrf): Subdivided array.
+        x (arrf): Subdivided x values.
+        y (arrf): Subdivided y values.
+    """
+    arrxy = np.repeat(arrxy, subdivisons, axis=0)
+    arrxy = np.repeat(arrxy, subdivisons, axis=1)
+    x = np.repeat(x, subdivisons)
+    y = np.repeat(y, subdivisons)
+    return arrxy, x, y
 
 
-# %%
-def get_nd(sdf: SDF) -> npt.NDArray[np.float64]:
-    return sdf.numberdensity
+def radial_power(
+    Pxy: arrf,
+    fx: arrf,
+    fy: arrf,
+    subdivisions: int,
+    n_bins: int,
+) -> tuple[arrf, arrf]:
+    """Get the radial bins for a power spectrum.
+
+    Args:
+
+    Returns:
+        Pr (npt.NDArray[np.float64]): Power in each radial bin.
+        r_edges (npt.NDArray[np.float64]): Edges of the radial bins.
+    """
+    r_func = lambda a, b: np.sqrt(a**2 + b**2)
+    r_max = np.log10(r_func(fx.max(), fy.max()))
+    r_min = np.log10(r_func(fx.min(), fy.min()))
+
+    # subdivide Pxy by dividing each cell into subdivisions^2 cells
+    # ie if subdivisions = 2, each cell will be divided into 4, double in x and in y
+    # the subdivided cells will be filled with the same value as the original cell
+    Pxy = subdivide_repeat(subdivisions, Pxy, fx, fy)[0]
+    kx_s = np.linspace(fx.min(), fx.max(), fx.size * subdivisions)
+    ky_s = np.linspace(fy.min(), fy.max(), fy.size * subdivisions)
+
+    KX, KY = np.meshgrid(kx_s, ky_s)
+    R = r_func(KX, KY).T
+    r_edges = np.logspace(r_min, r_max, n_bins + 1)
+
+    Pr = np.zeros(n_bins)
+    for i in range(n_bins):
+        mask: npt.NDArray[np.bool_] = (R >= r_edges[i]) & (R < r_edges[i + 1])
+        if not mask.any():
+            Pr[i] = np.nan
+        else:
+            Pr[i] = Pxy[mask].mean()
+    return Pr, r_edges
 
 
-def chunk_in_x(cs: CenteredShock, chunk: int, t_idx: int):
-    if not cs.valid_chunks[chunk, t_idx]:
-        raise ValueError(f"Chunk {chunk} at timestep {t_idx} is not a valid chunk.")
-    return chunk * cs.chunk_i + cs.start_offset[t_idx]
-
-
-def get_qty_in_chunk_at_time(
-    cs: CenteredShock,
-    qty: Callable[[SDF], npt.NDArray[np.float64]],
+def frame_power(
+    cs: hja.CenteredShock,
     chunk: int,
     t_idx: int,
-) -> tuple[npt.NDArray[np.float64], tuple[int, int]]:
-    if cs.n_chunks is None:
-        raise ValueError("n_chunks must be set before calling this method.")
-    if 0 > chunk >= cs.n_chunks:
-        raise ValueError(f"{chunk=} must be in the range (0,n_chunks].")
+    subdivisions: int,
+    n_bins: int,
+    centres: bool = True,
+):
+    def _func(
+        sdf: hj.sdf_files.SDF, qty: Literal["bx", "by", "bz"]
+    ) -> npt.NDArray[np.float64]:
+        return getattr(sdf.mag, qty)
 
-    chunk_offset = chunk_in_x(cs, chunk, t_idx)
-    start_stop = (chunk_offset, chunk_offset + cs.chunk_i)
-    return qty(cs.sdfs[t_idx])[slice(*start_stop)], start_stop
+    xfunc = partial(_func, qty="bx")
+    yfunc = partial(_func, qty="by")
+    zfunc = partial(_func, qty="bz")
+    cfuncs = [xfunc, yfunc, zfunc]
 
+    p_components = np.empty((n_bins, 3))
+    edges = np.empty(n_bins)
+    for i, component in enumerate(cfuncs):
+        data = cs.get_qty_in_frame(component, chunk, t_idx)[0]
+        pxy, kx, ky = power_xy(data, cs.dx, cs.dy)
+        pr, r_edges = radial_power(pxy, kx, ky, subdivisions, n_bins)
+        p_components[:, i] = pr
+        edges = r_edges
 
-# data, idx = get_qty_in_chunk_at_time(cs, get_nd, cs.downstream_start_chunk - 1, 64)
-# x = (
-#     cs.grid_km.x[slice(*idx)]
-#     - cs.grid_km.x[cs.downstream_start_chunk * cs.chunk_i + cs.start_offset[64]]
-# )
-# print(x[0])
-# plt.pcolormesh(
-#     x,
-#     cs.grid_km.y,
-#     data.T,
-# )
-# plt.ylabel("y")
-# plt.xlabel("x")
-# plt.tight_layout()
-# plt.show()
+    if centres:
+        kr = np.logspace(np.log10(edges[0]), np.log10(edges[-1]), n_bins)
+    else:
+        kr = edges
+    return p_components.sum(axis=1), kr
+
 
 # %%
+bz_func = lambda x: x.mag.bz
+bz = cs.get_qty_in_frame(bz_func, shock_chunk, t)[0]
+pxy, kx, ky = power_xy(bz, cs.dx, cs.dy)
 axs: list[plt.Axes]
-fig, axs = plt.subplots(3, 3)  # type: ignore
-axs = list(np.asarray(axs).flatten())
+fig, axs = plt.subplots(1, 2, figsize=(10, 5))  # type: ignore
+axs[0].pcolormesh(kx, ky, pxy.T, norm=LogNorm())
+axs[0].set_yscale("log")
+axs[0].set_xscale("log")
+axs[0].set_aspect("equal")
 
-ds_chunk = cs.downstream_start_chunk
-ax = 0
-for i in [50, 51, 52]:
-    for j in [ds_chunk - 1, ds_chunk, ds_chunk + 1]:
-        data, idx = get_qty_in_chunk_at_time(cs=cs, qty=get_nd, chunk=j, t_idx=i)
-        x = cs.grid_km.x[slice(*idx)] - cs.grid_km.x[chunk_in_x(cs, ds_chunk, i)]
-        axs[ax].pcolormesh(x, cs.grid_km.y, data.T, vmin=0, vmax=7e7)
-        axs[ax].grid(False)
-        ax += 1
+pxy4, kx4, ky4 = subdivide_repeat(4, pxy, kx, ky)
+axs[1].pcolormesh(kx4, ky4, pxy4.T, norm=LogNorm())
+axs[1].set_yscale("log")
+axs[1].set_xscale("log")
+axs[1].set_aspect("equal")
+fig.tight_layout()
+plt.show()
 
-for ax in range(6):
-    axs[ax].set_xticklabels([])
-for ax in [1, 2, 4, 5, 7, 8]:
-    axs[ax].set_yticklabels([])
+# %%
+n_r_bins: int = 100
+n_sub: int = 8
+Pr4, kr = radial_power(pxy, kx, ky, n_sub, n_r_bins)
+kr = np.logspace(np.log10(kr[0]), np.log10(kr[-1]), n_r_bins)
+print(Pr4.shape, kr.shape, n_r_bins * n_sub)
+
+fig, ax = plt.subplots()  # type: ignore
+ax.plot(kr, Pr4, c="k", ls="-")
+ax.set_xscale("log")
+ax.set_yscale("log")
 
 fig.tight_layout()
-fig.subplots_adjust(hspace=0, wspace=0)
-fig.show()
+plt.show()
+
+# %%
+pr, kr = frame_power(cs, shock_chunk, t, n_sub, n_r_bins)
+fig, ax = plt.subplots()
+ax.loglog(kr, pr, c="k", ls="-")
+fig.tight_layout()
+plt.show()
+
+
+# %%
+vc = cs.valid_chunks
+val: list[list[int]] = [list(np.nonzero(vc[i, :])[0]) for i in range(vc.shape[0])]
+
+
+def get_power_para(
+    cs: hja.CenteredShock,
+    val: list[list[int]],
+    n_r_bins: int,
+    n_sub: int,
+):
+    assert cs.n_chunks is not None
+
+    kr = np.empty(n_r_bins)
+    avg_pwr = np.empty((n_r_bins, cs.n_chunks))
+
+    start_time = time.time()
+    for i, v in enumerate(val):
+        out = np.empty((n_r_bins, len(v)))
+        for j, t in tqdm(enumerate(v), total=len(v), desc=f"Chunk {i}/{cs.n_chunks-1}"):
+            out[:, j], kr = frame_power(cs, i, t, n_sub, n_r_bins)
+        avg_pwr[:, i] = out.mean(axis=1)
+
+    end_time = time.time()
+    print(f"Time taken: {end_time - start_time:.1f}s")
+
+    return avg_pwr.T, kr
+
+
+avg_pwr, kr = get_power_para(cs, val, n_r_bins, n_sub)
+
+# %%
+fig, axs = plt.subplots(1, 2, gridspec_kw=dict(width_ratios=[97, 3]))  # type: ignore
+ax = axs[0]
+cax = axs[1]
+
+
+segments = np.array([np.stack([kr] * cs.n_chunks, axis=0), avg_pwr])
+segments = np.moveaxis(segments, [0, 1, 2], [2, 0, 1])
+norm = Normalize(vmin=0, vmax=cs.n_chunks)
+lc = LineCollection(
+    segments,  # type: ignore
+    array=np.arange(cs.n_chunks),
+    norm=norm,
+    cmap=mpl.Cmaps.isoluminant,
+)  # type: ignore
+ax.add_collection(lc)  # type: ignore
+ax.loglog(*segments[shock_chunk].T, c=colours.red())
+ax.set_xscale("log")
+ax.set_yscale("log")
+
+fig.colorbar(lc, cax=cax, label="Chunk #")
+cax.axhline(shock_chunk, c=colours.red(), lw=2)
+
+ax.set_xlabel("$k$ [$km^{-1}$]")
+ax.set_ylabel("$P(k)$")
+
+fig.tight_layout()
+fig.subplots_adjust(wspace=0)
+plt.show()
+
+
+# %%
+# Slopes
+def powerlaw(x, amplitude, exponent, constant):
+    return amplitude * x**exponent + constant
+
+
+def line(x, m, c):
+    return m * x + c
+
+
+min_x = 2e-3
+max_x = 2e-2
+
+
+def fitline(arr, min_x, max_x, func):
+    # arr.shape = (n_chunks, 2) where 2 is (x, y)
+    mask = (arr[:, 0] >= min_x) & (arr[:, 0] <= max_x)
+    arr = np.log10(arr[mask, :])
+    fit, _ = optimize.curve_fit(func, arr[:, 0], arr[:, 1])
+    return fit
+
+
+fig, ax = plt.subplots()
+slopes = np.empty((cs.n_chunks, 2))
+for i, s in enumerate(segments):
+    slopes[i, :] = fitline(s, min_x, max_x, line)
+    ax.plot(*np.log10(s).T, c="k", ls="-", lw=0.5)
+    xr = np.log10(np.linspace(min_x, max_x, 2))
+    ax.plot(xr, line(xr, *slopes[i, :]), c="r", ls="--")
+
+plt.show()
 
 # %%
 fig, ax = plt.subplots()
 
+dists = (
+    (np.arange(cs.n_chunks) - shock_chunk)
+    * cs.dx
+    * cs.chunk_i
+    / (deck.constant.di * 1e-3)
+)
+ax.scatter(dists, slopes[:, 0], c="k", marker="x")  # type: ignore
 
-def overlay(
-    bottom: npt.NDArray[np.float64], top: npt.NDArray[np.float64]
-) -> npt.NDArray[np.float64]:
-    out = np.empty_like(bottom)
-    # rescale bottom and top to be between 0 and 1
-    bottom = (bottom - bottom.min()) / (bottom.max() - bottom.min())
-    top = (top - top.min()) / (top.max() - top.min())
-
-    mask = bottom < 0.5
-    out[mask] = (2 * bottom * top)[mask]
-    out[~mask] = (1 - 2 * (1 - bottom) * (1 - top))[~mask]
-
-    return out
+ax.set_xlabel("Distance from shock [$d_i$]")
+ax.set_ylabel("Power law index")
 
 
-data = []
-n_frames = 2
-start_frame = 51
-for i in [51, 71]:
-    dat, idx = get_qty_in_chunk_at_time(cs, get_nd, ds_chunk, i)
-    data.append(dat)
-data = np.stack(data, axis=0)
-plt.pcolormesh(overlay(data[0], data[1]).T)
-plt.show()
-
-# %%
-arra = cs.sdfs[170].numberdensity
-arrb = cs.sdfs[100].numberdensity
-
-fig, axs = plt.subplots(3, 1, sharex=True, sharey=True, figsize=(10, 3))  # type: ignore
-axs[0].pcolormesh(arra.T)
-axs[0].set_aspect("equal")
-axs[1].pcolormesh(arrb.T)
-axs[1].set_aspect("equal")
-axs[2].pcolormesh(overlay(arra, arrb).T)
-axs[2].set_aspect("equal")
 fig.tight_layout()
-fig.subplots_adjust(hspace=0, wspace=0)
 plt.show()
