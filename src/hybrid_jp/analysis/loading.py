@@ -1,7 +1,7 @@
 from functools import partial
 from multiprocessing import Pool
 from pathlib import Path
-from typing import Callable, Iterable
+from typing import Iterable
 
 from tqdm import tqdm
 
