@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Documentation for hybrid_jp &#8212; hybrid_jp</title>
+    <title>hybrid_jp.analysis.loading module &#8212; hybrid_jp</title>
   
   
   
@@ -40,11 +40,12 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hybrid_jp.analysis.loading';</script>
     <link rel="icon" href="_static/logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="hybrid_jp" href="modules.html" />
+    <link rel="next" title="hybrid_jp.analysis.shock_centering module" href="hybrid_jp.analysis.shock_centering.html" />
+    <link rel="prev" title="hybrid_jp.analysis.ffts module" href="hybrid_jp.analysis.ffts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -110,7 +111,7 @@
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="index.html">
   
   
   
@@ -128,12 +129,12 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="modules.html">hybrid_jp</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="hybrid_jp.html">hybrid_jp package</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3 has-children"><a class="reference internal" href="hybrid_jp.analysis.html">hybrid_jp.analysis package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">hybrid_jp</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="hybrid_jp.html">hybrid_jp package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active has-children"><a class="reference internal" href="hybrid_jp.analysis.html">hybrid_jp.analysis package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="hybrid_jp.analysis.ffts.html">hybrid_jp.analysis.ffts module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hybrid_jp.analysis.loading.html">hybrid_jp.analysis.loading module</a></li>
+<li class="toctree-l4 current active"><a class="current reference internal" href="#">hybrid_jp.analysis.loading module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="hybrid_jp.analysis.shock_centering.html">hybrid_jp.analysis.shock_centering module</a></li>
 </ul>
 </li>
@@ -215,7 +216,7 @@
       
       
       
-      <li><a href="_sources/index.rst" target="_blank"
+      <li><a href="_sources/hybrid_jp.analysis.loading.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -297,7 +298,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Documentation for hybrid_jp</h1>
+    <h1>hybrid_jp.analysis.loading module</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -307,10 +308,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Documentation for <cite>hybrid_jp</cite></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.analysis.loading.load_async"><code class="docutils literal notranslate"><span class="pre">load_async()</span></code></a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -321,30 +320,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="documentation-for-hybrid-jp">
-<h1>Documentation for <cite>hybrid_jp</cite><a class="headerlink" href="#documentation-for-hybrid-jp" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">hybrid_jp</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hybrid_jp.html">hybrid_jp package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.html#subpackages">Subpackages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.html#module-hybrid_jp">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</section>
-<section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+  <section id="module-hybrid_jp.analysis.loading">
+<span id="hybrid-jp-analysis-loading-module"></span><h1>hybrid_jp.analysis.loading module<a class="headerlink" href="#module-hybrid_jp.analysis.loading" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="hybrid_jp.analysis.loading.load_async">
+<span class="sig-prename descclassname"><span class="pre">hybrid_jp.analysis.loading.</span></span><span class="sig-name descname"><span class="pre">load_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdf_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hybrid_jp/analysis/loading.html#load_async"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.analysis.loading.load_async" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
 
 
@@ -359,12 +341,21 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="hybrid_jp.analysis.ffts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">hybrid_jp.analysis.ffts module</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="modules.html"
+       href="hybrid_jp.analysis.shock_centering.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">hybrid_jp</p>
+        <p class="prev-next-title">hybrid_jp.analysis.shock_centering module</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -386,10 +377,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Documentation for <cite>hybrid_jp</cite></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.analysis.loading.load_async"><code class="docutils literal notranslate"><span class="pre">load_async()</span></code></a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

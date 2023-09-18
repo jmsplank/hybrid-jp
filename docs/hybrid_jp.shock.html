@@ -1,0 +1,631 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>hybrid_jp.shock module &#8212; hybrid_jp</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'hybrid_jp.shock';</script>
+    <link rel="icon" href="_static/logo.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="hybrid_jp.sdf_files module" href="hybrid_jp.sdf_files.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modules.html">hybrid_jp</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="hybrid_jp.html">hybrid_jp package</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 has-children"><a class="reference internal" href="hybrid_jp.analysis.html">hybrid_jp.analysis package</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="hybrid_jp.analysis.ffts.html">hybrid_jp.analysis.ffts module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hybrid_jp.analysis.loading.html">hybrid_jp.analysis.loading module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hybrid_jp.analysis.shock_centering.html">hybrid_jp.analysis.shock_centering module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.arrays.html">hybrid_jp.arrays module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.change_points.html">hybrid_jp.change_points module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.dtypes.html">hybrid_jp.dtypes module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.sdf_files.html">hybrid_jp.sdf_files module</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">hybrid_jp.shock module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/jmsplank/hybrid-jp" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/hybrid_jp.shock.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>hybrid_jp.shock module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePoints"><code class="docutils literal notranslate"><span class="pre">ChangePoints</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePoints.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePoints.change_points</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePoints.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePoints.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePointsXResult"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePointsXResult.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.change_points</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePointsXResult.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult.end_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.end_STR</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult.shock"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.shock</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult.start_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.start_STR</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult.t"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock"><code class="docutils literal notranslate"><span class="pre">Shock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.boundary_buffer"><code class="docutils literal notranslate"><span class="pre">Shock.boundary_buffer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.deck"><code class="docutils literal notranslate"><span class="pre">Shock.deck</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.grid"><code class="docutils literal notranslate"><span class="pre">Shock.grid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.mid_grid"><code class="docutils literal notranslate"><span class="pre">Shock.mid_grid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.sdfs"><code class="docutils literal notranslate"><span class="pre">Shock.sdfs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.skip"><code class="docutils literal notranslate"><span class="pre">Shock.skip</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.t"><code class="docutils literal notranslate"><span class="pre">Shock.t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.extrapolate_to_larger_arr"><code class="docutils literal notranslate"><span class="pre">extrapolate_to_larger_arr()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.get_change_points_x"><code class="docutils literal notranslate"><span class="pre">get_change_points_x()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.memory_clear"><code class="docutils literal notranslate"><span class="pre">memory_clear()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.moving_avg"><code class="docutils literal notranslate"><span class="pre">moving_avg()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.shock_and_changes"><code class="docutils literal notranslate"><span class="pre">shock_and_changes()</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="module-hybrid_jp.shock">
+<span id="hybrid-jp-shock-module"></span><h1>hybrid_jp.shock module<a class="headerlink" href="#module-hybrid_jp.shock" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="hybrid_jp.shock.ChangePoints">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">ChangePoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'list[int]'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'list[list[int]]'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hybrid_jp/shock.html#ChangePoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.ChangePoints" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.ChangePoints.change_points">
+<span class="sig-name descname"><span class="pre">change_points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#hybrid_jp.shock.ChangePoints.change_points" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.ChangePoints.shock_index">
+<span class="sig-name descname"><span class="pre">shock_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#hybrid_jp.shock.ChangePoints.shock_index" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hybrid_jp.shock.ChangePointsXResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">ChangePointsXResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'int'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">change_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'list[int]'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hybrid_jp/shock.html#ChangePointsXResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.ChangePointsXResult" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.ChangePointsXResult.change_points">
+<span class="sig-name descname"><span class="pre">change_points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#hybrid_jp.shock.ChangePointsXResult.change_points" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.ChangePointsXResult.shock_index">
+<span class="sig-name descname"><span class="pre">shock_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#hybrid_jp.shock.ChangePointsXResult.shock_index" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hybrid_jp.shock.MovingAvgResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">MovingAvgResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'np.ndarray'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'np.ndarray'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_STR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'np.ndarray'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_STR</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'np.ndarray'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hybrid_jp/shock.html#MovingAvgResult"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.MovingAvgResult" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.MovingAvgResult.end_STR">
+<span class="sig-name descname"><span class="pre">end_STR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#hybrid_jp.shock.MovingAvgResult.end_STR" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.MovingAvgResult.shock">
+<span class="sig-name descname"><span class="pre">shock</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#hybrid_jp.shock.MovingAvgResult.shock" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.MovingAvgResult.start_STR">
+<span class="sig-name descname"><span class="pre">start_STR</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#hybrid_jp.shock.MovingAvgResult.start_STR" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.MovingAvgResult.t">
+<span class="sig-name descname"><span class="pre">t</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#hybrid_jp.shock.MovingAvgResult.t" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="hybrid_jp.shock.Shock">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">Shock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sdfs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'list[Path]'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'int'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary_buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'int'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Grid'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_grid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Grid'</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deck</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">'Deck'</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hybrid_jp/shock.html#Shock"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.Shock" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.Shock.boundary_buffer">
+<span class="sig-name descname"><span class="pre">boundary_buffer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#hybrid_jp.shock.Shock.boundary_buffer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.Shock.deck">
+<span class="sig-name descname"><span class="pre">deck</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Deck</span></em><a class="headerlink" href="#hybrid_jp.shock.Shock.deck" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.Shock.grid">
+<span class="sig-name descname"><span class="pre">grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="hybrid_jp.dtypes.html#hybrid_jp.dtypes.Grid" title="hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></em><a class="headerlink" href="#hybrid_jp.shock.Shock.grid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.Shock.mid_grid">
+<span class="sig-name descname"><span class="pre">mid_grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="hybrid_jp.dtypes.html#hybrid_jp.dtypes.Grid" title="hybrid_jp.dtypes.Grid"><span class="pre">Grid</span></a></em><a class="headerlink" href="#hybrid_jp.shock.Shock.mid_grid" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.Shock.sdfs">
+<span class="sig-name descname"><span class="pre">sdfs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#hybrid_jp.shock.Shock.sdfs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="hybrid_jp.shock.Shock.skip">
+<span class="sig-name descname"><span class="pre">skip</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#hybrid_jp.shock.Shock.skip" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="hybrid_jp.shock.Shock.t">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">t</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#hybrid_jp.shock.Shock.t" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hybrid_jp.shock.extrapolate_to_larger_arr">
+<span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">extrapolate_to_larger_arr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">original_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">changes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#hybrid_jp.shock.MovingAvgResult" title="hybrid_jp.shock.MovingAvgResult"><span class="pre">MovingAvgResult</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#hybrid_jp.shock.MovingAvgResult" title="hybrid_jp.shock.MovingAvgResult"><span class="pre">MovingAvgResult</span></a></span></span><a class="reference internal" href="_modules/hybrid_jp/shock.html#extrapolate_to_larger_arr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.extrapolate_to_larger_arr" title="Permalink to this definition">#</a></dt>
+<dd><p>Remap the changes to the original time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>since bounds of original_t are necessarily outside of changes.t, the values are extrapolated.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>original_t</strong> (<em>np.ndarray</em>) – original time.</p></li>
+<li><p><strong>changes</strong> (<em>MovingAverageResult</em>) – changes to remap.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>remapped changes.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>MovingAverageResult</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hybrid_jp.shock.get_change_points_x">
+<span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">get_change_points_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_to_sdf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">slice</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#hybrid_jp.shock.ChangePointsXResult" title="hybrid_jp.shock.ChangePointsXResult"><span class="pre">ChangePointsXResult</span></a></span></span><a class="reference internal" href="_modules/hybrid_jp/shock.html#get_change_points_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.get_change_points_x" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hybrid_jp.shock.load">
+<span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip_at_start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#hybrid_jp.shock.Shock" title="hybrid_jp.shock.Shock"><span class="pre">Shock</span></a></span></span><a class="reference internal" href="_modules/hybrid_jp/shock.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.load" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hybrid_jp.shock.memory_clear">
+<span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">memory_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/hybrid_jp/shock.html#memory_clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.memory_clear" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hybrid_jp.shock.moving_avg">
+<span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">moving_avg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#hybrid_jp.shock.Shock" title="hybrid_jp.shock.Shock"><span class="pre">Shock</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">changes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#hybrid_jp.shock.ChangePoints" title="hybrid_jp.shock.ChangePoints"><span class="pre">ChangePoints</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#hybrid_jp.shock.MovingAvgResult" title="hybrid_jp.shock.MovingAvgResult"><span class="pre">MovingAvgResult</span></a></span></span><a class="reference internal" href="_modules/hybrid_jp/shock.html#moving_avg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.moving_avg" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hybrid_jp.shock.shock_and_changes">
+<span class="sig-prename descclassname"><span class="pre">hybrid_jp.shock.</span></span><span class="sig-name descname"><span class="pre">shock_and_changes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shock</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#hybrid_jp.shock.Shock" title="hybrid_jp.shock.Shock"><span class="pre">Shock</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">slice</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/hybrid_jp/shock.html#shock_and_changes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.shock.shock_and_changes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hybrid_jp.sdf_files.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">hybrid_jp.sdf_files module</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePoints"><code class="docutils literal notranslate"><span class="pre">ChangePoints</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePoints.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePoints.change_points</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePoints.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePoints.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePointsXResult"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePointsXResult.change_points"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.change_points</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.ChangePointsXResult.shock_index"><code class="docutils literal notranslate"><span class="pre">ChangePointsXResult.shock_index</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult.end_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.end_STR</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult.shock"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.shock</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult.start_STR"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.start_STR</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.MovingAvgResult.t"><code class="docutils literal notranslate"><span class="pre">MovingAvgResult.t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock"><code class="docutils literal notranslate"><span class="pre">Shock</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.boundary_buffer"><code class="docutils literal notranslate"><span class="pre">Shock.boundary_buffer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.deck"><code class="docutils literal notranslate"><span class="pre">Shock.deck</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.grid"><code class="docutils literal notranslate"><span class="pre">Shock.grid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.mid_grid"><code class="docutils literal notranslate"><span class="pre">Shock.mid_grid</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.sdfs"><code class="docutils literal notranslate"><span class="pre">Shock.sdfs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.skip"><code class="docutils literal notranslate"><span class="pre">Shock.skip</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.Shock.t"><code class="docutils literal notranslate"><span class="pre">Shock.t</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.extrapolate_to_larger_arr"><code class="docutils literal notranslate"><span class="pre">extrapolate_to_larger_arr()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.get_change_points_x"><code class="docutils literal notranslate"><span class="pre">get_change_points_x()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.memory_clear"><code class="docutils literal notranslate"><span class="pre">memory_clear()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.moving_avg"><code class="docutils literal notranslate"><span class="pre">moving_avg()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.shock.shock_and_changes"><code class="docutils literal notranslate"><span class="pre">shock_and_changes()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By James Plank
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, James Plank.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

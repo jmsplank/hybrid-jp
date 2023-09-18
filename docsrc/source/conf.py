@@ -31,11 +31,15 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.todo",
     "sphinx.ext.viewcode",
+    "sphinx.ext.autosummary",
 ]
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+# -- Autodoc Settings --------------------------------------------------------
+autodoc_default_flags = ["members"]
+autosummary_generate = True
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -46,6 +50,6 @@ html_theme_options = {
     "repository_url": "https://github.com/jmsplank/hybrid-jp",
     "use_repository_button": True,
 }
-html_logo = "_static/logo.jpeg"
+html_logo = "_static/logo.png"
 html_favicon = "_static/logo.png"
-html_title = "hybrid-jp"
+html_title = "hybrid_jp"
