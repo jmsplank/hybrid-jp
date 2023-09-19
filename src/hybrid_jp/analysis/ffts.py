@@ -208,8 +208,8 @@ def frame_power(
         ...     PSD = power.mean(axis=0)
         ...     fig, ax = plt.subplots()
         ...     ax.loglog(k, PSD, color="k", lw=1)
-        ...     ax.set_xlabel(r"$k\,[km]$")
-        ...     ax.set_ylabel(r"$PSD(k)\,[km^2\,s^{-2}]$")
+                ax.set_xlabel(r"$k\ [km^{-1}]$")
+                ax.set_ylabel(r"$PSD(k)\ [nT^2\, km^{-2}]$")
         ...     plt.show()
     """
 
