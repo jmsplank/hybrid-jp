@@ -1,11 +1,12 @@
-"""Array operations for hybrid_jp."""
+# %%
+import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 
-from .dtypes import arrfloat, arrint
+import hybrid_jp as hj
 
 
-def logspaced_edges(arr: arrfloat | arrint) -> arrfloat:
+# %%
+def logspaced_edges(arr: hj.arrfloat | hj.arrint) -> hj.arrfloat:
     """Expand a (possibly uneven but approximately) logarithmically spaced arr to edges.
 
     `arr` is shape (N,), therefore the returned array is shape (N+1,). The end points
@@ -16,10 +17,10 @@ def logspaced_edges(arr: arrfloat | arrint) -> arrfloat:
     separation between the original values.
 
     Args:
-        arr (arrfloat | arrint): Array of values.
+        arr (hj.arrfloat | hj.arrint): Array of values.
 
     Returns:
-        arrfloat: Array of edges.
+        hj.arrfloat: Array of edges.
 
     Example:
         >>> import matplotlib.pyplot as plt
@@ -72,75 +73,20 @@ def logspaced_edges(arr: arrfloat | arrint) -> arrfloat:
     return lags_wide
 
 
-def trim_var(var: np.ndarray, slc: slice) -> np.ndarray:
-    """Trim a variable to a slice.
-
-    Args:
-        var (np.ndarray): Variable to trim.
-        slc (slice): Slice to trim to.
-
-    Returns:
-        np.ndarray: Trimmed variable.
-    """
-    return var[slc]
-
-
-def trim_vars(vars_list: list[np.ndarray], slc: slice) -> list[np.ndarray]:
-    """Trim a list of variables to a slice.
-
-    Args:
-        vars_list (list[np.ndarray]): List of variables to trim.
-        slc (slice): Slice to trim to.
-
-    Returns:
-        list[np.ndarray]: Trimmed variables.
-
-    Example:
-        >>> trim_vars([np.arange(10), np.arange(10)], slice(0, 5))
-        [array([0, 1, 2, 3, 4]), array([0, 1, 2, 3, 4])]
-    """
-    return [trim_var(var, slc) for var in vars_list]
-
-
-def df_to_rows_array(data: pd.DataFrame, cols: list[str]) -> np.ndarray:
-    """Convert dataframe into 2d np array [x, columns].
-
-    Args:
-        data (pd.DataFrame): data
-        cols (list[str]): Column names to transform into array
-
-    Returns:
-        np.ndarray: 2d array of data
-    """
-    arr = np.empty((len(data), len(cols)))
-    for i, col in enumerate(cols):
-        arr[:, i] = data[col].values
-    return arr
-
-
-def interpolate_to_midpoints(arr: np.ndarray, width: int) -> np.ndarray:
-    """Interpolate to midpoints.
-
-    returns an array of length len(arr) - width + 1.
-
-    Args:
-        arr (np.ndarray): array to interpolate.
-        width (int): width of moving average.
-
-    Returns:
-        np.ndarray: interpolated array.
-    """
-    return np.linspace(arr[0], arr[-1], len(arr) - width + 1)
-
-
-def mov_avg(data: np.ndarray, width: int) -> np.ndarray:
-    """Perform a moving average.
-
-    Args:
-        data (np.ndarray): data to perform moving average on.
-        width (int): width of moving average.
-
-    Returns:
-        np.ndarray: moving average of data. length is len(data) - width + 1.
-    """
-    return np.convolve(data, np.ones(width), "valid") / width
+arr = np.unique(np.logspace(0, 2, 15, dtype=np.int32))
+brr = logspaced_edges(arr)
+axs: list[plt.Axes]
+fig, axs = plt.subplots(2, 1, figsize=(8, 2))  # type: ignore
+axlin, axlog = axs
+orig = axlin.scatter(arr, np.zeros_like(arr), marker="x", color="k")  # type: ignore
+new = axlin.scatter(brr, np.zeros_like(brr), marker="+", color="r")  # type: ignore
+orig = axlog.scatter(arr, np.zeros_like(arr), marker="x", color="k")  # type: ignore
+new = axlog.scatter(brr, np.zeros_like(brr), marker="+", color="r")  # type: ignore
+axlog.set_xscale("log")
+axlin.set_title("Linear scale")
+axlog.set_title("Log scale")
+axlin.set_yticks([])
+axlog.set_yticks([])
+axlog.set_xlabel("'x' = original, '+' = bin edges")
+fig.tight_layout()
+plt.show()
