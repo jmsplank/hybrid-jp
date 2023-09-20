@@ -402,9 +402,9 @@ kr (npt.NDArray[np.float64]): Radial bins.</p>
 <span class="gp">... </span>    <span class="n">PSD</span> <span class="o">=</span> <span class="n">power</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">PSD</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$k\,[km]$&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$PSD(k)\,[km^2\,s^{-2}]$&quot;</span><span class="p">)</span>
-<span class="gp">... </span>    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="go">        ax.set_xlabel(r&quot;$k\ [km^{-1}]$&quot;)</span>
+<span class="go">        ax.set_ylabel(r&quot;$PSD(k)\ [nT^2\, km^{-2}]$&quot;)</span>
+<span class="go">...     plt.show()</span>
 </pre></div>
 </div>
 </dd></dl>

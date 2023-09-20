@@ -264,6 +264,75 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
+<span class="kn">from</span> <span class="nn">.dtypes</span> <span class="kn">import</span> <span class="n">arrfloat</span><span class="p">,</span> <span class="n">arrint</span>
+
+
+<div class="viewcode-block" id="logspaced_edges"><a class="viewcode-back" href="../../hybrid_jp.arrays.html#hybrid_jp.arrays.logspaced_edges">[docs]</a><span class="k">def</span> <span class="nf">logspaced_edges</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">arrfloat</span> <span class="o">|</span> <span class="n">arrint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">arrfloat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Expand a (possibly uneven but approximately) logarithmically spaced arr to edges.</span>
+
+<span class="sd">    `arr` is shape (N,), therefore the returned array is shape (N+1,). The end points</span>
+<span class="sd">    are given by n_0 - (n_1 - n_0)/2 and n_N + (n_N - n_{N-1})/2 for an array</span>
+<span class="sd">    (n_0...n_N) = log10(arr). The spacing between values of the array is preserved, this</span>
+<span class="sd">    is useful in the case of integer logspaced arrays where diff(log10(arr)) is not</span>
+<span class="sd">    constant do to integer rounding. So, each value in the new array is half of the</span>
+<span class="sd">    separation between the original values.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        arr (arrfloat | arrint): Array of values.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        arrfloat: Array of edges.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; arr = np.unique(np.logspace(0, 2, 15, dtype=np.int32))</span>
+<span class="sd">        &gt;&gt;&gt; brr = logspaced_edges(arr)</span>
+<span class="sd">        &gt;&gt;&gt; fig, axs = plt.subplots(2, 1, figsize=(8, 2))</span>
+<span class="sd">        &gt;&gt;&gt; axlin, axlog = axs</span>
+<span class="sd">        &gt;&gt;&gt; orig = axlin.scatter(arr, np.zeros_like(arr), marker=&quot;x&quot;, color=&quot;k&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; new = axlin.scatter(brr, np.zeros_like(brr), marker=&quot;+&quot;, color=&quot;r&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; orig = axlog.scatter(arr, np.zeros_like(arr), marker=&quot;x&quot;, color=&quot;k&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; new = axlog.scatter(brr, np.zeros_like(brr), marker=&quot;+&quot;, color=&quot;r&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; axlog.set_xscale(&quot;log&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; axlin.set_title(&quot;Linear scale&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; axlog.set_title(&quot;Log scale&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; axlin.set_yticks([])</span>
+<span class="sd">        &gt;&gt;&gt; axlog.set_yticks([])</span>
+<span class="sd">        &gt;&gt;&gt; axlog.set_xlabel(&quot;&#39;x&#39; = original, &#39;+&#39; = bin edges&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; fig.tight_layout()</span>
+<span class="sd">        &gt;&gt;&gt; plt.show()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>  <span class="c1"># log scale array</span>
+    <span class="n">log_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">log_arr</span><span class="p">)</span>  <span class="c1"># log difference</span>
+
+    <span class="c1"># Add points on either side of log scaled array, equidistant</span>
+    <span class="c1"># Original:     +....+....+..+....+....+..+....+....+</span>
+    <span class="c1"># New:     +....+....+....+..+....+....+..+....+....+....+</span>
+    <span class="n">log_wide</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">log_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">log_diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+</span> <span class="n">log_arr</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="n">log_arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">log_diff</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+    <span class="p">)</span>
+    <span class="n">log_wiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">log_wide</span><span class="p">)</span>  <span class="c1"># Difference of longer array</span>
+
+    <span class="c1"># Half of total difference between point i and i+2</span>
+    <span class="c1">#        +....+....+....+..+....+....+..+....+....+....+</span>
+    <span class="c1"># Diff:    4    4    4   2   4    4   2   4    4    4</span>
+    <span class="c1"># Offset        4    4   4   2    4   4   2    4    4     4</span>
+    <span class="c1"># 1/2 diff:     4    4   3   3    4   3   3    8    8</span>
+    <span class="n">log_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">log_wiff</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">log_wiff</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="c1"># First point in new arr is half way between first two points in wide arr or</span>
+    <span class="c1"># equivalently half of the difference between first and second points in original</span>
+    <span class="c1"># arr behind the first point.</span>
+    <span class="n">first_point</span> <span class="o">=</span> <span class="p">(</span><span class="n">log_wide</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">log_wide</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">lags_wide</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">log_arr</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">first_point</span>
+
+    <span class="c1"># Successive points created by adding the cumulative distance of that point from the</span>
+    <span class="c1"># first point</span>
+    <span class="n">lags_wide</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">=</span> <span class="n">lags_wide</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">log_diff</span><span class="p">)</span>
+    <span class="n">lags_wide</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">lags_wide</span><span class="p">)</span>  <span class="c1"># Rescale out of log space</span>
+    <span class="k">return</span> <span class="n">lags_wide</span></div>
+
 
 <div class="viewcode-block" id="trim_var"><a class="viewcode-back" href="../../hybrid_jp.arrays.html#hybrid_jp.arrays.trim_var">[docs]</a><span class="k">def</span> <span class="nf">trim_var</span><span class="p">(</span><span class="n">var</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">slc</span><span class="p">:</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Trim a variable to a slice.</span>

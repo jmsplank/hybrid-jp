@@ -310,6 +310,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.df_to_rows_array"><code class="docutils literal notranslate"><span class="pre">df_to_rows_array()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.interpolate_to_midpoints"><code class="docutils literal notranslate"><span class="pre">interpolate_to_midpoints()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.logspaced_edges"><code class="docutils literal notranslate"><span class="pre">logspaced_edges()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.mov_avg"><code class="docutils literal notranslate"><span class="pre">mov_avg()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.trim_var"><code class="docutils literal notranslate"><span class="pre">trim_var()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.trim_vars"><code class="docutils literal notranslate"><span class="pre">trim_vars()</span></code></a></li>
@@ -366,6 +367,50 @@ document.write(`
 <dd class="field-odd"><p>np.ndarray</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="hybrid_jp.arrays.logspaced_edges">
+<span class="sig-prename descclassname"><span class="pre">hybrid_jp.arrays.</span></span><span class="sig-name descname"><span class="pre">logspaced_edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">int64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dtype</span><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/hybrid_jp/arrays.html#logspaced_edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#hybrid_jp.arrays.logspaced_edges" title="Permalink to this definition">#</a></dt>
+<dd><p>Expand a (possibly uneven but approximately) logarithmically spaced arr to edges.</p>
+<p><cite>arr</cite> is shape (N,), therefore the returned array is shape (N+1,). The end points
+are given by n_0 - (n_1 - n_0)/2 and n_N + (n_N - n_{N-1})/2 for an array
+(n_0…n_N) = log10(arr). The spacing between values of the array is preserved, this
+is useful in the case of integer logspaced arrays where diff(log10(arr)) is not
+constant do to integer rounding. So, each value in the new array is half of the
+separation between the original values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arr</strong> (<em>arrfloat</em><em> | </em><em>arrint</em>) – Array of values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Array of edges.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>arrfloat</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">brr</span> <span class="o">=</span> <span class="n">logspaced_edges</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axlin</span><span class="p">,</span> <span class="n">axlog</span> <span class="o">=</span> <span class="n">axs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">orig</span> <span class="o">=</span> <span class="n">axlin</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">arr</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new</span> <span class="o">=</span> <span class="n">axlin</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">brr</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">brr</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">orig</span> <span class="o">=</span> <span class="n">axlog</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">arr</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new</span> <span class="o">=</span> <span class="n">axlog</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">brr</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">brr</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axlog</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axlin</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Linear scale&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axlog</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Log scale&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axlin</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axlog</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">axlog</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;&#39;x&#39; = original, &#39;+&#39; = bin edges&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -485,6 +530,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.df_to_rows_array"><code class="docutils literal notranslate"><span class="pre">df_to_rows_array()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.interpolate_to_midpoints"><code class="docutils literal notranslate"><span class="pre">interpolate_to_midpoints()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.logspaced_edges"><code class="docutils literal notranslate"><span class="pre">logspaced_edges()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.mov_avg"><code class="docutils literal notranslate"><span class="pre">mov_avg()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.trim_var"><code class="docutils literal notranslate"><span class="pre">trim_var()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid_jp.arrays.trim_vars"><code class="docutils literal notranslate"><span class="pre">trim_vars()</span></code></a></li>
