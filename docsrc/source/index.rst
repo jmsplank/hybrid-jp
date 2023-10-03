@@ -8,9 +8,12 @@ Documentation for `hybrid_jp`
 
 .. toctree::
    :maxdepth: 3
+   :glob:
    :caption: Contents:
 
    modules
+
+   examples/examples
 
 
 Indices and tables

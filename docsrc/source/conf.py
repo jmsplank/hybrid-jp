@@ -32,6 +32,7 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.viewcode",
     "sphinx.ext.autosummary",
+    "myst_nb",
 ]
 
 templates_path = ["_templates"]
@@ -40,6 +41,15 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # -- Autodoc Settings --------------------------------------------------------
 autodoc_default_flags = ["members"]
 autosummary_generate = True
+
+
+# -- Options for MyST --------------------------------------------------------
+myst_enable_extensions = [
+    "amsmath",
+    "dollarmath",
+    "colon_fence",
+]
+nb_execution_mode = "off"
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

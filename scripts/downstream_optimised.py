@@ -1,10 +1,7 @@
 # %% Imports
 import time
-from audioop import avgpp
-from functools import partial
-from multiprocessing import Pool, set_start_method
+from multiprocessing import set_start_method
 from pathlib import Path
-from typing import Callable, Literal
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -32,6 +29,9 @@ SDFs, fpaths = hja.load_sdfs_para(
     start=START,
     stop=END,
 )
+for SDF in SDFs:
+    SDF.mag *= 1e9  # Convert to nT
+    SDF.mid_grid *= 1e-3  # Convert to km
 cs = hja.CenteredShock(SDFs, deck)
 
 # %% Split into chunks
@@ -58,7 +58,7 @@ plt.show()
 # %%
 bz_func = lambda x: x.mag.bz
 bz = cs.get_qty_in_frame(bz_func, shock_chunk, t)[0]
-pxy, kx, ky = power_xy(bz, cs.dx, cs.dy)
+pxy, kx, ky = hja.ffts.power_xy(bz, cs.dx, cs.dy)
 axs: list[plt.Axes]
 fig, axs = plt.subplots(1, 2, figsize=(10, 5))  # type: ignore
 axs[0].pcolormesh(kx, ky, pxy.T, norm=LogNorm())
@@ -66,7 +66,7 @@ axs[0].set_yscale("log")
 axs[0].set_xscale("log")
 axs[0].set_aspect("equal")
 
-pxy4, kx4, ky4 = subdivide_repeat(4, pxy, kx, ky)
+pxy4, kx4, ky4 = hja.ffts.subdivide_repeat(4, pxy, kx, ky)
 axs[1].pcolormesh(kx4, ky4, pxy4.T, norm=LogNorm())
 axs[1].set_yscale("log")
 axs[1].set_xscale("log")
@@ -77,7 +77,7 @@ plt.show()
 # %%
 n_r_bins: int = 100
 n_sub: int = 8
-Pr4, kr = radial_power(pxy, kx, ky, n_sub, n_r_bins)
+Pr4, kr = hja.ffts.radial_power(pxy, kx, ky, n_sub, n_r_bins)
 kr = np.logspace(np.log10(kr[0]), np.log10(kr[-1]), n_r_bins)
 print(Pr4.shape, kr.shape, n_r_bins * n_sub)
 
@@ -90,7 +90,7 @@ fig.tight_layout()
 plt.show()
 
 # %%
-pr, kr = frame_power(cs, shock_chunk, t, n_sub, n_r_bins)
+pr, kr = hja.frame_power(cs, shock_chunk, t, n_sub, n_r_bins)
 fig, ax = plt.subplots()
 ax.loglog(kr, pr, c="k", ls="-")
 fig.tight_layout()
@@ -117,7 +117,7 @@ def get_power_para(
     for i, v in enumerate(val):
         out = np.empty((n_r_bins, len(v)))
         for j, t in tqdm(enumerate(v), total=len(v), desc=f"Chunk {i}/{cs.n_chunks-1}"):
-            out[:, j], kr = frame_power(cs, i, t, n_sub, n_r_bins)
+            out[:, j], kr = hja.frame_power(cs, i, t, n_sub, n_r_bins)
         avg_pwr[:, i] = out.mean(axis=1)
 
     end_time = time.time()
@@ -184,6 +184,7 @@ def fitline(arr, min_x, max_x, func):
 fig, ax = plt.subplots()
 slopes = np.empty((cs.n_chunks, 2))
 for i, s in enumerate(segments):
+    print(i)
     slopes[i, :] = fitline(s, min_x, max_x, line)
     ax.plot(*np.log10(s).T, c="k", ls="-", lw=0.5)
     xr = np.log10(np.linspace(min_x, max_x, 2))
