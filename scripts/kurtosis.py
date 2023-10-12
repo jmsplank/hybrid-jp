@@ -352,3 +352,114 @@ ax.set_ylabel(r"Slope  $^{\log(\kappa_S)} / _{\log(\ell)}$")
 ax.set_xlim((dists[0] - dd / 2, dists[-1] + dd / 2))
 fig.tight_layout()
 plt.show()
+
+# %%
+# Power-law fitting
+
+
+def decay_scale(x, k, c):
+    return x / k + c
+
+
+ds_dists = np.log(dists[dists > 0])
+ds_slp_0 = slp[dists > 0]
+
+# slp needs to be transformed so that none of the values are negative, this should not
+# have any effect on the fit since power laws  slopes are amplitude independent
+ds_slp = -ds_slp_0 + max(ds_slp_0) + 1
+ds_slp = np.log(ds_slp)
+
+popt, pcov = curve_fit(line, ds_dists, ds_slp)
+perr = np.sqrt(np.diag(pcov))
+
+x_ds = -1 / popt[0]
+x_ds_sd = 1 / perr[0]
+
+fig, ax = plt.subplots()
+ax.errorbar(
+    dists,
+    slp,
+    yerr=slp_sd,
+    color="k",
+    marker=".",
+    ls=":",
+)
+
+fit_x = np.linspace(3, dists.max(), 100)
+fit_slope = max(ds_slp_0) + 1 - np.exp(line(np.log(fit_x), *popt))
+ax.plot(
+    fit_x,
+    fit_slope,
+    color=colours.red(),
+    ls="--",
+)
+ax.axvline(x_ds, color=colours.red(), ls="-")
+ax.scatter(
+    x_ds,
+    fit_slope[np.argmin(np.abs(fit_x - x_ds))],
+    marker="o",  # type: ignore
+    facecolors="none",
+    edgecolors=colours.red(),
+    label=f"$x_{{ds}}={x_ds:2.1f}d_i$",
+)
+
+ax.set_xlabel("Distance from shock [$d_i$]")
+ax.set_ylabel(r"Slope  $^{\log(\kappa_S)} / _{\log(\ell)}$")
+ax.set_xlim((dists[0] - dd / 2, dists[-1] + dd / 2))
+ax.legend()
+fig.tight_layout()
+plt.show()
+
+# %%
+
+ds_dists = np.log(dists[(dists > 0) & (slp < 0)])
+ds_slp_0 = slp[(dists > 0) & (slp < 0)]
+
+# slp needs to be transformed so that none of the values are negative, this should not
+# have any effect on the fit since power laws  slopes are amplitude independent
+ds_slp = -ds_slp_0 + max(ds_slp_0) + 1
+ds_slp = np.log(ds_slp)
+
+popt, pcov = curve_fit(line, ds_dists, ds_slp)
+perr = np.sqrt(np.diag(pcov))
+
+x_ds = -1 / popt[0]
+x_ds_sd = 1 / perr[0]
+
+fig, ax = plt.subplots()
+ax.errorbar(
+    dists,
+    slp,
+    yerr=slp_sd,
+    color="k",
+    marker=".",
+    ls=":",
+)
+
+fit_x = np.linspace(3, dists.max(), 100)
+fit_slope = max(ds_slp_0) + 1 - np.exp(line(np.log(fit_x), *popt))
+ax.plot(
+    fit_x,
+    fit_slope,
+    color=colours.red(),
+    ls="--",
+)
+ax.axvline(x_ds, color=colours.red(), ls="-")
+ax.scatter(
+    x_ds,
+    fit_slope[np.argmin(np.abs(fit_x - x_ds))],
+    marker="o",  # type: ignore
+    facecolors="none",
+    edgecolors=colours.red(),
+    label=f"$x_{{ds}}={x_ds:2.1f}d_i$",
+)
+
+ax.set_xlabel("Distance from shock [$d_i$]")
+ax.set_ylabel(r"Slope  $^{\log(\kappa_S)} / _{\log(\ell)}$")
+ax.set_xlim((dists[0] - dd / 2, dists[-1] + dd / 2))
+ax.legend()
+fig.tight_layout()
+plt.show()
+
+# %%
+print("\n".join(f"{i:.2f},{j:.2f}" for i, j in zip(np.exp(ds_dists), ds_slp_0)))
