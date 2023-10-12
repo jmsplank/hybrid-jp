@@ -2,6 +2,7 @@
 """Determine the kurtosis for the data split into chunks.
 """
 from functools import partial
+from itertools import product
 from multiprocessing import set_start_method
 from time import time
 
@@ -9,10 +10,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import numpy.typing as npt
 from dotenv import dotenv_values
+from matplotlib.axes import Axes
 from matplotlib.colors import LogNorm
 from phdhelper import mpl
 from phdhelper.colours import sim as colours
-from scipy.optimize import curve_fit
+from scipy.optimize import curve_fit  # type: ignore
 
 import hybrid_jp as hj
 import hybrid_jp.analysis as hja
@@ -186,7 +188,7 @@ def frame_spectrum_2d(
 
 
 spec = frame_spectrum(cs, chunk, t_idx, lags, y_idx)
-
+ax: Axes
 fig, ax = plt.subplots()
 
 ax.plot(lags, spec, color="k", ls=":", alpha=0.8)  # type: ignore
@@ -278,7 +280,7 @@ for i in range(cs.n_chunks):
     spec[i, :] = chunk_spec.mean(axis=0)
 
 # %%
-axs: list[plt.Axes]
+axs: list[Axes]
 fig, axs = plt.subplots(1, 2, gridspec_kw=dict(width_ratios=[96, 4]))  # type: ignore
 ax = axs[0]
 cax = axs[1]
@@ -333,133 +335,92 @@ def fit_line(
     return slope, slope_sd
 
 
+def plot_kurt_scaling(
+    ax: Axes, dists: hj.arrfloat, slp: hj.arrfloat, slp_sd: hj.arrfloat
+) -> None:
+    dd = dists[1] - dists[0]
+    ax.errorbar(
+        dists,
+        slp,
+        yerr=slp_sd,
+        color="k",
+        marker=".",
+        ls=":",
+    )
+    ax.set_xlabel("Distance from shock [$d_i$]")
+    ax.set_ylabel(r"Slope  $^{\log(\kappa_S)} / _{\log(\ell)}$")
+    ax.set_xlim((dists[0] - dd / 2, dists[-1] + dd / 2))
+
+
 slp, slp_sd = fit_line(spec, lags * cs.dx / di)
-
-fig, ax = plt.subplots()
-
 dists = (chunks - cs.downstream_start_chunk + 0.5) * cs.chunk_i * cs.dx / di
-dd = dists[1] - dists[0]
-ax.errorbar(
-    dists,
-    slp,
-    yerr=slp_sd,
-    color="k",
-    marker=".",
-    ls=":",
-)
-ax.set_xlabel("Distance from shock [$d_i$]")
-ax.set_ylabel(r"Slope  $^{\log(\kappa_S)} / _{\log(\ell)}$")
-ax.set_xlim((dists[0] - dd / 2, dists[-1] + dd / 2))
+
+fig, ax = plt.subplots()
+plot_kurt_scaling(ax, dists, slp, slp_sd)
 fig.tight_layout()
 plt.show()
 
 # %%
-# Power-law fitting
+# Fit using actual exponential instead of log-transformed
 
 
-def decay_scale(x, k, c):
-    return x / k + c
+def exp_decay_scale(x, x_ds, A, B):
+    return A * np.exp(-x / x_ds) + B
 
 
-ds_dists = np.log(dists[dists > 0])
-ds_slp_0 = slp[dists > 0]
+ds_dists = dists[dists > 0]
+ds_slp = slp[dists > 0]
 
-# slp needs to be transformed so that none of the values are negative, this should not
-# have any effect on the fit since power laws  slopes are amplitude independent
-ds_slp = -ds_slp_0 + max(ds_slp_0) + 1
-ds_slp = np.log(ds_slp)
 
-popt, pcov = curve_fit(line, ds_dists, ds_slp)
-perr = np.sqrt(np.diag(pcov))
+def fit_plot_decay(ax: Axes, ds_dists: hj.arrfloat, ds_slp: hj.arrfloat) -> None:
+    popt, pcov = curve_fit(exp_decay_scale, ds_dists, ds_slp)
+    perr = np.sqrt(np.diag(pcov))
 
-x_ds = -1 / popt[0]
-x_ds_sd = 1 / perr[0]
+    # All combinations of sd's
 
+    all_fits = [[i - j, i, i + j] for i, j in zip(popt, perr)]
+    all_fits_prod = list(product(*all_fits))
+
+    fit_x = np.linspace(dists[dists > 0].min() / 2, dists.max(), 50)
+    fit = exp_decay_scale(fit_x, *popt)
+    fits = np.asarray([exp_decay_scale(fit_x, *f) for f in all_fits_prod])
+    fits_min = fits.min(axis=0)
+    fits_max = fits.max(axis=0)
+
+    intersect = [popt[0], fit[np.argmin(abs(fit_x - popt[0]))]]
+
+    ax.fill_between(
+        fit_x, fits_min, fits_max, edgecolor="none", facecolor=colours.red(), alpha=0.2
+    )
+    _, cap, _ = ax.errorbar(
+        *intersect,
+        color=colours.red(),
+        markeredgecolor="none",
+        markerfacecolor=colours.red(),
+        marker=".",
+        ls="none",
+        xerr=perr[0],
+        label=rf"$x_{{ds}}={popt[0]:.2f}\pm{perr[0]:.2f}\ d_i$",
+    )
+    for c in cap:
+        c.set_markeredgecolor(colours.red())
+    ax.plot(fit_x, fit, color=colours.red(), ls="--")
+
+
+ax: Axes
 fig, ax = plt.subplots()
-ax.errorbar(
-    dists,
-    slp,
-    yerr=slp_sd,
-    color="k",
-    marker=".",
-    ls=":",
-)
-
-fit_x = np.linspace(3, dists.max(), 100)
-fit_slope = max(ds_slp_0) + 1 - np.exp(line(np.log(fit_x), *popt))
-ax.plot(
-    fit_x,
-    fit_slope,
-    color=colours.red(),
-    ls="--",
-)
-ax.axvline(x_ds, color=colours.red(), ls="-")
-ax.scatter(
-    x_ds,
-    fit_slope[np.argmin(np.abs(fit_x - x_ds))],
-    marker="o",  # type: ignore
-    facecolors="none",
-    edgecolors=colours.red(),
-    label=f"$x_{{ds}}={x_ds:2.1f}d_i$",
-)
-
-ax.set_xlabel("Distance from shock [$d_i$]")
-ax.set_ylabel(r"Slope  $^{\log(\kappa_S)} / _{\log(\ell)}$")
-ax.set_xlim((dists[0] - dd / 2, dists[-1] + dd / 2))
+plot_kurt_scaling(ax, dists, slp, slp_sd)
+fit_plot_decay(ax, ds_dists, ds_slp)
 ax.legend()
 fig.tight_layout()
 plt.show()
 
 # %%
-
-ds_dists = np.log(dists[(dists > 0) & (slp < 0)])
-ds_slp_0 = slp[(dists > 0) & (slp < 0)]
-
-# slp needs to be transformed so that none of the values are negative, this should not
-# have any effect on the fit since power laws  slopes are amplitude independent
-ds_slp = -ds_slp_0 + max(ds_slp_0) + 1
-ds_slp = np.log(ds_slp)
-
-popt, pcov = curve_fit(line, ds_dists, ds_slp)
-perr = np.sqrt(np.diag(pcov))
-
-x_ds = -1 / popt[0]
-x_ds_sd = 1 / perr[0]
-
+ds_dists = dists[(dists > 0) & (slp < 0)]
+ds_slp = slp[(dists > 0) & (slp < 0)]
 fig, ax = plt.subplots()
-ax.errorbar(
-    dists,
-    slp,
-    yerr=slp_sd,
-    color="k",
-    marker=".",
-    ls=":",
-)
-
-fit_x = np.linspace(3, dists.max(), 100)
-fit_slope = max(ds_slp_0) + 1 - np.exp(line(np.log(fit_x), *popt))
-ax.plot(
-    fit_x,
-    fit_slope,
-    color=colours.red(),
-    ls="--",
-)
-ax.axvline(x_ds, color=colours.red(), ls="-")
-ax.scatter(
-    x_ds,
-    fit_slope[np.argmin(np.abs(fit_x - x_ds))],
-    marker="o",  # type: ignore
-    facecolors="none",
-    edgecolors=colours.red(),
-    label=f"$x_{{ds}}={x_ds:2.1f}d_i$",
-)
-
-ax.set_xlabel("Distance from shock [$d_i$]")
-ax.set_ylabel(r"Slope  $^{\log(\kappa_S)} / _{\log(\ell)}$")
-ax.set_xlim((dists[0] - dd / 2, dists[-1] + dd / 2))
+plot_kurt_scaling(ax, dists, slp, slp_sd)
+fit_plot_decay(ax, ds_dists, ds_slp)
 ax.legend()
 fig.tight_layout()
 plt.show()
-
-# %%
-print("\n".join(f"{i:.2f},{j:.2f}" for i, j in zip(np.exp(ds_dists), ds_slp_0)))
