@@ -5,6 +5,7 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+from dotenv import dotenv_values
 from matplotlib.collections import LineCollection
 from matplotlib.colors import LogNorm, Normalize
 from numpy import typing as npt
@@ -17,17 +18,27 @@ import hybrid_jp as hj
 import hybrid_jp.analysis as hja
 
 # %% Load in data
-START, END = 20, 200
 set_start_method("fork")
 mpl.format()
-data_folder = Path().resolve().parent / "U6T40"
-deck = hja.load_deck(data_dir=data_folder)
+env = dotenv_values("../.env")
+get_env = lambda s, typ: typ(env[s])
+DATA_DIR = get_env("DATA_DIR", str)
+SUBDIVISIONS = get_env("SUBDIVISIONS", int)
+N_CHUNKS = get_env("N_CHUNKS", int)
+N_THREADS = get_env("N_THREADS", int)
+START_SDF = get_env("START_SDF", int)
+END_SDF = get_env("END_SDF", int)
+print(
+    f"{DATA_DIR=}\n{SUBDIVISIONS=}\n{N_CHUNKS=}\n{N_THREADS=}\n{START_SDF=}\n{END_SDF=}"
+)
+
+deck = hja.load_deck(data_dir=DATA_DIR)
 SDFs, fpaths = hja.load_sdfs_para(
-    sdf_dir=data_folder,
+    sdf_dir=DATA_DIR,
     dt=deck.output.dt_snapshot,
-    threads=7,
-    start=START,
-    stop=END,
+    threads=N_THREADS,
+    start=START_SDF,
+    stop=END_SDF,
 )
 for SDF in SDFs:
     SDF.mag *= 1e9  # Convert to nT
@@ -35,7 +46,6 @@ for SDF in SDFs:
 cs = hja.CenteredShock(SDFs, deck)
 
 # %% Split into chunks
-N_CHUNKS = 10
 cs.n_chunks = N_CHUNKS
 shock_chunk = cs.downstream_start_chunk
 
@@ -66,7 +76,7 @@ axs[0].set_yscale("log")
 axs[0].set_xscale("log")
 axs[0].set_aspect("equal")
 
-pxy4, kx4, ky4 = hja.ffts.subdivide_repeat(4, pxy, kx, ky)
+pxy4, kx4, ky4 = hja.ffts.subdivide_repeat(SUBDIVISIONS, pxy, kx, ky)
 axs[1].pcolormesh(kx4, ky4, pxy4.T, norm=LogNorm())
 axs[1].set_yscale("log")
 axs[1].set_xscale("log")
@@ -76,7 +86,7 @@ plt.show()
 
 # %%
 n_r_bins: int = 100
-n_sub: int = 8
+n_sub: int = SUBDIVISIONS
 Pr4, kr = hja.ffts.radial_power(pxy, kx, ky, n_sub, n_r_bins)
 kr = np.logspace(np.log10(kr[0]), np.log10(kr[-1]), n_r_bins)
 print(Pr4.shape, kr.shape, n_r_bins * n_sub)
