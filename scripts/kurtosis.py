@@ -4,6 +4,7 @@
 from functools import partial
 from itertools import product
 from multiprocessing import set_start_method
+from os import environ
 from time import time
 
 import matplotlib.pyplot as plt
@@ -23,27 +24,17 @@ import hybrid_jp.analysis as hja
 # Load constants
 set_start_method("fork")
 mpl.format()
+cfg = hj.config_from_toml(environ["TOML_PATH"]).shk
 
-env = dotenv_values("../.env")
-get_env = lambda s, typ: typ(env[s])
-DATA_DIR = get_env("DATA_DIR", str)
-SUBDIVISIONS = get_env("SUBDIVISIONS", int)
-N_CHUNKS = get_env("N_CHUNKS", int)
-N_THREADS = get_env("N_THREADS", int)
-START_SDF = get_env("START_SDF", int)
-END_SDF = get_env("END_SDF", int)
-print(
-    f"{DATA_DIR=}\n{SUBDIVISIONS=}\n{N_CHUNKS=}\n{N_THREADS=}\n{START_SDF=}\n{END_SDF=}"
-)
 # %%
 # Load data
-deck = hja.load_deck(DATA_DIR)
+deck = hja.load_deck(cfg.data_dir)
 SDFs, fpaths = hja.load_sdfs_para(
-    sdf_dir=DATA_DIR,
+    sdf_dir=cfg.data_dir,
     dt=deck.output.dt_snapshot,
-    threads=N_THREADS,
-    start=START_SDF,
-    stop=END_SDF,
+    threads=cfg.n_threads,
+    start=cfg.start_sdf,
+    stop=cfg.stop_sdf,
 )
 for SDF in SDFs:
     SDF.mag *= 1e9  # Convert to nT
@@ -52,7 +43,7 @@ cs = hja.CenteredShock(SDFs, deck)
 
 # %%
 # Try for just one frame
-cs.n_chunks = N_CHUNKS
+cs.n_chunks = cfg.n_chunks
 _n_lags = 20  # Ideal lags, use n_lags defined below for actual lags
 y_idx = cs.grid.y.size // 2
 
@@ -372,9 +363,17 @@ ds_dists = dists[dists > 0]
 ds_slp = slp[dists > 0]
 
 
-def fit_plot_decay(ax: Axes, ds_dists: hj.arrfloat, ds_slp: hj.arrfloat) -> None:
-    popt, pcov = curve_fit(exp_decay_scale, ds_dists, ds_slp)
+def fit_plot_decay(
+    ax: Axes, ds_dists: hj.arrfloat, ds_slp: hj.arrfloat
+) -> tuple[hj.arrfloat, hj.arrfloat]:
+    popt, pcov = curve_fit(
+        exp_decay_scale,
+        ds_dists,
+        ds_slp,
+        bounds=([0, 0, -0.1], [50, 1.5, 0.05]),
+    )
     perr = np.sqrt(np.diag(pcov))
+    print(popt, perr)
 
     # All combinations of sd's
 
@@ -405,6 +404,7 @@ def fit_plot_decay(ax: Axes, ds_dists: hj.arrfloat, ds_slp: hj.arrfloat) -> None
     for c in cap:
         c.set_markeredgecolor(colours.red())
     ax.plot(fit_x, fit, color=colours.red(), ls="--")
+    return fit_x, fit
 
 
 ax: Axes
@@ -420,7 +420,29 @@ ds_dists = dists[(dists > 0) & (slp < 0)]
 ds_slp = slp[(dists > 0) & (slp < 0)]
 fig, ax = plt.subplots()
 plot_kurt_scaling(ax, dists, slp, slp_sd)
-fit_plot_decay(ax, ds_dists, ds_slp)
+fit = fit_plot_decay(ax, ds_dists, ds_slp)
+ax.axhline(fit[1][-1], ls=":", color=colours.red())
 ax.legend()
 fig.tight_layout()
 plt.show()
+
+# %%
+
+
+def arrs_csv(arrs: list[npt.NDArray]) -> str:
+    import io
+
+    out_arr = np.stack(arrs, axis=1)
+
+    with io.StringIO() as buf:
+        np.savetxt(buf, out_arr, delimiter=",", newline="\n", fmt="%.5f")
+        out_str = buf.getvalue()
+
+    return out_str
+
+
+print(arrs_csv([dists, slp]))
+# up = slp[1:10].mean()
+# dn = fit[1][-1]
+# print(abs(up - dn))
+# print(up / dn)
