@@ -1,0 +1,22 @@
+use_shock = "U12T40"
+
+[shocks]
+
+[shocks.default]
+test_data_dir = "data_dir/"
+subdivisions = 8
+n_chunks = 23
+n_threads = 7
+start_sdf = 20
+stop_sdf = 200
+
+[shocks.U6T40]
+data_dir = "data_dir/"
+
+[shocks.U6T60]
+data_dir = "data_dir/"
+
+[shocks.U12T40]
+data_dir = "data_dir/"
+start_sdf = 30
+stop_sdf = 135
