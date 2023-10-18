@@ -1,6 +1,7 @@
 # %%
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.axes import Axes
 
 import hybrid_jp as hj
 
@@ -75,7 +76,7 @@ def logspaced_edges(arr: hj.arrfloat | hj.arrint) -> hj.arrfloat:
 
 arr = np.unique(np.logspace(0, 2, 15, dtype=np.int32))
 brr = logspaced_edges(arr)
-axs: list[plt.Axes]
+axs: list[Axes]
 fig, axs = plt.subplots(2, 1, figsize=(8, 2))  # type: ignore
 axlin, axlog = axs
 orig = axlin.scatter(arr, np.zeros_like(arr), marker="x", color="k")  # type: ignore
