@@ -24,3 +24,7 @@ scripts/*.html
 .coverage
 htmlcov
 docsrc/build
+
+# Config
+config.toml
+.env
