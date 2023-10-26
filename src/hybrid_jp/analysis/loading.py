@@ -8,7 +8,7 @@ from tqdm import tqdm
 from ..sdf_files import SDF, filefinder, load_sdf_verified
 
 
-def load_async(
+def load_sdfs_para(
     sdf_dir: str | Path,
     dt: float | None = None,
     threads: int | None = None,

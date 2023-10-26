@@ -4,7 +4,8 @@ import numpy as np
 import numpy.typing as npt
 from epoch_cheats.deck import Deck
 
-from hybrid_jp.sdf_files import SDF
+from ..arrays import create_orthonormal_basis_from_vec, rotate_arr_to_new_basis
+from ..sdf_files import SDF
 
 
 class NoTimestampError(Exception):
