@@ -28,3 +28,6 @@ docsrc/build
 # Config
 config.toml
 .env
+
+# Saved data
+data_cache
