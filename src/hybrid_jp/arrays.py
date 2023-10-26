@@ -5,6 +5,108 @@ import pandas as pd
 from .dtypes import arrfloat, arrint
 
 
+def create_orthonormal_basis_from_vec(v: arrfloat) -> arrfloat:
+    """create a basis of orthonormal vectors from an input vector `v`.
+
+    The original components of the vector (i,j,k) in the original basis are transformed
+    to a new orthonormal basis (e1,e2,e3) where the component (e1,0,0) in the new basis
+    points in the direction of `v` in the original. Therefore, e2 and e3 lie in the
+    plane normal to `v` and are mutually orthogonal.
+
+    Args:
+        v (hj.arrfloat): 1D vector length 3
+
+    Returns:
+        hj.arrfloat: square array shape (3,3). e_n=arr[n-1,:] where n=1,2,3
+
+    Examples:
+        >>> v = np.array([1, 2, 3], dtype=np.float64)
+        >>> basis = create_orthonormal_basis_from_vec(v)
+        >>> print("e1", basis[:, 0])
+        >>> print("e2", basis[:, 1])
+        >>> print("e3", basis[:, 2])
+        >>> print("||e1||  ||e2||  ||e3||  ->  ", np.linalg.norm(basis, axis=1))
+        >>> print("e1 . e2 = 0?", np.allclose(np.dot(orth[:, 0], orth[:, 1]), 0))
+        >>> print("e1 . e3 = 0?", np.allclose(np.dot(orth[:, 0], orth[:, 2]), 0))
+        >>> print("e2 . e3 = 0?", np.allclose(np.dot(orth[:, 1], orth[:, 2]), 0)
+    """
+    # v MUST be 1d
+    assert len(v.shape) == 1
+    # v MUST have shape 3
+    assert v.size == 3
+
+    # Make sure it's a unit vector
+    e1 = v / np.linalg.norm(v)
+
+    # 1. Generate a random vector e2
+    #    e2 is NOT length 1 and is NOT orthogonal to `v`
+    e2 = np.random.rand(3)
+
+    # 2. Project e2 into a unit vector in the plane normal to `v`
+    #    Done by subtracting the component parallel to `v` and normalising
+    e2 -= np.dot(e2, e1) * e1
+    e2 /= np.linalg.norm(e2)
+
+    # 3. Get a third basis vector perpendicular to both v and e2
+    e3 = np.cross(e1, e2)
+
+    return np.stack((e1, e2, e3), axis=0)
+
+
+def rotate_arr_to_new_basis(basis: arrfloat, arr: arrfloat) -> arrfloat:
+    """Rotate an array (nx, ny, 3) in i,j,k basis to a new `basis`.
+
+    Args:
+        basis (hj.arrfloat): (3,3) basis of (e1, e2, e3) where basis[0,:]=e1 etc.
+        arr (hj.arrfloat): (nx, ny, 3) array of vectors on a grid (nx, ny)
+
+    Returns:
+        hj.arrfloat: (nx, ny, 3) array of vectors in e1,e2,e3 basis
+
+    Example:
+        >>> import numpy as np
+        >>> import matplotlib.pyplot as plt
+        >>> scale = 100
+        >>> xx, yy = np.mgrid[0:scale, 0:scale]
+        >>> grid = np.empty((*xx.shape, 3))
+        >>> grid[:, :, 0] = yy
+        >>> grid[:, :, 1] = xx
+        >>> # Add an oscillating part in k
+        >>> grid[:, :, 2] = np.sin(2 * np.pi * xx / xx.max())
+        >>> # e1=k in new basis
+        >>> vec = np.array([0, 0, 1], dtype=np.float64)
+        >>> print(f"{vec = }")
+        >>> basis = create_orthonormal_basis_from_vec(vec)
+        >>> print(f"{basis = }")
+        >>> rot = rotate_arr_to_new_basis(basis, grid)
+        >>> fig, axs = plt.subplots(2, 1)
+        >>> # Plot i and j streamlines coloured by k
+        >>> axs[0].streamplot(
+        >>>     xx[:, 0],
+        >>>     yy[0, :],
+        >>>     grid[:, :, 0].T,
+        >>>     grid[:, :, 1].T,
+        >>>     density=2,
+        >>>     arrowstyle="-",
+        >>>     color=grid[:, :, 2].T,
+        >>> )
+        >>> # Visualise e1, should be a horizontal sine wave
+        >>> axs[1].pcolormesh(xx[:, 0], yy[0, :], rot[:, :, 0].T)
+        >>> axs[0].grid(False)
+        >>> axs[1].grid(False)
+        >>> fig.tight_layout()
+        >>> plt.show()
+    """
+    # 1. Flatten the array into (3, nx*ny) where axis 0 is the ijk components
+    arr_flat = arr.reshape(-1, 3).T
+    # 2. Compute the dot product with the orthonormal basis
+    new_basis_flat = np.dot(basis, arr_flat).T
+    # 3. Reshape into oridinal dimension
+    out = new_basis_flat.reshape(arr.shape)
+
+    return out
+
+
 def logspaced_edges(arr: arrfloat | arrint) -> arrfloat:
     """Expand a (possibly uneven but approximately) logarithmically spaced arr to edges.
 
