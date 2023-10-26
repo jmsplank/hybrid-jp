@@ -6,6 +6,7 @@ from pydantic import BaseModel, DirectoryPath, NonNegativeInt, RootModel
 
 
 class ShockParams(BaseModel):
+    name: str
     test_data_dir: DirectoryPath
     data_dir: Path
     n_chunks: NonNegativeInt
@@ -51,6 +52,7 @@ class TOMLConfigLoader:
         data = attrs.copy()
         defaults = data.pop("default")
         for shock_name, shock_params in data.copy().items():
+            data[shock_name]["name"] = shock_name
             for parameter_name, parameter_value in defaults.items():
                 if parameter_name not in shock_params:
                     data[shock_name][parameter_name] = parameter_value
