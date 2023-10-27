@@ -141,6 +141,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../hybrid_jp.arrays.html">hybrid_jp.arrays module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hybrid_jp.change_points.html">hybrid_jp.change_points module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../hybrid_jp.config.html">hybrid_jp.config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hybrid_jp.dtypes.html">hybrid_jp.dtypes module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hybrid_jp.sdf_files.html">hybrid_jp.sdf_files module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../hybrid_jp.shock.html">hybrid_jp.shock module</a></li>
@@ -274,6 +275,108 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">.dtypes</span> <span class="kn">import</span> <span class="n">arrfloat</span><span class="p">,</span> <span class="n">arrint</span>
+
+
+<div class="viewcode-block" id="create_orthonormal_basis_from_vec"><a class="viewcode-back" href="../../hybrid_jp.arrays.html#hybrid_jp.arrays.create_orthonormal_basis_from_vec">[docs]</a><span class="k">def</span> <span class="nf">create_orthonormal_basis_from_vec</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="n">arrfloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">arrfloat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;create a basis of orthonormal vectors from an input vector `v`.</span>
+
+<span class="sd">    The original components of the vector (i,j,k) in the original basis are transformed</span>
+<span class="sd">    to a new orthonormal basis (e1,e2,e3) where the component (e1,0,0) in the new basis</span>
+<span class="sd">    points in the direction of `v` in the original. Therefore, e2 and e3 lie in the</span>
+<span class="sd">    plane normal to `v` and are mutually orthogonal.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        v (hj.arrfloat): 1D vector length 3</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        hj.arrfloat: square array shape (3,3). e_n=arr[n-1,:] where n=1,2,3</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; v = np.array([1, 2, 3], dtype=np.float64)</span>
+<span class="sd">        &gt;&gt;&gt; basis = create_orthonormal_basis_from_vec(v)</span>
+<span class="sd">        &gt;&gt;&gt; print(&quot;e1&quot;, basis[:, 0])</span>
+<span class="sd">        &gt;&gt;&gt; print(&quot;e2&quot;, basis[:, 1])</span>
+<span class="sd">        &gt;&gt;&gt; print(&quot;e3&quot;, basis[:, 2])</span>
+<span class="sd">        &gt;&gt;&gt; print(&quot;||e1||  ||e2||  ||e3||  -&gt;  &quot;, np.linalg.norm(basis, axis=1))</span>
+<span class="sd">        &gt;&gt;&gt; print(&quot;e1 . e2 = 0?&quot;, np.allclose(np.dot(orth[:, 0], orth[:, 1]), 0))</span>
+<span class="sd">        &gt;&gt;&gt; print(&quot;e1 . e3 = 0?&quot;, np.allclose(np.dot(orth[:, 0], orth[:, 2]), 0))</span>
+<span class="sd">        &gt;&gt;&gt; print(&quot;e2 . e3 = 0?&quot;, np.allclose(np.dot(orth[:, 1], orth[:, 2]), 0)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># v MUST be 1d</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="c1"># v MUST have shape 3</span>
+    <span class="k">assert</span> <span class="n">v</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">3</span>
+
+    <span class="c1"># Make sure it&#39;s a unit vector</span>
+    <span class="n">e1</span> <span class="o">=</span> <span class="n">v</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="c1"># 1. Generate a random vector e2</span>
+    <span class="c1">#    e2 is NOT length 1 and is NOT orthogonal to `v`</span>
+    <span class="n">e2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># 2. Project e2 into a unit vector in the plane normal to `v`</span>
+    <span class="c1">#    Done by subtracting the component parallel to `v` and normalising</span>
+    <span class="n">e2</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">e2</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span> <span class="o">*</span> <span class="n">e1</span>
+    <span class="n">e2</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">e2</span><span class="p">)</span>
+
+    <span class="c1"># 3. Get a third basis vector perpendicular to both v and e2</span>
+    <span class="n">e3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">,</span> <span class="n">e3</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="rotate_arr_to_new_basis"><a class="viewcode-back" href="../../hybrid_jp.arrays.html#hybrid_jp.arrays.rotate_arr_to_new_basis">[docs]</a><span class="k">def</span> <span class="nf">rotate_arr_to_new_basis</span><span class="p">(</span><span class="n">basis</span><span class="p">:</span> <span class="n">arrfloat</span><span class="p">,</span> <span class="n">arr</span><span class="p">:</span> <span class="n">arrfloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">arrfloat</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rotate an array (nx, ny, 3) in i,j,k basis to a new `basis`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        basis (hj.arrfloat): (3,3) basis of (e1, e2, e3) where basis[0,:]=e1 etc.</span>
+<span class="sd">        arr (hj.arrfloat): (nx, ny, 3) array of vectors on a grid (nx, ny)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        hj.arrfloat: (nx, ny, 3) array of vectors in e1,e2,e3 basis</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd">        &gt;&gt;&gt; scale = 100</span>
+<span class="sd">        &gt;&gt;&gt; xx, yy = np.mgrid[0:scale, 0:scale]</span>
+<span class="sd">        &gt;&gt;&gt; grid = np.empty((*xx.shape, 3))</span>
+<span class="sd">        &gt;&gt;&gt; grid[:, :, 0] = yy</span>
+<span class="sd">        &gt;&gt;&gt; grid[:, :, 1] = xx</span>
+<span class="sd">        &gt;&gt;&gt; # Add an oscillating part in k</span>
+<span class="sd">        &gt;&gt;&gt; grid[:, :, 2] = np.sin(2 * np.pi * xx / xx.max())</span>
+<span class="sd">        &gt;&gt;&gt; # e1=k in new basis</span>
+<span class="sd">        &gt;&gt;&gt; vec = np.array([0, 0, 1], dtype=np.float64)</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;{vec = }&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; basis = create_orthonormal_basis_from_vec(vec)</span>
+<span class="sd">        &gt;&gt;&gt; print(f&quot;{basis = }&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; rot = rotate_arr_to_new_basis(basis, grid)</span>
+<span class="sd">        &gt;&gt;&gt; fig, axs = plt.subplots(2, 1)</span>
+<span class="sd">        &gt;&gt;&gt; # Plot i and j streamlines coloured by k</span>
+<span class="sd">        &gt;&gt;&gt; axs[0].streamplot(</span>
+<span class="sd">        &gt;&gt;&gt;     xx[:, 0],</span>
+<span class="sd">        &gt;&gt;&gt;     yy[0, :],</span>
+<span class="sd">        &gt;&gt;&gt;     grid[:, :, 0].T,</span>
+<span class="sd">        &gt;&gt;&gt;     grid[:, :, 1].T,</span>
+<span class="sd">        &gt;&gt;&gt;     density=2,</span>
+<span class="sd">        &gt;&gt;&gt;     arrowstyle=&quot;-&quot;,</span>
+<span class="sd">        &gt;&gt;&gt;     color=grid[:, :, 2].T,</span>
+<span class="sd">        &gt;&gt;&gt; )</span>
+<span class="sd">        &gt;&gt;&gt; # Visualise e1, should be a horizontal sine wave</span>
+<span class="sd">        &gt;&gt;&gt; axs[1].pcolormesh(xx[:, 0], yy[0, :], rot[:, :, 0].T)</span>
+<span class="sd">        &gt;&gt;&gt; axs[0].grid(False)</span>
+<span class="sd">        &gt;&gt;&gt; axs[1].grid(False)</span>
+<span class="sd">        &gt;&gt;&gt; fig.tight_layout()</span>
+<span class="sd">        &gt;&gt;&gt; plt.show()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1. Flatten the array into (3, nx*ny) where axis 0 is the ijk components</span>
+    <span class="n">arr_flat</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="c1"># 2. Compute the dot product with the orthonormal basis</span>
+    <span class="n">new_basis_flat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">basis</span><span class="p">,</span> <span class="n">arr_flat</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="c1"># 3. Reshape into oridinal dimension</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">new_basis_flat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">out</span></div>
 
 
 <div class="viewcode-block" id="logspaced_edges"><a class="viewcode-back" href="../../hybrid_jp.arrays.html#hybrid_jp.arrays.logspaced_edges">[docs]</a><span class="k">def</span> <span class="nf">logspaced_edges</span><span class="p">(</span><span class="n">arr</span><span class="p">:</span> <span class="n">arrfloat</span> <span class="o">|</span> <span class="n">arrint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">arrfloat</span><span class="p">:</span>

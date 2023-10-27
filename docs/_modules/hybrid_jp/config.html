@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hybrid_jp.analysis &#8212; hybrid_jp</title>
+    <title>hybrid_jp.config &#8212; hybrid_jp</title>
   
   
   
@@ -43,7 +43,7 @@
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/hybrid_jp/analysis';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/hybrid_jp/config';</script>
     <link rel="shortcut icon" href="../../_static/logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -269,26 +269,79 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <h1>Source code for hybrid_jp.analysis</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+  <h1>Source code for hybrid_jp.config</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">tomllib</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
 
-<span class="kn">from</span> <span class="nn">epoch_cheats</span> <span class="kn">import</span> <span class="n">evaluate_deck</span> <span class="k">as</span> <span class="n">evaluate_deck</span>
-<span class="kn">from</span> <span class="nn">epoch_cheats</span> <span class="kn">import</span> <span class="n">validate_deck</span> <span class="k">as</span> <span class="n">validate_deck</span>
-
-<span class="kn">from</span> <span class="nn">.ffts</span> <span class="kn">import</span> <span class="n">frame_power</span> <span class="k">as</span> <span class="n">frame_power</span>
-<span class="kn">from</span> <span class="nn">.loading</span> <span class="kn">import</span> <span class="n">load_sdfs_para</span> <span class="k">as</span> <span class="n">load_sdfs_para</span>
-<span class="kn">from</span> <span class="nn">.shock_centering</span> <span class="kn">import</span> <span class="n">CenteredShock</span> <span class="k">as</span> <span class="n">CenteredShock</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">DirectoryPath</span><span class="p">,</span> <span class="n">NonNegativeInt</span><span class="p">,</span> <span class="n">RootModel</span>
 
 
-<div class="viewcode-block" id="load_deck"><a class="viewcode-back" href="../../hybrid_jp.analysis.html#hybrid_jp.analysis.load_deck">[docs]</a><span class="k">def</span> <span class="nf">load_deck</span><span class="p">(</span><span class="n">data_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">deck_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;input.deck&quot;</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
-        <span class="n">data_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+<div class="viewcode-block" id="ShockParams"><a class="viewcode-back" href="../../hybrid_jp.config.html#hybrid_jp.config.ShockParams">[docs]</a><span class="k">class</span> <span class="nc">ShockParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">test_data_dir</span><span class="p">:</span> <span class="n">DirectoryPath</span>
+    <span class="n">data_dir</span><span class="p">:</span> <span class="n">Path</span>
+    <span class="n">n_chunks</span><span class="p">:</span> <span class="n">NonNegativeInt</span>
+    <span class="n">n_threads</span><span class="p">:</span> <span class="n">NonNegativeInt</span>
+    <span class="n">start_sdf</span><span class="p">:</span> <span class="n">NonNegativeInt</span>
+    <span class="n">stop_sdf</span><span class="p">:</span> <span class="n">NonNegativeInt</span></div>
 
-    <span class="n">deck_path</span> <span class="o">=</span> <span class="n">data_dir</span> <span class="o">/</span> <span class="n">deck_name</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">deck_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deck file </span><span class="si">{</span><span class="n">deck_path</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">validate_deck</span><span class="p">(</span><span class="n">evaluate_deck</span><span class="p">(</span><span class="n">deck_path</span><span class="p">))</span></div>
+<div class="viewcode-block" id="Shocks"><a class="viewcode-back" href="../../hybrid_jp.config.html#hybrid_jp.config.Shocks">[docs]</a><span class="k">class</span> <span class="nc">Shocks</span><span class="p">(</span><span class="n">RootModel</span><span class="p">):</span>
+    <span class="n">root</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ShockParams</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">item</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Config"><a class="viewcode-back" href="../../hybrid_jp.config.html#hybrid_jp.config.Config">[docs]</a><span class="k">class</span> <span class="nc">Config</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">shocks</span><span class="p">:</span> <span class="n">Shocks</span>
+    <span class="n">use_shock</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">shk</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">shock_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_shock</span>
+        <span class="k">if</span> <span class="n">shock_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">shocks</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;use_shock=</span><span class="si">{</span><span class="n">shock_name</span><span class="si">}</span><span class="s2"> is not a valid shock.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shocks</span><span class="p">[</span><span class="n">shock_name</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="TOMLConfigLoader"><a class="viewcode-back" href="../../hybrid_jp.config.html#hybrid_jp.config.TOMLConfigLoader">[docs]</a><span class="k">class</span> <span class="nc">TOMLConfigLoader</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_toml_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config_toml_path</span><span class="p">,</span> <span class="n">Path</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config_toml_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">config_toml_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">config_toml_path</span> <span class="o">=</span> <span class="n">config_toml_path</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_broadcast_defaults</span><span class="p">(</span><span class="n">attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">attrs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">defaults</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">shock_name</span><span class="p">,</span> <span class="n">shock_params</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">shock_name</span><span class="p">][</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shock_name</span>
+            <span class="k">for</span> <span class="n">parameter_name</span><span class="p">,</span> <span class="n">parameter_value</span> <span class="ow">in</span> <span class="n">defaults</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">parameter_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">shock_params</span><span class="p">:</span>
+                    <span class="n">data</span><span class="p">[</span><span class="n">shock_name</span><span class="p">][</span><span class="n">parameter_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameter_value</span>
+        <span class="k">return</span> <span class="n">data</span>
+
+<div class="viewcode-block" id="TOMLConfigLoader.load"><a class="viewcode-back" href="../../hybrid_jp.config.html#hybrid_jp.config.TOMLConfigLoader.load">[docs]</a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_toml_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">tomllib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;shocks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_broadcast_defaults</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;shocks&quot;</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">data</span></div></div>
+
+
+<div class="viewcode-block" id="config_from_toml"><a class="viewcode-back" href="../../hybrid_jp.config.html#hybrid_jp.config.config_from_toml">[docs]</a><span class="k">def</span> <span class="nf">config_from_toml</span><span class="p">(</span><span class="n">toml_path</span><span class="p">:</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
+    <span class="n">loader</span> <span class="o">=</span> <span class="n">TOMLConfigLoader</span><span class="p">(</span><span class="n">toml_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Config</span><span class="p">(</span><span class="o">**</span><span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">())</span></div>
 </pre></div>
 
                 </article>

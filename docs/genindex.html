@@ -141,6 +141,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.arrays.html">hybrid_jp.arrays module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.change_points.html">hybrid_jp.change_points module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html">hybrid_jp.config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.dtypes.html">hybrid_jp.dtypes module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.sdf_files.html">hybrid_jp.sdf_files module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.shock.html">hybrid_jp.shock module</a></li>
@@ -289,6 +290,7 @@ document.write(`
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
  | <a href="#X"><strong>X</strong></a>
  | <a href="#Y"><strong>Y</strong></a>
@@ -345,11 +347,17 @@ document.write(`
       </ul></li>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.ChangePoints">ChangePoints (class in hybrid_jp.shock)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.ChangePointsXResult">ChangePointsXResult (class in hybrid_jp.shock)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.CenteredShock.chunk_i">chunk_i (hybrid_jp.analysis.shock_centering.CenteredShock property)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.Config">Config (class in hybrid_jp.config)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.config_from_toml">config_from_toml() (in module hybrid_jp.config)</a>
+</li>
+      <li><a href="hybrid_jp.arrays.html#hybrid_jp.arrays.create_orthonormal_basis_from_vec">create_orthonormal_basis_from_vec() (in module hybrid_jp.arrays)</a>
 </li>
       <li><a href="hybrid_jp.dtypes.html#hybrid_jp.dtypes.Current">Current (class in hybrid_jp.dtypes)</a>
 </li>
@@ -361,12 +369,14 @@ document.write(`
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.data_to_df">data_to_df() (in module hybrid_jp.sdf_files)</a>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.data_dir">data_dir (hybrid_jp.config.ShockParams attribute)</a>
 </li>
-      <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.Shock.deck">deck (hybrid_jp.shock.Shock attribute)</a>
+      <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.data_to_df">data_to_df() (in module hybrid_jp.sdf_files)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.Shock.deck">deck (hybrid_jp.shock.Shock attribute)</a>
+</li>
       <li><a href="hybrid_jp.arrays.html#hybrid_jp.arrays.df_to_rows_array">df_to_rows_array() (in module hybrid_jp.arrays)</a>
 </li>
       <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.CenteredShock.downstream_start_chunk">downstream_start_chunk (hybrid_jp.analysis.shock_centering.CenteredShock property)</a>
@@ -499,6 +509,13 @@ document.write(`
 </li>
       </ul></li>
       <li>
+    hybrid_jp.config
+
+      <ul>
+        <li><a href="hybrid_jp.config.html#module-hybrid_jp.config">module</a>
+</li>
+      </ul></li>
+      <li>
     hybrid_jp.dtypes
 
       <ul>
@@ -555,19 +572,21 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.list_variables">list_variables() (in module hybrid_jp.sdf_files)</a>
 </li>
-      <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.load">load() (in module hybrid_jp.sdf_files)</a>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.TOMLConfigLoader.load">load() (hybrid_jp.config.TOMLConfigLoader method)</a>
 
       <ul>
+        <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.load">(in module hybrid_jp.sdf_files)</a>
+</li>
         <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.load">(in module hybrid_jp.shock)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="hybrid_jp.analysis.loading.html#hybrid_jp.analysis.loading.load_async">load_async() (in module hybrid_jp.analysis.loading)</a>
-</li>
       <li><a href="hybrid_jp.analysis.html#hybrid_jp.analysis.load_deck">load_deck() (in module hybrid_jp.analysis)</a>
 </li>
       <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.load_sdf_verified">load_sdf_verified() (in module hybrid_jp.sdf_files)</a>
+</li>
+      <li><a href="hybrid_jp.analysis.loading.html#hybrid_jp.analysis.loading.load_sdfs_para">load_sdfs_para() (in module hybrid_jp.analysis.loading)</a>
 </li>
       <li><a href="hybrid_jp.arrays.html#hybrid_jp.arrays.logspaced_edges">logspaced_edges() (in module hybrid_jp.arrays)</a>
 </li>
@@ -597,6 +616,24 @@ document.write(`
       </ul></li>
       <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.CenteredShock.missing">missing (hybrid_jp.analysis.shock_centering.CenteredShock property)</a>
 </li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.Config.model_config">model_config (hybrid_jp.config.Config attribute)</a>
+
+      <ul>
+        <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.model_config">(hybrid_jp.config.ShockParams attribute)</a>
+</li>
+        <li><a href="hybrid_jp.config.html#hybrid_jp.config.Shocks.model_config">(hybrid_jp.config.Shocks attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.Config.model_fields">model_fields (hybrid_jp.config.Config attribute)</a>
+
+      <ul>
+        <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.model_fields">(hybrid_jp.config.ShockParams attribute)</a>
+</li>
+        <li><a href="hybrid_jp.config.html#hybrid_jp.config.Shocks.model_fields">(hybrid_jp.config.Shocks attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     module
 
@@ -615,6 +652,8 @@ document.write(`
 </li>
         <li><a href="hybrid_jp.change_points.html#module-hybrid_jp.change_points">hybrid_jp.change_points</a>
 </li>
+        <li><a href="hybrid_jp.config.html#module-hybrid_jp.config">hybrid_jp.config</a>
+</li>
         <li><a href="hybrid_jp.dtypes.html#module-hybrid_jp.dtypes">hybrid_jp.dtypes</a>
 </li>
         <li><a href="hybrid_jp.sdf_files.html#module-hybrid_jp.sdf_files">hybrid_jp.sdf_files</a>
@@ -622,8 +661,6 @@ document.write(`
         <li><a href="hybrid_jp.shock.html#module-hybrid_jp.shock">hybrid_jp.shock</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.arrays.html#hybrid_jp.arrays.mov_avg">mov_avg() (in module hybrid_jp.arrays)</a>
 </li>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.moving_avg">moving_avg() (in module hybrid_jp.shock)</a>
@@ -636,10 +673,16 @@ document.write(`
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.NChunksNotSetError">NChunksNotSetError</a>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.n_chunks">n_chunks (hybrid_jp.config.ShockParams attribute)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.n_threads">n_threads (hybrid_jp.config.ShockParams attribute)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.name">name (hybrid_jp.config.ShockParams attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.NChunksNotSetError">NChunksNotSetError</a>
+</li>
       <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.NoTimestampError">NoTimestampError</a>
 </li>
       <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.SDF.numberdensity">numberdensity (hybrid_jp.sdf_files.SDF attribute)</a>
@@ -664,11 +707,15 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.analysis.ffts.html#hybrid_jp.analysis.ffts.radial_power">radial_power() (in module hybrid_jp.analysis.ffts)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.reduce_to_1d">reduce_to_1d() (in module hybrid_jp.sdf_files)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.CenteredShock.reshape_qty_to_shock_arr">reshape_qty_to_shock_arr() (hybrid_jp.analysis.shock_centering.CenteredShock method)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.Shocks.root">root (hybrid_jp.config.Shocks attribute)</a>
+</li>
+      <li><a href="hybrid_jp.arrays.html#hybrid_jp.arrays.rotate_arr_to_new_basis">rotate_arr_to_new_basis() (in module hybrid_jp.arrays)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -690,12 +737,12 @@ document.write(`
 </li>
       <li><a href="hybrid_jp.dtypes.html#hybrid_jp.dtypes.Grid.shape">shape (hybrid_jp.dtypes.Grid property)</a>
 </li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.Config.shk">shk (hybrid_jp.config.Config property)</a>
+</li>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.Shock">Shock (class in hybrid_jp.shock)</a>
 </li>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.MovingAvgResult.shock">shock (hybrid_jp.shock.MovingAvgResult attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.shock_and_changes">shock_and_changes() (in module hybrid_jp.shock)</a>
 </li>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.ChangePoints.shock_index">shock_index (hybrid_jp.shock.ChangePoints attribute)</a>
@@ -704,7 +751,15 @@ document.write(`
         <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.ChangePointsXResult.shock_index">(hybrid_jp.shock.ChangePointsXResult attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.CenteredShock.shock_index_from_nd">shock_index_from_nd() (hybrid_jp.analysis.shock_centering.CenteredShock method)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams">ShockParams (class in hybrid_jp.config)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.Shocks">Shocks (class in hybrid_jp.config)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.Config.shocks">shocks (hybrid_jp.config.Config attribute)</a>
 </li>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.Shock.skip">skip (hybrid_jp.shock.Shock attribute)</a>
 </li>
@@ -712,7 +767,11 @@ document.write(`
 </li>
       <li><a href="hybrid_jp.analysis.shock_centering.html#hybrid_jp.analysis.shock_centering.CenteredShock.start_offset">start_offset (hybrid_jp.analysis.shock_centering.CenteredShock property)</a>
 </li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.start_sdf">start_sdf (hybrid_jp.config.ShockParams attribute)</a>
+</li>
       <li><a href="hybrid_jp.shock.html#hybrid_jp.shock.MovingAvgResult.start_STR">start_STR (hybrid_jp.shock.MovingAvgResult attribute)</a>
+</li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.stop_sdf">stop_sdf (hybrid_jp.config.ShockParams attribute)</a>
 </li>
       <li><a href="hybrid_jp.analysis.ffts.html#hybrid_jp.analysis.ffts.subdivide_repeat">subdivide_repeat() (in module hybrid_jp.analysis.ffts)</a>
 </li>
@@ -730,13 +789,25 @@ document.write(`
       </ul></li>
       <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.SDF.temperature">temperature (hybrid_jp.sdf_files.SDF attribute)</a>
 </li>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.test_data_dir">test_data_dir (hybrid_jp.config.ShockParams attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.TOMLConfigLoader">TOMLConfigLoader (class in hybrid_jp.config)</a>
+</li>
       <li><a href="hybrid_jp.arrays.html#hybrid_jp.arrays.trim_var">trim_var() (in module hybrid_jp.arrays)</a>
 </li>
       <li><a href="hybrid_jp.arrays.html#hybrid_jp.arrays.trim_vars">trim_vars() (in module hybrid_jp.arrays)</a>
 </li>
       <li><a href="hybrid_jp.sdf_files.html#hybrid_jp.sdf_files.SDF.tstamp">tstamp (hybrid_jp.sdf_files.SDF attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="hybrid_jp.config.html#hybrid_jp.config.Config.use_shock">use_shock (hybrid_jp.config.Config attribute)</a>
 </li>
   </ul></td>
 </tr></table>

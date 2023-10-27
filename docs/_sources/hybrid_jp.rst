@@ -17,6 +17,7 @@ Submodules
 
    hybrid_jp.arrays
    hybrid_jp.change_points
+   hybrid_jp.config
    hybrid_jp.dtypes
    hybrid_jp.sdf_files
    hybrid_jp.shock

@@ -144,6 +144,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.arrays.html">hybrid_jp.arrays module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.change_points.html">hybrid_jp.change_points module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html">hybrid_jp.config module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.dtypes.html">hybrid_jp.dtypes module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.sdf_files.html">hybrid_jp.sdf_files module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.shock.html">hybrid_jp.shock module</a></li>
@@ -348,7 +349,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.analysis.loading.html">hybrid_jp.analysis.loading module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="hybrid_jp.analysis.loading.html#hybrid_jp.analysis.loading.load_async"><code class="docutils literal notranslate"><span class="pre">load_async()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hybrid_jp.analysis.loading.html#hybrid_jp.analysis.loading.load_sdfs_para"><code class="docutils literal notranslate"><span class="pre">load_sdfs_para()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="hybrid_jp.analysis.shock_centering.html">hybrid_jp.analysis.shock_centering module</a><ul>
@@ -391,10 +392,12 @@ document.write(`
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="hybrid_jp.arrays.html">hybrid_jp.arrays module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_jp.arrays.html#hybrid_jp.arrays.create_orthonormal_basis_from_vec"><code class="docutils literal notranslate"><span class="pre">create_orthonormal_basis_from_vec()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_jp.arrays.html#hybrid_jp.arrays.df_to_rows_array"><code class="docutils literal notranslate"><span class="pre">df_to_rows_array()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_jp.arrays.html#hybrid_jp.arrays.interpolate_to_midpoints"><code class="docutils literal notranslate"><span class="pre">interpolate_to_midpoints()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_jp.arrays.html#hybrid_jp.arrays.logspaced_edges"><code class="docutils literal notranslate"><span class="pre">logspaced_edges()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_jp.arrays.html#hybrid_jp.arrays.mov_avg"><code class="docutils literal notranslate"><span class="pre">mov_avg()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_jp.arrays.html#hybrid_jp.arrays.rotate_arr_to_new_basis"><code class="docutils literal notranslate"><span class="pre">rotate_arr_to_new_basis()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_jp.arrays.html#hybrid_jp.arrays.trim_var"><code class="docutils literal notranslate"><span class="pre">trim_var()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_jp.arrays.html#hybrid_jp.arrays.trim_vars"><code class="docutils literal notranslate"><span class="pre">trim_vars()</span></code></a></li>
 </ul>
@@ -402,6 +405,40 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="hybrid_jp.change_points.html">hybrid_jp.change_points module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_jp.change_points.html#hybrid_jp.change_points.binseg"><code class="docutils literal notranslate"><span class="pre">binseg()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="hybrid_jp.change_points.html#hybrid_jp.change_points.find_shock_index_from_gradnd"><code class="docutils literal notranslate"><span class="pre">find_shock_index_from_gradnd()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_jp.config.html">hybrid_jp.config module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Config.model_config"><code class="docutils literal notranslate"><span class="pre">Config.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Config.model_fields"><code class="docutils literal notranslate"><span class="pre">Config.model_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Config.shk"><code class="docutils literal notranslate"><span class="pre">Config.shk</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Config.shocks"><code class="docutils literal notranslate"><span class="pre">Config.shocks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Config.use_shock"><code class="docutils literal notranslate"><span class="pre">Config.use_shock</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams"><code class="docutils literal notranslate"><span class="pre">ShockParams</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.data_dir"><code class="docutils literal notranslate"><span class="pre">ShockParams.data_dir</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.model_config"><code class="docutils literal notranslate"><span class="pre">ShockParams.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.model_fields"><code class="docutils literal notranslate"><span class="pre">ShockParams.model_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.n_chunks"><code class="docutils literal notranslate"><span class="pre">ShockParams.n_chunks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.n_threads"><code class="docutils literal notranslate"><span class="pre">ShockParams.n_threads</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.name"><code class="docutils literal notranslate"><span class="pre">ShockParams.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.start_sdf"><code class="docutils literal notranslate"><span class="pre">ShockParams.start_sdf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.stop_sdf"><code class="docutils literal notranslate"><span class="pre">ShockParams.stop_sdf</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.ShockParams.test_data_dir"><code class="docutils literal notranslate"><span class="pre">ShockParams.test_data_dir</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Shocks"><code class="docutils literal notranslate"><span class="pre">Shocks</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Shocks.model_config"><code class="docutils literal notranslate"><span class="pre">Shocks.model_config</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Shocks.model_fields"><code class="docutils literal notranslate"><span class="pre">Shocks.model_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.Shocks.root"><code class="docutils literal notranslate"><span class="pre">Shocks.root</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.TOMLConfigLoader"><code class="docutils literal notranslate"><span class="pre">TOMLConfigLoader</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.TOMLConfigLoader.load"><code class="docutils literal notranslate"><span class="pre">TOMLConfigLoader.load()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hybrid_jp.config.html#hybrid_jp.config.config_from_toml"><code class="docutils literal notranslate"><span class="pre">config_from_toml()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hybrid_jp.dtypes.html">hybrid_jp.dtypes module</a><ul>
