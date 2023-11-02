@@ -5,7 +5,11 @@ import pandas as pd
 from .dtypes import arrfloat, arrint
 
 
-def create_orthonormal_basis_from_vec(v: arrfloat) -> arrfloat:
+def create_orthonormal_basis_from_vec(
+    v: arrfloat,
+    e2: arrfloat | None = None,
+    e2_plane: arrfloat | None = None,
+) -> arrfloat:
     """create a basis of orthonormal vectors from an input vector `v`.
 
     The original components of the vector (i,j,k) in the original basis are transformed
@@ -14,10 +18,13 @@ def create_orthonormal_basis_from_vec(v: arrfloat) -> arrfloat:
     plane normal to `v` and are mutually orthogonal.
 
     Args:
-        v (hj.arrfloat): 1D vector length 3
+        v (arrfloat): 1D vector length 3 that is the e1 component
+        e2 (arrfloat): 1D vector length 3 that is the e2 component
+        e2_plane (arrfloat): 1D vec len 3, normal to plane that e2 must lie in.
+            If present, overrides `e2`.
 
     Returns:
-        hj.arrfloat: square array shape (3,3). e_n=arr[n-1,:] where n=1,2,3
+        arrfloat: square array shape (3,3). e_n=arr[n-1,:] where n=1,2,3
 
     Examples:
         >>> v = np.array([1, 2, 3], dtype=np.float64)
@@ -40,17 +47,27 @@ def create_orthonormal_basis_from_vec(v: arrfloat) -> arrfloat:
 
     # 1. Generate a random vector e2
     #    e2 is NOT length 1 and is NOT orthogonal to `v`
-    e2 = np.random.rand(3)
+    _e2: arrfloat
+    if e2_plane is not None:
+        assert e2_plane.size == 3
+        e2_plane /= np.linalg.norm(e2_plane)
+        _e2 = np.cross(e1, e2_plane)
+    elif e2 is not None:
+        _e2 = e2
+    else:
+        _e2 = np.random.random(3)
 
-    # 2. Project e2 into a unit vector in the plane normal to `v`
+    _e2 /= np.linalg.norm(_e2)
+
+    # 2. Project _e2 into a unit vector in the plane normal to `v`
     #    Done by subtracting the component parallel to `v` and normalising
-    e2 -= np.dot(e2, e1) * e1
-    e2 /= np.linalg.norm(e2)
+    _e2 -= np.dot(_e2, e1) * e1
+    _e2 /= np.linalg.norm(_e2)
 
-    # 3. Get a third basis vector perpendicular to both v and e2
-    e3 = np.cross(e1, e2)
+    # 3. Get a third basis vector perpendicular to both v and _e2
+    e3 = np.cross(e1, _e2)
 
-    return np.stack((e1, e2, e3), axis=0)
+    return np.stack((e1, _e2, e3), axis=0)
 
 
 def rotate_arr_to_new_basis(basis: arrfloat, arr: arrfloat) -> arrfloat:
