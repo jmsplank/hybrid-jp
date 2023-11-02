@@ -1,8 +1,12 @@
 # %%
+import json
 from functools import partial
 from multiprocessing import set_start_method
 from os import environ
+from pathlib import Path
+from typing import Any
 
+import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import numpy.typing as npt
@@ -95,20 +99,14 @@ class MagneticField:
 
 
 def b_perp_para_chunk(chunk: int, mag: MagneticField) -> hj.arrfloat:
-    b_t_xyz = mag.b_xyz_chunk(chunk)
-    b_xyz = b_t_xyz.mean(axis=0)
-
+    b_xyz = mag.b_xyz_chunk(chunk).reshape((mag.ny, -1, 3))
     mean_b = b_xyz.mean(axis=(0, 1))
     unit_b = mean_b / np.linalg.norm(mean_b)
-
-    b_basis = hj.arrays.create_orthonormal_basis_from_vec(unit_b)
+    b_basis = hj.arrays.create_orthonormal_basis_from_vec(
+        unit_b, e2_plane=np.array([0, 0, 1], dtype=np.float64)
+    )
     b_rotated = hj.arrays.rotate_arr_to_new_basis(b_basis, b_xyz)
-
-    out = np.empty((b_xyz.shape[0], b_xyz.shape[1], 2), dtype=np.float64)
-    out[:, :, 0] = b_rotated[:, :, 0]
-    out[:, :, 1] = np.linalg.norm(b_rotated[:, :, 1:], axis=2)
-
-    return out
+    return b_rotated
 
 
 # %%
@@ -118,15 +116,113 @@ x = np.arange(cs.chunk_i * cs.n_chunks, dtype=np.float64) - (
     cs.chunk_i * cs.downstream_start_chunk
 )
 x *= cs.dx
-dat = np.empty((x.size, 2))
-for c in range(cs.n_chunks):
-    c_idx = c * cs.chunk_i
-    dat[c_idx : c_idx + cs.chunk_i] = b_perp_para_chunk(c, mag).mean(axis=1)
+chunks: list[hj.arrfloat] = []
+for i in range(cs.n_chunks):
+    ny = cs.valid_chunks[i].sum() * cs.grid.y.size
+    # c_idx = c * cs.chunk_i
+    chunks.append(b_perp_para_chunk(i, mag))
 
+# %%
+corr = corr_len_1d(chunks[cs.downstream_start_chunk][:, 0, 0], cs.dx)
+
+# %%
+out: list[hj.arrfloat] = []
+for i, c in enumerate(chunks):  # for each chunk
+    corrs = np.empty((c.shape[1], 3))
+    for step in range(c.shape[1]):  # Iterate over grid.y
+        for component in range(3):  # Iterate over b_para, b_perp1, b_perp2
+            corrs[step, component] = corr_len_1d(c[:, step, component], cs.dx)
+    out.append(corrs)
+
+# %%
+# print(*[i.shape for i in out], sep="\n")
+ax: Axes
 fig, ax = plt.subplots()
 
-ax.plot(x, dat[:, 0], c=colours.green(), label=r"$B_\parallel$")
-ax.plot(x, dat[:, 1], c=colours.red(), label=r"$B_\perp$")
+d = np.empty((cs.n_chunks, 3))
+for i, corr in enumerate(out):
+    d[i, :] = corr.mean(axis=0) / (deck.constant.di * 1e-3)
+
+plot_x: hj.arrfloat = (
+    (np.arange(cs.n_chunks) - cs.downstream_start_chunk)
+    * cs.dx
+    * cs.chunk_i
+    / (deck.constant.di * 1e-3)
+)
+labels = [
+    r"$\kappa_\parallel$",
+    r"$\kappa_{\perp i}$ in-plane",
+    r"$\kappa_{\perp o}$ out-of-plane",
+]
+ax.step(plot_x, d[:, 0], where="post", label=labels[0])
+ax.step(plot_x, d[:, 1], where="post", label=labels[1])
+ax.step(plot_x, d[:, 2], where="post", label=labels[2])
 ax.legend()
+ax.set_title(f"{cfg.name} - correlation length")
 fig.tight_layout()
+plt.show(block=False)
+
+# %%
+data = dict(
+    x=plot_x.tolist(),
+    y=d.tolist(),
+    labels=labels,
+    xlabel=r"Distance from shock [$d_i$]",
+    ylabel=r"Correlation length $\kappa$ [$d_i$]",
+)
+
+content_dir = Path(__file__).parent / "correlation_len"
+content_dir.mkdir(parents=False, exist_ok=True)
+
+
+with open(content_dir / f"{cfg.name}-plot_data.json", "w") as file:
+    json.dump(data, file)
+
+
+# %%
+# Combi-plot
+def load_data(fp: Path | str) -> dict[str, Any]:
+    if not isinstance(fp, Path):
+        fp = Path(fp)
+
+    with open(fp, "r") as file:
+        data = json.load(file)
+
+    data["x"] = np.array(data["x"])
+    data["y"] = np.array(data["y"])
+
+    return data
+
+
+def plot_data(ax: Axes, data: dict[str, Any]):
+    x = data["x"]
+    y = data["y"]
+    labels = data["labels"]
+    for i in range(y.shape[1]):
+        ax.step(x, y[:, i], where="post", label=labels[i])
+
+
+saved_data = list(content_dir.glob("*-plot_data.json"))
+data_ref = load_data(saved_data[0])
+n_shocks = len(saved_data)
+
+axs: list[Axes]
+fig, axs = plt.subplots(1, n_shocks, sharex=True)
+if n_shocks == 1:
+    axs = [axs]  # type: ignore
+for i, (ax, fp) in enumerate(zip(axs, saved_data)):
+    data = load_data(fp)
+    plot_data(ax, data)
+    ax.set_title(fp.stem.split("-")[0])
+
+axs[2].legend()
+axs[0].set_ylabel(data_ref["ylabel"])
+axs[1].set_xlabel(data_ref["xlabel"])
+
+axs[1].set_yticklabels([])
+axs[2].set_yticklabels([])
+
+
+fig.tight_layout()
+fig.subplots_adjust(wspace=0)
 plt.show()
