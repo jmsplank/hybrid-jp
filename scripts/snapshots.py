@@ -7,7 +7,9 @@ from typing import Protocol
 import matplotlib.pyplot as plt
 import numpy as np
 from epoch_cheats.deck import Deck
+from lic import gen_seed  # type: ignore
 from matplotlib.axes import Axes
+from matplotlib.colors import SymLogNorm
 from phdhelper import mpl
 from phdhelper.colours import sim as colours
 from tqdm import tqdm  # type: ignore
@@ -33,6 +35,50 @@ class VisualisationMethod(Protocol):
         ...
 
 
+class VisualiseLIC(VisualisationMethod):
+    def __init__(self, sdf: hj.sdf_files.SDF) -> None:
+        self.sdf = sdf
+        self.mag: hj.Mag
+        self.grid: hj.Grid
+
+    def retrieve_data(self) -> None:
+        self.mag = self.sdf.mag * 1e9  # nT
+        self.grid = self.sdf.mid_grid * 1e-3  # km
+
+    def add_data_to_axes(self, ax: Axes, **kwargs) -> None:
+        bz = self.mag.bz
+        colour_lims = np.array([-np.abs(bz).max(), np.abs(bz).max()]) * 0.75
+        ax.pcolormesh(
+            self.grid.x,
+            self.grid.y,
+            bz.T,
+            cmap=mpl.Cmaps.diverging,
+            vmin=colour_lims[0],
+            vmax=colour_lims[1],
+        )
+
+        # Generate LIC
+        length: int = int(kwargs["length"]) if "length" in kwargs else 100
+        seed: np.ndarray | None = np.array(kwargs["seed"]) if "seed" in kwargs else None
+        convolution = hj.arrays.lic(
+            self.mag.bx,
+            self.mag.by,
+            length=length,
+            contrast=False,
+            seed=seed,  # type: ignore
+        )
+
+        conv = convolution**3
+
+        ax.pcolormesh(
+            self.grid.x,
+            self.grid.y,
+            conv.T,
+            cmap=mpl.Cmaps.greyscale_r,
+            alpha=0.5,
+        )
+
+
 class VisualiseBField(VisualisationMethod):
     """Visualise B field."""
 
@@ -49,7 +95,7 @@ class VisualiseBField(VisualisationMethod):
     def add_data_to_axes(self, ax: Axes, density: float = 4) -> None:
         # Plot B_z in the bg as the colour
         bz = self.mag.bz
-        colour_lims = (-np.abs(bz).max(), np.abs(bz).max())
+        colour_lims = np.array([-np.abs(bz).max(), np.abs(bz).max()])
         ax.pcolormesh(
             self.grid.x,
             self.grid.y,
@@ -84,6 +130,7 @@ def snapshot(
 
 
 paths = sorted(list(Path(cfg.data_dir).glob("*.sdf")))
+print(cfg.data_dir)
 path = paths[len(paths) // 2]
 deck = hja.load_deck(cfg.data_dir)
 # vis = snapshot(sdf_file=path, deck=deck, Visualiser=VisualiseBField)
@@ -97,11 +144,13 @@ fig, axs = plt.subplots(
     sharex=True,
 )
 # vis.add_data_to_axes(ax)
+LICseed = gen_seed((nx, ny))
 for i, ax in enumerate(axs):
     snap = [50, 100, 150][i]
-    vis = snapshot(sdf_file=paths[snap - 1], deck=deck, Visualiser=VisualiseBField)
-    vis.add_data_to_axes(ax, density=2)
+    vis = snapshot(sdf_file=paths[snap - 1], deck=deck, Visualiser=VisualiseLIC)
+    vis.add_data_to_axes(ax, density=2, length=50, seed=LICseed)
     ax.grid(False)
+    ax.set_aspect("equal")
     ax.set_title(f"{deck.output.dt_snapshot * (snap - 1):.1f}s")
 
 
@@ -116,10 +165,10 @@ for png in save_dir.glob(f"{cfg.name}-*.png"):
 
 def gen_pdf(frame_idx: int):
     frame = paths[frame_idx]
-    vis = snapshot(sdf_file=frame, deck=deck, Visualiser=VisualiseBField)
+    vis = snapshot(sdf_file=frame, deck=deck, Visualiser=VisualiseLIC)
 
     fig, ax = plt.subplots()
-    vis.add_data_to_axes(ax)
+    vis.add_data_to_axes(ax, seed=LICseed, length=50)
     ax.grid(False)
     ax.annotate(
         f"{frame_idx+1}\n"

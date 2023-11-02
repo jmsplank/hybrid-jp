@@ -19,6 +19,7 @@ setup(
         "pandas",
         "joblib",
         "statsmodels",
+        "lic",
     ],
     entry_points={
         "console_scripts": [
