@@ -35,6 +35,7 @@ class Config(BaseModel):
     @property
     def shk(self):
         shock_name = self.use_shock
+        print(f"Using {shock_name} as default shock.")
         if shock_name not in self.shocks:
             raise KeyError(f"use_shock={shock_name} is not a valid shock.")
         return self.shocks[shock_name]
