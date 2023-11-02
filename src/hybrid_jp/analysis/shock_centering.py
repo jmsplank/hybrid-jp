@@ -51,7 +51,7 @@ class CenteredShock:
         self.max_widths = self.dist_either_side.max(axis=0)
         self.full_width = sum(self.max_widths)
 
-        self.n_chunks: int | None = None
+        self.n_chunks: int = None  # type: ignore
 
         # Can be set by set_chunk_i_missing
         self._chunks_info: dict[str, Any] = {}
