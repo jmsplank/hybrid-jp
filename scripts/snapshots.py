@@ -7,7 +7,7 @@ from typing import Protocol
 import matplotlib.pyplot as plt
 import numpy as np
 from epoch_cheats.deck import Deck
-from lic import gen_seed  # type: ignore
+from lic import gen_seed, lic  # type: ignore
 from matplotlib.axes import Axes
 from matplotlib.colors import SymLogNorm
 from phdhelper import mpl
@@ -60,7 +60,7 @@ class VisualiseLIC(VisualisationMethod):
         # Generate LIC
         length: int = int(kwargs["length"]) if "length" in kwargs else 100
         seed: np.ndarray | None = np.array(kwargs["seed"]) if "seed" in kwargs else None
-        convolution = hj.arrays.lic(
+        convolution = lic(
             self.mag.bx,
             self.mag.by,
             length=length,
@@ -92,7 +92,7 @@ class VisualiseBField(VisualisationMethod):
         self.mag = self.sdf.mag * 1e9  # nT
         self.grid = self.sdf.mid_grid * 1e-3  # km
 
-    def add_data_to_axes(self, ax: Axes, density: float = 4) -> None:
+    def add_data_to_axes(self, ax: Axes, **kwargs) -> None:
         # Plot B_z in the bg as the colour
         bz = self.mag.bz
         colour_lims = np.array([-np.abs(bz).max(), np.abs(bz).max()])
@@ -106,6 +106,7 @@ class VisualiseBField(VisualisationMethod):
         )
 
         # Plot Bx, By streamlines overtop
+        density = kwargs["density"] if "density" in kwargs else 4
         ax.streamplot(
             self.grid.x,
             self.grid.y,
