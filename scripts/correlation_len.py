@@ -43,6 +43,7 @@ cs.n_chunks = cfg.n_chunks
 
 # %%
 def corr_len_1d(arr: npt.NDArray, dx: float):
+    arr -= arr.mean
     lags = correlation_lags(arr.size, arr.size, mode="full")
     correlated = correlate(arr, arr, mode="full")
     correlated = correlated / correlated[lags == 0]
