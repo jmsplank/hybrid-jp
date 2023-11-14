@@ -1,30 +1,19 @@
 # %%
-import re
 from multiprocessing import set_start_method
 from os import environ
-from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.axes import Axes
 from matplotlib.collections import QuadMesh
-from matplotlib.figure import Figure
 from phdhelper import mpl
-from phdhelper.colours import sim as colours
-from scipy.signal import correlate, correlate2d, correlation_lags  # type: ignore
+
+# from phdhelper.colours import sim as colurs
+from scipy.signal import correlate2d, correlation_lags  # type: ignore
 
 import hybrid_jp as hj
 from hybrid_jp import analysis as hja
 from hybrid_jp.analysis.mag import MagneticField
-
-
-def make_fname_safe(name: str):
-    s = str(name).strip().replace(" ", "_")
-    s = re.sub(r"(?u)[^-\w.]", "", s)
-    if s in {"", ".", ".."}:
-        raise Exception("Could not derive file name from '%s'" % name)
-    return s
-
 
 # %%
 mpl.format()
@@ -167,147 +156,5 @@ ax.set_ylim(lags_y[0], lags_y[-1])
 fig.colorbar(cl, cax=cax, label="Correlation Length [$d_i$]")
 fig.colorbar(im, cax=cax)
 fig.tight_layout()
-plt.savefig(f"correlation_2d/2D_autocorr_{make_fname_safe(comp[use_c])}.pdf")
+plt.savefig(f"correlation_2d/2D_autocorr_{hj.make_fname_safe(comp[use_c])}.pdf")
 plt.show()
-
-
-# %%
-def corr_1d(arr: hj.arrfloat, dx: float) -> tuple[hj.arrfloat, hj.arrfloat]:
-    """Correlate 1D signal."""
-    arr -= arr.mean()
-    lags = correlation_lags(arr.size, arr.size, mode="full")
-    correlated = correlate(arr, arr, mode="full")
-    correlated = correlated / correlated[lags == 0]
-    correlated = correlated[lags >= 0]
-    lags = lags[lags >= 0]
-    lags = lags * dx
-
-    return lags, correlated
-
-
-def corr_len_1d(lags: hj.arrfloat, correlated: hj.arrfloat) -> float:
-    """Obtain correlation length using integration method."""
-    try:
-        zero_idx = np.nonzero(correlated <= 0)[0][0]
-        corr_upto0 = correlated[:zero_idx]
-        lag_upto0 = lags[:zero_idx]
-    except IndexError:
-        corr_upto0 = correlated
-        lag_upto0 = lags
-
-    correlation_length = np.trapz(corr_upto0, lag_upto0)
-    return correlation_length
-
-
-def corr_len_2d(arr: hj.arrfloat, dx: float, dy: float) -> tuple[float, float]:
-    cx = corr_len_1d(*corr_1d(arr[:, 0], dx))
-    cy = corr_len_1d(*corr_1d(arr[0, :], dy))
-    return cx, cy
-
-
-def make_plot_1d_corr(
-    arr: hj.arrfloat,
-    delta: float,
-    title: str,
-    component_name="i",
-    save: bool = False,
-):
-    """_summary_
-
-    Args:
-        arr (hj.arrfloat): 1D array to be autocorrelated
-        delta (float): spacing between points in `arr`
-        title (str): the title of the plot
-        component_name (str, optional): subs to B_{component_name}. Defaults to "i".
-        save (bool, optional): Save the image. Defaults to False.
-    """
-    l, c = corr_1d(arr, delta)
-    l0 = np.nonzero(c <= 0)[0][0]
-    l_C = corr_len_1d(l, c)
-
-    ax: Axes
-    fig, ax = plt.subplots()
-
-    ax.plot(l, c)
-    ax.scatter(l, c, marker=".", color=colours.dark(), s=10)
-    ax.scatter(
-        l[l0],
-        0,
-        marker="x",
-        color="red",
-        label=f"Zero crossing at ${l[l0]:.2f}d_i$",
-    )
-    ax.axhline(0, ls="--")
-    ax.fill_between(
-        l[: l0 + 1],
-        0,
-        c[: l0 + 1],
-        color="red",
-        alpha=0.1,
-        label=rf"$\lambda_C = {l_C:0.2f}$ [$d_i$]",
-    )
-
-    inset = ax.inset_axes((0.5, 0.5, 0.47, 0.47))
-    inset.plot(
-        np.arange(arr.size)[l0:] * delta,
-        (arr - arr.mean())[:-l0],
-        color=colours.red(),
-        ls="--",
-        alpha=0.5,
-        label=rf"$B_{component_name}(x\rightarrow x+{l[l0]:.2f}d_i)$",
-    )
-    inset.plot(np.arange(arr.size) * delta, arr - arr.mean())
-    inset.set_xlabel("$x$ [$d_i$]")
-    inset.set_ylabel(rf"$B_{component_name} - \left<B_{component_name}\right>$ [$nT$]")
-    inset.grid(False)
-    inset.legend()
-
-    ax.legend(loc="upper left")
-    ax.set_title(title)
-    ax.grid(False)
-    ax.set_ylabel(r"Autocorrelation")
-    ax.set_xlabel(r"Lag $\ell$ [$d_i$]")
-
-    fig.tight_layout()
-
-    if save:
-        file_dir = Path(__file__)
-        save_dir = file_dir.parent / file_dir.stem
-        save_dir.mkdir(exist_ok=True)
-        save_name = save_dir / (make_fname_safe(title) + ".png")
-        plt.savefig(save_name)
-
-    plt.show()
-
-
-make_plot_1d_corr(
-    test_b[:, 0, 0],
-    cs.dx,
-    r"1D $B_\parallel$ correlation along $x$",
-    component_name=r"\parallel",
-    save=True,
-)
-
-make_plot_1d_corr(
-    test_b[0, :, 0],
-    cs.dy,
-    r"1D $B_\parallel$ correlation along $y$",
-    component_name=r"\parallel",
-    save=True,
-)
-
-make_plot_1d_corr(
-    test_b[:, 0, 1],
-    cs.dy,
-    r"1D $B_{\perp i}$ correlation along $x$",
-    component_name=r"{\perp i}",
-    save=True,
-)
-
-make_plot_1d_corr(
-    test_b[0, :, 1],
-    cs.dy,
-    r"1D $B_{\perp i}$ correlation along $y$",
-    component_name=r"{\perp i}",
-    save=True,
-)
