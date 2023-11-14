@@ -32,3 +32,8 @@ config.toml
 # Saved data
 data_cache
 *.json
+
+# Plots
+*.png
+*.jpg
+*.pdf
