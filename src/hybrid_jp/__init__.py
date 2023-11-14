@@ -13,10 +13,11 @@ from .dtypes import Mag as Mag
 from .dtypes import arrfloat as arrfloat
 from .dtypes import arrint as arrint
 
+# files
+from .files import make_fname_safe as make_fname_safe
+
 # sdf_files
 from .sdf_files import get_grid as get_grid
 from .sdf_files import get_mag as get_mag
 from .sdf_files import list_variables as list_variables
 from .sdf_files import print_variables as print_variables
-
-# from .change_points import binseg as binseg
