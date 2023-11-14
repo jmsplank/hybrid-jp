@@ -9,7 +9,6 @@ import numpy as np
 from epoch_cheats.deck import Deck
 from lic import gen_seed, lic  # type: ignore
 from matplotlib.axes import Axes
-from matplotlib.colors import SymLogNorm
 from phdhelper import mpl
 from phdhelper.colours import sim as colours
 from tqdm import tqdm  # type: ignore
@@ -36,6 +35,8 @@ class VisualisationMethod(Protocol):
 
 
 class VisualiseLIC(VisualisationMethod):
+    conv: hj.arrfloat | None = None
+
     def __init__(self, sdf: hj.sdf_files.SDF) -> None:
         self.sdf = sdf
         self.mag: hj.Mag
@@ -44,6 +45,21 @@ class VisualiseLIC(VisualisationMethod):
     def retrieve_data(self) -> None:
         self.mag = self.sdf.mag * 1e9  # nT
         self.grid = self.sdf.mid_grid * 1e-3  # km
+
+    def generate_lic(
+        self, length: int = 100, seed: np.ndarray | None = None
+    ) -> hj.arrfloat:
+        convolution = lic(
+            self.mag.bx,
+            self.mag.by,
+            length=length,
+            contrast=False,
+            seed=seed,  # type: ignore
+        )
+
+        conv: hj.arrfloat = convolution
+        self.conv = conv
+        return conv
 
     def add_data_to_axes(self, ax: Axes, **kwargs) -> None:
         bz = self.mag.bz
@@ -57,23 +73,15 @@ class VisualiseLIC(VisualisationMethod):
             vmax=colour_lims[1],
         )
 
-        # Generate LIC
-        length: int = int(kwargs["length"]) if "length" in kwargs else 100
-        seed: np.ndarray | None = np.array(kwargs["seed"]) if "seed" in kwargs else None
-        convolution = lic(
-            self.mag.bx,
-            self.mag.by,
-            length=length,
-            contrast=False,
-            seed=seed,  # type: ignore
-        )
-
-        conv = convolution**3
+        if self.conv is None:
+            raise ValueError(
+                "set self.conv using generate_lic before calling this function."
+            )
 
         ax.pcolormesh(
             self.grid.x,
             self.grid.y,
-            conv.T,
+            self.conv.T,
             cmap=mpl.Cmaps.greyscale_r,
             alpha=0.5,
         )
@@ -95,14 +103,30 @@ class VisualiseBField(VisualisationMethod):
     def add_data_to_axes(self, ax: Axes, **kwargs) -> None:
         # Plot B_z in the bg as the colour
         bz = self.mag.bz
+        bzm: float = bz.mean()
+        bzs: float = bz.std()
         colour_lims = np.array([-np.abs(bz).max(), np.abs(bz).max()])
-        ax.pcolormesh(
+        # ax.pcolormesh(
+        #     self.grid.x,
+        #     self.grid.y,
+        #     self.mag.bz.T,
+        #     cmap=mpl.Cmaps.diverging,
+        #     vmin=colour_lims[0],
+        #     vmax=colour_lims[1],
+        #     rasterized=True,
+        # )
+
+        nlevs = 6
+        levs = np.arange(nlevs) / 2 + 1
+        ax.contourf(
             self.grid.x,
             self.grid.y,
-            self.mag.bz.T,
+            (bz - bzm).T,
             cmap=mpl.Cmaps.diverging,
+            levels=[bzm + i * bzs for i in [*-levs[::-1]] + [*levs]],
             vmin=colour_lims[0],
             vmax=colour_lims[1],
+            extend="both",
         )
 
         # Plot Bx, By streamlines overtop
@@ -137,57 +161,68 @@ deck = hja.load_deck(cfg.data_dir)
 # vis = snapshot(sdf_file=path, deck=deck, Visualiser=VisualiseBField)
 
 nx, ny = int(deck.control.nx), int(deck.control.ny)
-
-axs: list[Axes]
-fig, axs = plt.subplots(
-    3,
-    1,
-    sharex=True,
-)
-# vis.add_data_to_axes(ax)
 LICseed = gen_seed((nx, ny))
-for i, ax in enumerate(axs):
-    snap = [50, 100, 150][i]
-    vis = snapshot(sdf_file=paths[snap - 1], deck=deck, Visualiser=VisualiseLIC)
-    vis.add_data_to_axes(ax, density=2, length=50, seed=LICseed)
-    ax.grid(False)
-    ax.set_aspect("equal")
-    ax.set_title(f"{deck.output.dt_snapshot * (snap - 1):.1f}s")
+
+# axs: list[Axes]
+# fig, axs = plt.subplots(
+#     3,
+#     1,
+#     sharex=True,
+# )
+# # vis.add_data_to_axes(ax)
+# for i, ax in enumerate(axs):
+#     snap = [50, 100, 150][i]
+#     vis = snapshot(sdf_file=paths[snap - 1], deck=deck, Visualiser=VisualiseLIC)
+#     vis.add_data_to_axes(ax, density=2, length=400, seed=LICseed)
+#     ax.grid(False)
+#     ax.set_aspect("equal")
+#     ax.set_title(f"{deck.output.dt_snapshot * (snap - 1):.1f}s")
+
+fig, ax = plt.subplots(figsize=(8, 6))
+i = 1
+snap = 80
+vis = snapshot(paths[snap], deck, VisualiseBField)
+vis.add_data_to_axes(ax, density=5)
+ax.grid(False)
+# ax.set_aspect("equal")
+ax.set_title(f"{deck.output.dt_snapshot * (snap - 1):.1f}s")
 
 
 fig.tight_layout()
+savedir = Path(__file__).parent
+# plt.savefig(savedir / "snapshot.pdf")
 plt.show()
 
-# %%
-save_dir = Path("/Users/jamesplank/Documents/PHD/hybrid_jp/scripts/snap_frames")
-for png in save_dir.glob(f"{cfg.name}-*.png"):
-    png.unlink()
+# # %%
+# save_dir = Path("/Users/jamesplank/Documents/PHD/hybrid_jp/scripts/snap_frames")
+# for png in save_dir.glob(f"{cfg.name}-*.png"):
+#     png.unlink()
 
 
-def gen_pdf(frame_idx: int):
-    frame = paths[frame_idx]
-    vis = snapshot(sdf_file=frame, deck=deck, Visualiser=VisualiseLIC)
+# def gen_pdf(frame_idx: int):
+#     frame = paths[frame_idx]
+#     vis = snapshot(sdf_file=frame, deck=deck, Visualiser=VisualiseLIC)
 
-    fig, ax = plt.subplots()
-    vis.add_data_to_axes(ax, seed=LICseed, length=50)
-    ax.grid(False)
-    ax.annotate(
-        f"{frame_idx+1}\n"
-        f"{deck.output.dt_snapshot*frame_idx:5.1f} $s$\n"
-        rf"{deck.output.dt_snapshot*frame_idx*deck.constant.wci:5.1f} $\Omega_i$",
-        xy=(0.05, 0.85),
-        xycoords="axes fraction",
-        bbox=dict(fc="white", ec="none"),
-    )
-    fig.tight_layout()
-    fname = save_dir / f"{cfg.name}-{frame.stem}.png"
-    fig.savefig(fname, dpi=300)
-    # print(f"Written frame to {fname}")
-    fig.clf()
-    plt.close()
-    del fig, ax
+#     fig, ax = plt.subplots()
+#     vis.add_data_to_axes(ax, seed=LICseed, length=50)
+#     ax.grid(False)
+#     ax.annotate(
+#         f"{frame_idx+1}\n"
+#         f"{deck.output.dt_snapshot*frame_idx:5.1f} $s$\n"
+#         rf"{deck.output.dt_snapshot*frame_idx*deck.constant.wci:5.1f} $\Omega_i$",
+#         xy=(0.05, 0.85),
+#         xycoords="axes fraction",
+#         bbox=dict(fc="white", ec="none"),
+#     )
+#     fig.tight_layout()
+#     fname = save_dir / f"{cfg.name}-{frame.stem}.png"
+#     fig.savefig(fname, dpi=300)
+#     # print(f"Written frame to {fname}")
+#     fig.clf()
+#     plt.close()
+#     del fig, ax
 
 
-n_paths = len(paths)
-with Pool(cfg.n_threads) as pool:
-    list(tqdm(pool.imap_unordered(gen_pdf, range(len(paths))), total=n_paths))
+# n_paths = len(paths)
+# with Pool(cfg.n_threads) as pool:
+#     list(tqdm(pool.imap_unordered(gen_pdf, range(len(paths))), total=n_paths))
