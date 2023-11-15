@@ -1,7 +1,7 @@
 from functools import partial
-from multiprocessing import Pool
+from multiprocessing import Pool, set_start_method
 from pathlib import Path
-from typing import Iterable
+from typing import Callable, Iterable
 
 from tqdm import tqdm
 
@@ -15,7 +15,11 @@ def load_sdfs_para(
     start: int | None = None,
     stop: int | None = None,
     verbose: bool = True,
+    ipython: bool = False,
 ):
+    if ipython:
+        set_start_method("fork", force=True)
+
     if not isinstance(sdf_dir, Path):
         sdf_dir = Path(sdf_dir)
     files = list(Path(sdf_dir).glob("*.sdf"))
@@ -27,15 +31,18 @@ def load_sdfs_para(
     SDFs: list[SDF] = []
 
     # Initialize progress bar as a no-op if verbose is False
-    def slippery(iter: Iterable, *args, **kwargs):
+    def slippery(iter: Iterable, *args, **kwargs) -> Iterable:
         return iter
 
-    progress_bar = tqdm if verbose else slippery
+    progress_bar = tqdm if verbose else slippery  # type: ignore
 
-    load_sdf = partial(load_sdf_verified, dt=dt) if dt else load_sdf_verified
+    load_sdf = partial(load_sdf_verified, dt=dt)
     with Pool(threads) as pool:
         SDFs = list(
-            progress_bar(pool.imap(load_sdf, file_next), total=(_stop - _start + 1))
+            progress_bar(
+                pool.imap(load_sdf, file_next),
+                total=(_stop - _start + 1),
+            )  # type: ignore
         )
 
     return SDFs, files
