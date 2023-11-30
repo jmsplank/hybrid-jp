@@ -1,7 +1,5 @@
 # Instructions
 
-![alt](docsrc/source/_static/hello.png)
-
 ## Install (macOS)
 
 1. Install gcc
